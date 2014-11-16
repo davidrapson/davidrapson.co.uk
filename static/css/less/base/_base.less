@@ -38,12 +38,21 @@
 /*  @group Base - Headings */
 /*  ========================================================================== */
 
-    h1, .h1 { .font-size( @-site-heading-size-1 ); }
-    h2, .h2 { .font-size( @-site-heading-size-2 ); }
-    h3, .h3 { .font-size( @-site-heading-size-3 ); }
-    h4, .h4 { .font-size( @-site-heading-size-4 ); }
-    h5, .h5 { .font-size( @-site-heading-size-5 ); }
-    h6, .h5 { .font-size( @-site-heading-size-6 ); }
+    h1, .h1 { .font-size( 28 ); }
+    h2, .h2 { .font-size( 24 ); }
+    h3, .h3 { .font-size( 21 ); }
+    h4, .h4 { .font-size( 20 ); }
+    h5, .h5 { .font-size( 18 ); }
+    h6, .h5 { .font-size( 16 ); }
+
+    @media only screen and ( min-width: @-site-breakpoint-small ) {
+        h1, .h1 { .font-size( 32 ); }
+        h2, .h2 { .font-size( 28 ); }
+        h3, .h3 { .font-size( 24 ); }
+        h4, .h4 { .font-size( 21 ); }
+        h5, .h5 { .font-size( 18 ); }
+        h6, .h5 { .font-size( 16 ); }
+    }
 
     h1, .h1, h2, .h2, h3, .h3,
     h4, .h4, h5, .h5, h6, .h6 {

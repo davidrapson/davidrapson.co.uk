@@ -408,23 +408,23 @@ samp,
 /*  ========================================================================== */
 h1,
 .h1 {
-  font-size: 32px;
-  font-size: 2rem;
-}
-h2,
-.h2 {
   font-size: 28px;
   font-size: 1.75rem;
 }
-h3,
-.h3 {
+h2,
+.h2 {
   font-size: 24px;
   font-size: 1.5rem;
 }
-h4,
-.h4 {
+h3,
+.h3 {
   font-size: 21px;
   font-size: 1.3125rem;
+}
+h4,
+.h4 {
+  font-size: 20px;
+  font-size: 1.25rem;
 }
 h5,
 .h5 {
@@ -435,6 +435,38 @@ h6,
 .h5 {
   font-size: 16px;
   font-size: 1rem;
+}
+@media only screen and (min-width: 30em) {
+  h1,
+  .h1 {
+    font-size: 32px;
+    font-size: 2rem;
+  }
+  h2,
+  .h2 {
+    font-size: 28px;
+    font-size: 1.75rem;
+  }
+  h3,
+  .h3 {
+    font-size: 24px;
+    font-size: 1.5rem;
+  }
+  h4,
+  .h4 {
+    font-size: 21px;
+    font-size: 1.3125rem;
+  }
+  h5,
+  .h5 {
+    font-size: 18px;
+    font-size: 1.125rem;
+  }
+  h6,
+  .h5 {
+    font-size: 16px;
+    font-size: 1rem;
+  }
 }
 h1,
 .h1,
@@ -706,7 +738,7 @@ svg:not(:root) {
 /*  @group Layout */
 /*  ========================================================================== */
 .l-constrained {
-  width: 96%;
+  width: 94%;
   min-width: 0;
   max-width: 720px;
   margin: 0 auto;
