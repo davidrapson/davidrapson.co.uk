@@ -14,7 +14,7 @@ layout: default
 
         {% if page.lead %}
             <div class="article__lead text--lead">
-                {{ page.lead }}
+                {{ page.lead | markdownify }}
             </div>
         {% endif %}
 

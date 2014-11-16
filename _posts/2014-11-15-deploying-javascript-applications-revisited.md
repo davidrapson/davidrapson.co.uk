@@ -2,9 +2,8 @@
 layout: post
 title:  "Deploying JavaScript Applications Revisited"
 date:   2014-11-16
+lead: Back in March 2013, Alex Sexton wrote an article entitled [Deploying JavaScript Applications](https://alexsexton.com/blog/2013/03/deploying-javascript-applications/). It struck a chord with me, I'd be circling around some of the ideas in the article but never really invested the time in exploring many of the techniques; It felt good to see someone document and articulate these ideas.
 ---
-
-Back in March 2013, Alex Sexton wrote an article entitled [Deploying JavaScript Applications](https://alexsexton.com/blog/2013/03/deploying-javascript-applications/). It struck a chord with me, I'd be circling around some of the ideas in the article but never really invested the time in exploring many of the techniques; It felt good to see someone document and articulate these ideas.
 
 At the time the article was published I was only scratching the surface of the techniques mentioned. Initially I excused this in part because I was working largely on typical content-driven websites, not <del>web applications</del> [web thangs](http://adactio.com/journal/6246/). It’s been interesting to revisit the article every few months and see how much more of those techniques I use, even when working on websites that weren’t full client-side applications.
 
