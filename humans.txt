@@ -8,5 +8,5 @@ Twitter: @davidrapson
 
 /* SITE */
 
-Standards: HTML5, CSS3
-Components: Modernizr
+Standards: HTML, CSS
+Tools & Services: Jekyll, Linode, S3, CloudFront
