@@ -53,7 +53,7 @@ Alex’s article mentioned using icon fonts for UI icons. A lot has been written
 
 ### CSS Files
 
-This was a pretty interesting approach in the original article and one I can see working really well for third-party client-side apps. I didn't have these contstraints so have stuck with the old minify, gzip, cache heavily approach.
+The orignal article discussed building CSS directly into the JS application build as a string. It was a pretty interesting approach and one I can see working really well for third-party client-side apps. I've not had same contstraints yet so stick with the old minify, gzip, cdn, cache heavily approach.
 
 ## Build apps into self-contained folders
 

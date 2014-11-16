@@ -3,13 +3,11 @@ title: David Rapson
 email: david@davidrapson.co.uk
 description: David Rapson is a client-side developer living and working in London, originally from Birmingham.
 baseurl: ""
-url: "http://v3.davidrapson.co.uk"
+url: "http://davidrapson.co.uk"
+cdn_url: d32uef58wnuh7a.cloudfront.net
 twitter_username: davidrapson
 github_username:  davidrapson
 permalink: /:year/:title/
-
-cdn_url: s3-eu-west-1.amazonaws.com/static.davidrapson.co.uk
-asset_version: 0.2.0
 
 exclude: [ "README.md", "node_modules", "bin", "gulpfile", "Gemfile", "Gemfile.lock", "package.json", "secrets.json" ]
 

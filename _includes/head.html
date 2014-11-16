@@ -15,7 +15,7 @@
     <link rel="apple-touch-icon-precomposed" href="{{ "/static/touch-icons/apple-touch-icon-precomposed.png" }}">
     <link rel="icon" type="image/x-icon" href="{{"/static/touch-icons/favicon.ico" }}" />
 
-    <link rel="stylesheet" href="//{{ site.cdn_url }}/{{ site.asset_version }}/css/style.min.css">
+    <link rel="stylesheet" href="//{{ site.cdn_url }}/{{ site.data.assets.version }}/css/style.min.css">
 
     <script>
       (function(d) {
@@ -29,7 +29,7 @@
 
     <script>
         function loadCSS(a,b,c){"use strict";function g(){for(var b,e=0;e<f.length;e++)f[e].href&&f[e].href.indexOf(a)>-1&&(b=!0);b?d.media=c||"all":setTimeout(g)}var d=window.document.createElement("link"),e=b||window.document.getElementsByTagName("script")[0],f=window.document.styleSheets;return d.rel="stylesheet",d.href=a,d.media="only x",e.parentNode.insertBefore(d,e),g(),d};
-        loadCSS('//{{ site.cdn_url }}/{{ site.asset_version }}/css/pygments.min.css');
+        loadCSS('//{{ site.cdn_url }}/{{ site.data.assets.version }}/css/pygments.min.css');
     </script>
 
 </head>

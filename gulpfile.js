@@ -35,6 +35,16 @@ var paths = {
 };
 
 
+function stringSrc(filename, string) {
+    var src = require('stream').Readable({ objectMode: true });
+    src._read = function () {
+        this.push(new plugins.util.File({ cwd: "", base: "", path: filename, contents: new Buffer(string) }))
+        this.push(null)
+    };
+    return src;
+}
+
+
 /**
  * Clean
  */
@@ -79,9 +89,21 @@ gulp.task('js', ['clean'], function () {
 
 
 /**
+ * Version
+ * Build a version file to be used in Jekyll _data
+ * Saves duplicating version number
+ */
+gulp.task('version', function () {
+    var stream = stringSrc('assets.json', '{ "version":' + pkg.version + '}')
+        .pipe(gulp.dest( '_data' ));
+    return stream;
+});
+
+
+/**
  * Assets
  */
-gulp.task('assets', ['css', 'js'], function () {
+gulp.task('assets', ['css', 'js', 'version'], function () {
     var aws = {
         key: secrets.aws.key,
         secret: secrets.aws.secret,
@@ -102,8 +124,7 @@ gulp.task('assets', ['css', 'js'], function () {
  * Jekyll
  */
 gulp.task('jekyll', ['css', 'js'], function() {
-    var stream = spawn('bundle', ['exec', 'jekyll', 'build', '--drafts', '--future']);
-    return stream;
+    spawn('bundle', ['exec', 'jekyll', 'build', '--drafts', '--future']);
 });
 
 
@@ -152,4 +173,4 @@ gulp.task('deploy', ['jekyll', 'assets'], function() {
  * Default task
  */
 gulp.task('build', ['css', 'js']);
-gulp.task('default', ['serve', 'watch']);
+gulp.task('default', [ 'jekyll', 'serve', 'watch']);
