@@ -66,10 +66,6 @@ Building all static assets into self contained folders makes sense even when not
 
 The versioning of assets alongside makes it easy to rollback to a previous version, or test against a pre-release version safely. `grunt-aws` does some smart stuff to auto gzip relevant assets and makes it easy to add any extra headers you want. Being so used to `mod_deflate` made the need to manually gzip files come as a slight surprise so it’s good to have a tool that  automates this stuff away for you.
 
-## Statically generate your container pages and CDN them too
-
-As my typical environment was a CMS driven website hosting static container pages on the CDN wasn't really an option. That said, with the help of a [pretend doctor](https://twitter.com/drlukeowen) and his smart [Varnish profiles](https://www.varnish-cache.org/) we were able to see consistent <200ms server response times. So it's possible to get close to the performance of static pages, providing you can cache everything aggressively.
-
 ## Wrap Up Redux
 
 Revisiting [Deploying JavaScript Applications](https://alexsexton.com/blog/2013/03/deploying-javascript-applications/) over time has been an interesting process. It’s cool to see how much of this has become part of my standard practice but also how things have changed. This doesn’t even cover any of the fascinating work thats being done around [Optimising the critical rendering path](https://docs.google.com/a/davidrapson.co.uk/presentation/) such as inlining <del>above-the-fold</del> [critical CSS](https://github.com/addyosmani/critical). Let’s hope even more has changed if I revisit it again in 6 months.

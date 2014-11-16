@@ -22,7 +22,7 @@
         font-weight: bold;
         &:before {
             content: '\2190';
-            margin-right: .25em;
+            padding-right: .25em;
         }
     }
 
@@ -30,7 +30,7 @@
         font-weight: bold;
         &:after {
             content: '\2192';
-            margin-left: .25em;
+            padding-left: .25em;
         }
     }
 
@@ -57,25 +57,31 @@
         http://dbushell.com/2012/04/18/scoping-typography-css/
         http://css-tricks.com/opt-in-typography/
     */
-    .copy {
+
+    .copy,
+    .copy--full  {
+
+        .caps {
+            font-size: 92%;
+            letter-spacing: 1px;
+        }
+
+        p:empty { display: none; }
+
+        a, a:visited { text-decoration: underline; }
+        a:hover {
+           text-decoration: underline;
+        }
+        a:active { color: @-lesskit-color-link-active; }
+    }
+
+    .copy--full {
 
         p {
             margin-bottom: 0;
         }
         p + p {
             text-indent: 1.5em;
-        }
-	    p:empty { display: none; }
-
-	    a, a:visited { text-decoration: underline; }
-	    a:hover {
-	       text-decoration: underline;
-	    }
-	    a:active { color: @-lesskit-color-link-active; }
-
-        .caps {
-            font-size: 92%;
-            letter-spacing: 1px;
         }
 
         blockquote {

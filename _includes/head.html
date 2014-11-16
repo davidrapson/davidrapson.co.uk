@@ -6,15 +6,16 @@
     <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
     <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
+
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ "static/touch-icons/apple-touch-icon-144x144-precomposed.png" }}">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ "static/touch-iconsapple-touch-icon-114x114-precomposed.png" }}">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ "static/touch-icons/apple-touch-icon-72x72-precomposed.png" }}">
     <link rel="apple-touch-icon-precomposed" href="{{ "/static/touch-icons/apple-touch-icon-precomposed.png" }}">
     <link rel="icon" type="image/x-icon" href="{{"/static/touch-icons/favicon.ico" }}" />
 
-    <link rel="stylesheet" href="/static/css/style.min.css">
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-    <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
+    <link rel="stylesheet" href="//{{ site.cdn_url }}/{{ site.asset_version }}/css/style.min.css">
 
     <script>
       (function(d) {
@@ -28,7 +29,7 @@
 
     <script>
         function loadCSS(a,b,c){"use strict";function g(){for(var b,e=0;e<f.length;e++)f[e].href&&f[e].href.indexOf(a)>-1&&(b=!0);b?d.media=c||"all":setTimeout(g)}var d=window.document.createElement("link"),e=b||window.document.getElementsByTagName("script")[0],f=window.document.styleSheets;return d.rel="stylesheet",d.href=a,d.media="only x",e.parentNode.insertBefore(d,e),g(),d};
-        loadCSS('/static/css/pygments.css');
+        loadCSS('//{{ site.cdn_url }}/{{ site.asset_version }}/css/pygments.min.css');
     </script>
 
 </head>
