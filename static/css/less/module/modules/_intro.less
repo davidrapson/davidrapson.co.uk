@@ -1,0 +1,38 @@
+/*  ========================================================================== */
+/*  @group Intro */
+/*  ========================================================================== */
+
+.intro {
+    .clearfix();
+    margin-bottom: 2em;
+}
+    .intro__media {
+        display: none;
+    }
+    .intro__body {
+        .font-size(18);
+        line-height: 1.3;
+
+        p {
+            margin-bottom: 0;
+        }
+
+        @media only screen and ( min-width: @-site-breakpoint-medium ) {
+            .font-size(21);
+        }
+    }
+
+@media only screen and ( min-width: @-site-breakpoint-small ) {
+    .intro {
+        display: table;
+    }
+    .intro__media,
+    .intro__body {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .intro__media {
+        width: 20%;
+        padding-right: 3%;
+    }
+}

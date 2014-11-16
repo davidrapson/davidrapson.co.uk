@@ -1,0 +1,6 @@
+.bundle/
+_site/
+bin/
+Gemfile.lock
+node_modules/
+secrets.json

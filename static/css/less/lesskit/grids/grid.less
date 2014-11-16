@@ -1,0 +1,39 @@
+//  -------------------------------------------------------- //
+//  Grids
+//  -------------------------------------------------------- //
+
+    .grid() {
+        .clearfix();
+        width: (@-lesskit-grid-columns * @-lesskit-grid-column-width) + ((@-lesskit-grid-columns - 1) * @-lesskit-grid-gutter-width);
+    }
+
+    .columns( @spanWidth ) {
+        .clearfix();
+        float: left;
+        width: (@-lesskit-grid-column-width * @spanWidth) + (@-lesskit-grid-gutter-width * (@spanWidth - 1));
+        margin-right: @-lesskit-grid-gutter-width;
+    }
+
+    .column( @spanWidth ) {
+        .columns( @spanWidth );
+    }
+
+    .last() {
+        margin-right: 0;
+    }
+
+    .column-last( @spanWidth ) {
+        .columns( @spanWidth );
+        .last();
+    }
+
+    .reset-layout( @margin: 0 0 1em 0, @width: 100% ) {
+        clear: both;
+        float: none;
+        width: @width;
+        margin: @margin;
+    }
+
+    .clear-grid( @margin: 0 0 1em 0, @width: 100% ) {
+        .reset-layout( @margin, @width );
+    }

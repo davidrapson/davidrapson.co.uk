@@ -1,0 +1,12 @@
+/* TEAM */
+
+Designed and Developed by: David Rapson
+Site: http://davidrapson.co.uk
+
+Designer and Developer: David Rapson
+Twitter: @davidrapson
+
+/* SITE */
+
+Standards: HTML5, CSS3
+Components: Modernizr

@@ -1,0 +1,32 @@
+/**
+ * Baseplate
+ */
+
+//  -------------------------------------------------------- //
+//  Less features
+//  -------------------------------------------------------- //
+
+  @import "lesskit/lesskit.less";
+  @import "_variables.less";
+  @import "_mixins.less";
+
+//  -------------------------------------------------------- //
+//  Components
+//  -------------------------------------------------------- //
+// Styles are defined in the following order & groupings:
+// Base, Layout, Module, State
+//
+// - Base = Common, global and element styles.
+// - Layout = major components, e.g., header, footer etc.
+// - Module = minor components, e.g., navigation bar, callout, widgets etc.
+// - Responsive = responsive breakpoints.
+// - State  = a state is something that augments + overrides all other styles, e.g., success / active state
+
+  @import "base/_normalize.less";
+  @import "base/_base.less";
+  @import "layout/_layout.less";
+  @import "module/_module.less";
+  @import "state/_state.less";
+
+  // Inline print styles
+  @import "_print.less";

@@ -1,0 +1,51 @@
+//  -------------------------------------------------------- //
+//  Color
+//  -------------------------------------------------------- //
+
+    .default-colors() {
+
+        color: @-lesskit-color-text;
+
+        h1, h2, h3, h4, h5, h6 {
+            color: @-lesskit-color-headers;
+            strong { color: lighten( @-lesskit-color-headers, 10% ); }
+        }
+
+        a, a:link {
+            color: @-lesskit-color-link;
+        }
+        a:visited {
+            color: @-lesskit-color-link-visited;
+        }
+        a:hover {
+            color: @-lesskit-color-link-hover;
+        }
+        a:active {
+            color: @-lesskit-color-link-active;
+        }
+
+    }
+
+    .flip-colors() {
+
+        color: @-lesskit-color-text-alt;
+
+        h1, h2, h3, h4, h5, h6 {
+            color: @-lesskit-color-headers-alt;
+            strong { color: lighten( @-lesskit-color-headers-alt, 10% ); }
+        }
+
+        a, a:link {
+            color: @-lesskit-color-link-alt;
+        }
+        a:visited {
+            color: @-lesskit-color-link-visited-alt;
+        }
+        a:hover {
+            color: @-lesskit-color-link-hover-alt;
+        }
+        a:active {
+            color: @-lesskit-color-link-active-alt;
+        }
+
+    }

@@ -1,0 +1,25 @@
+---
+layout: default
+---
+
+<p><a href="{{ site.baseurl }}/" class="link--backward">Back home</a></p>
+
+<article class="article copy">
+
+    <header class="article__header">
+        <p class="article__meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+        <h1 class="article__title">{{ page.title }}</h1>
+    </header>
+
+
+        {% if page.lead %}
+            <div class="article__lead text--lead">
+                {{ page.lead }}
+            </div>
+        {% endif %}
+
+    <div class="article__body">
+        {{ content }}
+    </div>
+
+</article>

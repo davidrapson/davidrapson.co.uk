@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<div class="intro">
+    <div class="intro__media">
+        <img class="img--full" src="{{ "/static/images/avatar.jpg" }}" alt="Avatar">
+    </div>
+    <div class="intro__body">
+        <p><a href="{{ site.baseurl }}/">David Rapson</a> is a Birmingham born client-side developer living and working in London.</p>
+    </div>
+</div>
+
+<section class="section-latest-articles">
+    <h2 class="section-title">Latest Writing</h2>
+      <ul class="article-list list-unstyled">
+        {% for post in site.posts %}
+          <li class="article-list__item">
+            <div class="article-summary">
+                <span class="article-summary__meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+                <h3 class="article-summary__title">
+                    <a class="article-summary__link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                </h2>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+</section>

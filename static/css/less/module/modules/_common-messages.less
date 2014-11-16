@@ -1,0 +1,63 @@
+/*  ========================================================================== */
+/*  @group Messages */
+/*  ========================================================================== */
+
+    .unit-message,
+    .unit-message-success,
+    .unit-message-info,
+    .unit-message-warning,
+    .unit-message-danger {
+
+        .border-box();
+        padding: .5em 1em;
+        margin-bottom: 1em;
+        border-radius: @-global-border-radius;
+        border: 1px solid darken(@-site-color-message, 15%);
+        color: darken( @-site-color-message,60% );
+        background-color: @-site-color-message;
+
+        .message-title {
+            .font-size(16);
+            margin: .5em 0;
+            text-transform: uppercase;
+        }
+
+        p {
+            margin-bottom: .5em;
+        }
+
+        > p:only-child,
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+    }
+
+    .unit-message-success {
+        color: @-site-color-success;
+        background-color: lighten(@-site-color-success,50%);
+        border-color: lighten(@-site-color-success, 35%);
+
+    }
+
+    .unit-message-info {
+        color: @-site-color-info;
+        background-color: lighten(@-site-color-info,50%);
+        border-color: lighten(@-site-color-info, 35%);
+    }
+
+    .unit-message-warning {
+        color: @-site-color-warning;
+        background-color: #fcf8e4;
+        border-color: darken(#fcf8e4, 35%);
+    }
+
+    .unit-message-danger {
+        color: contrast( @-site-color-danger );
+        background-color: @-site-color-danger;
+        border-color: darken(@-site-color-danger, 10%);
+    }
+
+    .unit-message--block {
+        border-radius: 0;
+    }

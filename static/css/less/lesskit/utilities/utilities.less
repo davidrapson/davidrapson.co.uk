@@ -1,0 +1,182 @@
+//  -------------------------------------------------------- //
+//  Mixins - General
+//  -------------------------------------------------------- //
+
+//  -------------------------------------------------------- //
+//  Box-sizing
+//  -------------------------------------------------------- //
+
+    .box-sizing (@type: border-box) {
+        // content-box | border-box | inherit
+        -webkit-box-sizing: @type;
+        -moz-box-sizing: @type;
+        box-sizing: @type;
+    }
+    .border-box() {
+        .box-sizing( border-box );
+    }
+
+//  -------------------------------------------------------- //
+//  Box Reset
+//  -------------------------------------------------------- //
+
+    .box-reset() {
+        margin: 0;
+        padding: 0;
+        border: 0 none;
+    }
+
+//  -------------------------------------------------------- //
+//  Font-size
+//  -------------------------------------------------------- //
+
+    .font-size-rems(@px-size, @context-size: @-lesskit-font-size ) {
+        @rem-size: @px-size / @context-size;
+        font-size: ~"@{px-size}px";
+        font-size: ~"@{rem-size}rem";
+    }
+    .font-size(@px-size, @context-size: @-lesskit-font-size){
+        .font-size-rems(@px-size, @context-size);
+    }
+
+//  -------------------------------------------------------- //
+//  Truncate
+//  -------------------------------------------------------- //
+
+    .truncate(@width:100%) {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: @width;
+    }
+
+//  -------------------------------------------------------- //
+//  Min Height
+//  -------------------------------------------------------- //
+
+    .min-height(@value) {
+        height: auto !important;
+        height: @value;
+        min-height: @value;
+    }
+
+//  -------------------------------------------------------- //
+//  Min Width
+//  -------------------------------------------------------- //
+
+    .min-width(@value) {
+        width: auto !important;
+        width: @value;
+        min-width: @value;
+    }
+
+//  -------------------------------------------------------- //
+//  Center
+//  -------------------------------------------------------- //
+
+    .center() {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+//  -------------------------------------------------------- //
+//  Clearfix
+//  -------------------------------------------------------- //
+
+    .clearfix() {
+        &:before, &:after {
+            content: " ";
+            display: table;
+        }
+        &:after {
+            clear: both;
+        }
+    }
+
+//  -------------------------------------------------------- //
+//  Layout Helpers
+//  -------------------------------------------------------- //
+
+    // Replace the text within this element with a background image
+    .image-replacement() {
+        display: block;
+        border: 0;
+        text-indent: -999em;
+        overflow: hidden;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        text-align: left;
+        direction: ltr;
+        br {
+            display: none;
+        }
+    }
+
+    // Hide from both screenreaders and browsers
+    .hidden() {
+        display: none !important;
+        visibility: hidden;
+    }
+
+    // Hide text from browsers but make it available for screen readers
+    .visually-hidden() {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    // Hide only visually, but have it available for screenreaders
+    // and allow the element to be focusable when navigated to via the keyboard
+    .visually-hidden-but-focusable() {
+        .visually-hidden();
+        &:active,
+        &:focus {
+            clip: auto;
+            height: auto;
+            margin: 0;
+            overflow: visible;
+            position: static;
+            width: auto;
+        }
+    }
+
+    // Hide visually and from screenreaders, but maintain layout
+    .invisible() {
+        visibility: hidden;
+    }
+
+//  -------------------------------------------------------- //
+//  User Select
+//  -------------------------------------------------------- //
+
+    .disable-user-select() {
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+//  -------------------------------------------------------- //
+//  Transitions
+//  -------------------------------------------------------- //
+
+    .transition( @transition ) {
+        -webkit-transition: @transition;
+        transition: @transition;
+    }
+
+//  -------------------------------------------------------- //
+//  Gradients
+//  -------------------------------------------------------- //
+
+    .gradient (@origin: left, @start: #ffffff, @stop: #000000) {
+        background-color: @start;
+        background-image: -webkit-linear-gradient(@origin, @start, @stop);
+        background-image: linear-gradient(@origin, @start, @stop);
+    }
