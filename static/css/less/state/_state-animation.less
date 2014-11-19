@@ -1,0 +1,47 @@
+/*  ========================================================================== */
+/*  @group State - Animation */
+/*  ========================================================================== */
+
+    .animated {
+        -webkit-animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        -webkit-animation-delay: .5s;
+        animation-duration: .5s;
+        animation-fill-mode: both;
+        animation-delay: .5s;
+    }
+
+    @-webkit-keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        -webkit-transform: translateY(30px);
+        transform: translateY(30px);
+      }
+
+      100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        -webkit-transform: translateY(30px);
+        -ms-transform: translateY(30px);
+        transform: translateY(30px);
+      }
+
+      100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+      }
+    }
+
+    .fadeInUp {
+      -webkit-animation-name: fadeInUp;
+      animation-name: fadeInUp;
+    }

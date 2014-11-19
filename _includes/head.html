@@ -15,8 +15,94 @@
     <link rel="apple-touch-icon-precomposed" href="{{ "/static/touch-icons/apple-touch-icon-precomposed.png" }}">
     <link rel="icon" type="image/x-icon" href="{{"/static/touch-icons/favicon.ico" }}" />
 
-    <link rel="stylesheet" href="//{{ site.cdn_url }}/{{ site.data.assets.version }}/css/style.min.css">
+    {% if site.env == 'production' %}
+        <style>
+            {% include head.min.css %}
+        </style>
+        <noscript>
+            <link rel="stylesheet" href="//{{ site.cdn_url }}/{{ site.data.assets.version }}/css/style.min.css">
+        </noscript>
+    {% else %}
+        <link rel="stylesheet" href="/static/css/style.min.css">
+    {% endif %}
+    <script>
+        function loadCSS(a,b,c){"use strict";function g(){for(var b,e=0;e<f.length;e++)f[e].href&&f[e].href.indexOf(a)>-1&&(b=!0);b?d.media=c||"all":setTimeout(g)}var d=window.document.createElement("link"),e=b||window.document.getElementsByTagName("script")[0],f=window.document.styleSheets;return d.rel="stylesheet",d.href=a,d.media="only x",e.parentNode.insertBefore(d,e),g(),d};
+    </script>
+    <script>
+        (function(global) {
 
+            var cssURL = '//{{ site.cdn_url }}/{{ site.data.assets.version }}/css/style.min.css';
+
+            function cutsMustard() {
+                return ('querySelector' in document
+                    && 'localStorage' in window
+                    && 'addEventListener' in window
+                    && 'withCredentials' in new XMLHttpRequest());
+            }
+            function loadCssFromStorage() {
+                var c = localStorage.getItem('css.{{ site.data.assets.style.hash }}'), s, head;
+                if ( c ) {
+                    s = document.createElement('style');
+                    head = document.getElementsByTagName('head')[0];
+                    s.innerHTML = c;
+                    s.setAttribute('data-loaded-from', 'local');
+                    head.appendChild(s);
+                    global.cssLoaded = true;
+                }
+            }
+            loadCssFromStorage();
+
+            if ( global.cssLoaded ) { return false; }
+
+            function injectElement(e) {
+                var head = document.getElementsByTagName('head')[0];
+                head.appendChild(e);
+            }
+            function inlineCss(c) {
+                var s = document.createElement('style');
+                s.innerHTML = c;
+                s.setAttribute('data-loaded-from', 'ajax');
+                injectElement(s);
+            }
+            function storeCss(c) {
+                Object.keys(localStorage).forEach(function(key) {
+                    if(key.match(/^css./g)) { localStorage.removeItem(key); }
+                });
+                try {
+                    // localStorage.setItem('gu.css.@Static("stylesheets/global.css").md5Key', c);
+                    localStorage.setItem('css.{{ site.data.assets.style.hash }}', c);
+                } catch(e) {
+                }
+            }
+            function loadCssWithLink( url ) {
+                var l = document.createElement('link');
+                l.rel = "stylesheet"; l.type = 'text/css';
+                l.href = url;
+                injectElement(l);
+            }
+            function loadCssWithAjax( url ) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4) {
+                        if(xhr.status === 200) {
+                            inlineCss(xhr.responseText);
+                            storeCss(xhr.responseText);
+                        } else {
+                            loadCssWithLink( cssURL );
+                        };
+                    }
+                }
+                xhr.timeout = 5000;
+                xhr.send();
+            }
+            if( cutsMustard() ) {
+                loadCssWithAjax( cssURL );
+            } else {
+                loadCssWithLink( cssURL );
+            }
+        }(this));
+    </script>
     <script>
       (function(d) {
         var config = {
@@ -26,10 +112,4 @@
         h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='//use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
       })(document);
     </script>
-
-    <script>
-        function loadCSS(a,b,c){"use strict";function g(){for(var b,e=0;e<f.length;e++)f[e].href&&f[e].href.indexOf(a)>-1&&(b=!0);b?d.media=c||"all":setTimeout(g)}var d=window.document.createElement("link"),e=b||window.document.getElementsByTagName("script")[0],f=window.document.styleSheets;return d.rel="stylesheet",d.href=a,d.media="only x",e.parentNode.insertBefore(d,e),g(),d};
-        loadCSS('//{{ site.cdn_url }}/{{ site.data.assets.version }}/css/pygments.min.css');
-    </script>
-
 </head>

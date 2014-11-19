@@ -4,15 +4,14 @@ email: david@davidrapson.co.uk
 description: David Rapson is a client-side developer living and working in London, originally from Birmingham.
 baseurl: ""
 url: "http://davidrapson.co.uk"
-cdn_url: d32uef58wnuh7a.cloudfront.net
+# cdn_url: s3-eu-west-1.amazonaws.com/static.davidrapson.co.uk
+cdn_url: static.davidrapson.co.uk
 twitter_username: davidrapson
 github_username:  davidrapson
 permalink: /:year/:title/
-
-exclude: [ "README.md", "node_modules", "bin", "gulpfile", "Gemfile", "Gemfile.lock", "package.json", "secrets.json" ]
-
-# Build settings
 markdown: Pypedown
-
+exclude: [ "README.md", "node_modules", "bin", "gulpfile", "Gemfile", "Gemfile.lock", "package.json", "secrets.json" ]
+env: production
 gems:
   - jekyll-pypedown
+  - jekyll-minify-html

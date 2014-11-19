@@ -2,4 +2,8 @@
 source "https://rubygems.org"
 
 gem "jekyll"
-gem 'jekyll-pypedown'
+
+group :jekyll_plugins do
+    gem 'jekyll-pypedown'
+    gem 'jekyll-minify-html'
+end
