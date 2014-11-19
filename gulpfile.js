@@ -20,6 +20,7 @@ var gulp = require('gulp'),
  * Require additional npm modules
  */
 var spawn = require('child_process').spawn,
+    hashFiles = require('hash-files'),
     del = require('del');
 
 
@@ -58,6 +59,7 @@ gulp.task('clean', function() {
  */
 gulp.task('css', ['clean'], function () {
     var stream = gulp.src([
+        paths.css + '/less/head.less',
         paths.css + '/less/style.less',
         paths.css + '/less/pygments.less'
     ])
@@ -94,8 +96,27 @@ gulp.task('js', ['clean'], function () {
  * Saves duplicating version number
  */
 gulp.task('version', function () {
-    var stream = stringSrc('assets.json', '{ "version":' + pkg.version + '}')
+    var obj = {
+        "version": pkg.version,
+        "head": {
+            "hash": hashFiles.sync({ files: [ paths.css + '/head.min.css' ] })
+        },
+        "style": {
+            "hash": hashFiles.sync({ files: [ paths.css + '/style.min.css' ] })
+        }
+    }
+    var stream = stringSrc('assets.json', JSON.stringify(obj))
         .pipe(gulp.dest( '_data' ));
+    return stream;
+});
+
+/**
+ * Copy head.css
+ */
+gulp.task('headCSS', function () {
+    var stream = gulp.src([
+        paths.css + '/head.min.css',
+    ]).pipe(gulp.dest( '_includes' ));
     return stream;
 });
 
@@ -103,7 +124,7 @@ gulp.task('version', function () {
 /**
  * Assets
  */
-gulp.task('assets', ['css', 'js', 'version'], function () {
+gulp.task('assets', ['css', 'headCSS', 'js', 'version'], function () {
     var aws = {
         key: secrets.aws.key,
         secret: secrets.aws.secret,
@@ -123,7 +144,7 @@ gulp.task('assets', ['css', 'js', 'version'], function () {
 /**
  * Jekyll
  */
-gulp.task('jekyll', ['css', 'js'], function() {
+gulp.task('jekyll', ['css', 'headCSS', 'js'], function() {
     spawn('bundle', ['exec', 'jekyll', 'build', '--drafts', '--future']);
 });
 
@@ -172,5 +193,5 @@ gulp.task('deploy', ['jekyll', 'assets'], function() {
 /**
  * Default task
  */
-gulp.task('build', ['css', 'js']);
+gulp.task('build', ['jekyll']);
 gulp.task('default', [ 'jekyll', 'serve', 'watch']);

@@ -7,3 +7,12 @@
         </ul>
     </aside>
 </footer>
+
+<script async defer>
+(function() {
+    var codeEls = document.querySelectorAll('.article__body pre');
+    if ( codeEls.length ) {
+        loadCSS('//{{ site.cdn_url }}/{{ site.data.assets.version }}/css/pygments.min.css');
+    };
+}());
+</script>
