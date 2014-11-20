@@ -15,11 +15,14 @@ var secrets = require('./secrets.json');
 var gulp = require('gulp'),
     plugins = require('gulp-load-plugins')();
 
+var runSequence = require('run-sequence');    // Temporary solution until gulp 4
+                                              // https://github.com/gulpjs/gulp/issues/355
 
 /**
  * Require additional npm modules
  */
 var hashFiles = require('hash-files'),
+    versiony = require('versiony'),
     del = require('del');
 
 
@@ -56,7 +59,7 @@ gulp.task('clean', function() {
 /**
  * CSS
  */
-gulp.task('css', ['clean'], function () {
+gulp.task('css', [ 'css:head' ], function () {
     var stream = gulp.src([
         paths.css + '/less/head.less',
         paths.css + '/less/style.less',
@@ -77,14 +80,18 @@ gulp.task('css', ['clean'], function () {
 /**
  * JavaScript
  */
-gulp.task('js', ['clean'], function () {
-    var stream = gulp.src([ paths.js + '/app.js' ])
+gulp.task('js', function () {
+    var stream = gulp.src([
+        paths.js + '/components/picturefill/dist/picturefill.min.js',
+        paths.js + '/app.js'
+    ])
         .pipe(plugins.plumber())
-        .pipe(plugins.jshint('.jshintrc'))
-        .pipe(plugins.jshint.reporter('jshint-stylish'))
+        // .pipe(plugins.jshint('.jshintrc'))
+        // .pipe(plugins.jshint.reporter('jshint-stylish'))
         .pipe(plugins.concat('app.min.js'))
         .pipe(plugins.uglify())
-        .pipe(gulp.dest( paths.js + '/min/' ));
+        .pipe(gulp.dest( paths.js + '/min' ))
+        .pipe(gulp.dest( paths.buildVersion + '/js' ));
     return stream;
 });
 
@@ -95,7 +102,10 @@ gulp.task('js', ['clean'], function () {
  * Saves duplicating version number
  */
 gulp.task('version', function () {
-    var obj = {
+    // Sync version from package.json to bower.json
+    versiony.from('./package.json').to('./bower.json')
+    // Write new assets.json manifest
+    var stream = stringSrc('assets.json', JSON.stringify({
         "version": pkg.version,
         "head": {
             "hash": hashFiles.sync({ files: [ paths.css + '/head.min.css' ] })
@@ -103,16 +113,14 @@ gulp.task('version', function () {
         "style": {
             "hash": hashFiles.sync({ files: [ paths.css + '/style.min.css' ] })
         }
-    }
-    var stream = stringSrc('assets.json', JSON.stringify(obj))
-        .pipe(gulp.dest( '_data' ));
+    })).pipe(gulp.dest( '_data' ));
     return stream;
 });
 
 /**
  * Copy head.css
  */
-gulp.task('headCSS', function () {
+gulp.task('css:head', function () {
     var stream = gulp.src([
         paths.css + '/head.min.css',
     ]).pipe(gulp.dest( '_includes' ));
@@ -123,7 +131,7 @@ gulp.task('headCSS', function () {
 /**
  * Assets
  */
-gulp.task('assets', ['css', 'headCSS', 'js', 'version'], function () {
+gulp.task('assets', ['build'], function () {
     var aws = {
         key: secrets.aws.key,
         secret: secrets.aws.secret,
@@ -144,11 +152,13 @@ gulp.task('assets', ['css', 'headCSS', 'js', 'version'], function () {
  * Jekyll
  */
 gulp.task('jekyll', function() {
-    var stream = require('child_process').spawn('jekyll', ['build', '--drafts', '--future'], {stdio: 'inherit'});
+    var stream = require('child_process')
+        .spawn('jekyll', ['build', '--drafts', '--future'], {stdio: 'inherit'});
     return stream;
 });
 gulp.task('jekyll:production', function() {
-    var stream = require('child_process').spawn('jekyll', ['build'], {stdio: 'inherit'});
+    var stream = require('child_process')
+        .spawn('jekyll', ['build', '--config',  '_config.yml,_config-production.yml'], {stdio: 'inherit'});
     return stream;
 });
 
@@ -184,18 +194,34 @@ gulp.task('serve', function() {
 /**
  * Deployment
  */
-gulp.task('deploy', ['assets', 'jekyll:production'], function() {
-    gulp.src('_site/**')
-        .pipe(plugins.sftp({
-            host: secrets.servers.production.hostname,
-            user: secrets.servers.production.username,
-            remotePath: secrets.servers.production.destination,
-            passphrase: secrets.servers.production.passphrase
-        }));
+gulp.task('deploy', function() {
+    var dest = [
+        secrets.servers.production.username,
+        '@',
+        secrets.servers.production.hostname,
+        ':',
+        secrets.servers.production.destination
+    ].join('');
+    require('child_process').spawn('rsync', ['-azP', '--delete', '_site/', dest ], {stdio: 'inherit'});
+
+});
+
+
+/**
+ * Build
+ */
+gulp.task('build', function (done) {
+    runSequence(
+        'jekyll:production',
+        'clean',
+        'css',
+        'js',
+        'version',
+        'assets',
+    done);
 });
 
 /**
  * Default task
  */
-gulp.task('build', ['jekyll']);
 gulp.task('default', [ 'jekyll', 'serve', 'watch']);

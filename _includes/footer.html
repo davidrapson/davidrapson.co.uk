@@ -5,7 +5,19 @@
         <li class="nav-trail__item"><a href="{{ site.baseurl }}/colophon.html">Colophon</a></li>
     </ul>
 </footer>
-
+{% if site.env == 'production' %}
+    <script src="//{{ site.cdn_url }}/{{ site.data.assets.version }}/js/app.min.js" async defer></script>
+{% else %}
+    <script src="/static/js/min/app.min.js"></script>
+{% endif %}
+<script>
+    (function( global ) {
+        var codeEls = document.querySelectorAll('.article__body pre');
+        if ( codeEls.length ) {
+            loadCSS('//{{ site.cdn_url }}/{{ site.data.assets.version }}/css/pygments.min.css');
+        };
+    }( this ));
+</script>
 <script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
     function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
@@ -13,13 +25,4 @@
     e.src='//www.google-analytics.com/analytics.js';
     r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
     ga('create','UA-56926844-1','auto');ga('send','pageview');
-</script>
-
-<script>
-(function() {
-    var codeEls = document.querySelectorAll('.article__body pre');
-    if ( codeEls.length ) {
-        loadCSS('//{{ site.cdn_url }}/{{ site.data.assets.version }}/css/pygments.min.css');
-    };
-}());
 </script>

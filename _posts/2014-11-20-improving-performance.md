@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "(Over)engineering for performance"
+title:  "Improving performance"
 date:   2014-11-20
 description: I’ve recently redesigned this website with the goal of making the fastest site I could and I wanted to explore some of the things I’ve done.
 lead: I've recently redesigned this website with the goal of making the fastest site I could and I wanted to explore some of the things I've done.
@@ -39,14 +39,14 @@ I’m using LESS as a pre-processor and already split components out into indivi
 Before inlining critical CSS my mobile PageSpeed score was **78/100**:
 
 <figure>
-    <img src="https://pbs.twimg.com/media/B21yuNaIIAA9Lzc.png:large" alt="Before inlining critical CSS" />
+    {% picture improving-performance/pagespeed-before.png alt="Before inlining critical CSS" %}
     <figcaption>Before inlining critical CSS</figcaption>
 </figure>
 
 After inlining critical CSS the PageSpeed score is now **98/100**.
 
 <figure>
-    <img src="https://pbs.twimg.com/media/B21yuNaIIAA9Lzc.png:large" alt="After inlining critical CSS" />
+    {% picture improving-performance/pagespeed-after.png alt="After inlining critical CSS" %}
     <figcaption>After inlining critical CSS</figcaption>
 </figure>
 
