@@ -66,13 +66,11 @@
             }
             function storeCss(c) {
                 Object.keys(localStorage).forEach(function(key) {
-                    if(key.match(/^css./g)) { localStorage.removeItem(key); }
+                    if (key.match(/^css./g)) { localStorage.removeItem(key); }
                 });
                 try {
-                    // localStorage.setItem('gu.css.@Static("stylesheets/global.css").md5Key', c);
                     localStorage.setItem('css.{{ site.data.assets.style.hash }}', c);
-                } catch(e) {
-                }
+                } catch(e) {}
             }
             function loadCssWithLink( url ) {
                 var l = document.createElement('link');
