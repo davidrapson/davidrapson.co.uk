@@ -6,4 +6,4 @@ link: http://www.perf.rocks/
 type: micro
 ---
 
-Fantastic set of collection of web performance resources.
+A fantastic collection of web performance resources.
