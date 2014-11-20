@@ -11,7 +11,7 @@ github_username:  davidrapson
 permalink: /:year/:title/
 markdown: Pypedown
 exclude: [ "README.md", "node_modules", "bin", "gulpfile", "Gemfile", "Gemfile.lock", "package.json", "secrets.json", "static/css/less/" ]
-env: production
+env: staging
 minify_html: false
 gems:
   - jekyll-pypedown

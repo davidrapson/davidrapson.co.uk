@@ -8,7 +8,7 @@ lead: I've recently redesigned this website with the goal of making the fastest 
 
 ## Pre-requisites
 
-Some pre-requisites: I use [Jekyll](http://jekyllrb.com/) for my site and serve all static assets from [CloudFront](http://aws.amazon.com/cloudfront/).
+Some pre-requisites. I use [Jekyll](http://jekyllrb.com/) for my site and serve all static assets from [CloudFront](http://aws.amazon.com/cloudfront/).
 
 It's also worth noting that I've deliberately left out mentions of [SpeedIndex](https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index) from this article. It was a key metric when I was working on these improvements but it's something I want to explore in more detail at another time.
 
