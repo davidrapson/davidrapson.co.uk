@@ -129,6 +129,17 @@ gulp.task('css:head', function () {
 
 
 /**
+ * Minify Images
+ */
+ gulp.task('imagemin', function () {
+    var dir = '_site/images/output';
+    return gulp.src( dir + '/**' )
+        .pipe(plugins.imagemin({
+            progressive: true
+        })).pipe(gulp.dest( dir ));
+ });
+
+/**
  * Assets
  */
 gulp.task('assets', ['build'], function () {
@@ -216,6 +227,7 @@ gulp.task('build', function (done) {
         'clean',
         'css',
         'js',
+        'imagemin',
         'version',
         'assets',
     done);
