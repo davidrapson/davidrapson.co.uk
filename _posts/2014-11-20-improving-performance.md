@@ -39,14 +39,14 @@ I’m using LESS as a pre-processor and already split components out into indivi
 Before inlining critical CSS my mobile PageSpeed score was **78/100**:
 
 <figure>
-    {% picture improving-performance/pagespeed-before.png alt="Before inlining critical CSS" %}
+    {% picture improving-performance/pagespeed-before.jpg alt="Before inlining critical CSS" %}
     <figcaption>Before inlining critical CSS</figcaption>
 </figure>
 
 After inlining critical CSS the PageSpeed score is now **98/100**.
 
 <figure>
-    {% picture improving-performance/pagespeed-after.png alt="After inlining critical CSS" %}
+    {% picture improving-performance/pagespeed-after.jpg alt="After inlining critical CSS" %}
     <figcaption>After inlining critical CSS</figcaption>
 </figure>
 
