@@ -63,7 +63,7 @@ gulp.task('css', [ 'css:head' ], function () {
     var stream = gulp.src([
         paths.css + '/less/head.less',
         paths.css + '/less/style.less',
-        paths.css + '/less/pygments.less'
+        paths.css + '/less/print.less'
     ])
         .pipe(plugins.plumber())
         .pipe(plugins.less())
@@ -142,7 +142,7 @@ gulp.task('css:head', function () {
 /**
  * Assets
  */
-gulp.task('assets', ['build'], function () {
+gulp.task('assets', function () {
     var aws = {
         key: secrets.aws.key,
         secret: secrets.aws.secret,
