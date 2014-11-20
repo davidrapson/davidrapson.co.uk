@@ -25,7 +25,11 @@
         <link rel="stylesheet" href="/static/css/style.min.css">
     {% endif %}
     <script>
+        // loadCSS
         function loadCSS(a,b,c){"use strict";function g(){for(var b,e=0;e<f.length;e++)f[e].href&&f[e].href.indexOf(a)>-1&&(b=!0);b?d.media=c||"all":setTimeout(g)}var d=window.document.createElement("link"),e=b||window.document.getElementsByTagName("script")[0],f=window.document.styleSheets;return d.rel="stylesheet",d.href=a,d.media="only x",e.parentNode.insertBefore(d,e),g(),d};
+
+        // markUserTime
+        !function(){var a="undefined"!=typeof window?window:exports,b=[];if(a.performance||(a.performance={}),a.performance.now||(a.performance.now=performance.now||performance.webkitNow||performance.msNow||performance.mozNow),!a.performance.now){var c=Date.now?Date.now():+new Date;performance.timing&&performance.timing&&(c=performance.timing.navigationStart),a.performance.now=function(){var a=Date.now?Date.now():+new Date;return a-c}}a.performance.mark||(a.performance.mark=a.performance.webkitMark?a.performance.webkitMark:function(c){b.push({name:c,entryType:"mark",startTime:a.performance.now(),duration:0})}),a.performance.getEntriesByType||(a.performance.getEntriesByType=a.performance.webkitGetEntriesByType?a.performance.webkitGetEntriesByType:function(a){return"mark"==a?b:void 0})}(),window.markUserTime=function(a){var b=window.requestAnimationFrame||function(a){setTimeout(a,0)};b(function(){window.performance.mark(a),window.console&&console.timeStamp&&console.timeStamp(a)})};
     </script>
 
     {% if site.env == 'production' %}
