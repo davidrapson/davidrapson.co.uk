@@ -12,16 +12,30 @@ layout: default
 </div>
 
 <section class="section-latest-articles">
-    <h2 class="section-title">Latest Writing</h2>
       <ul class="article-list list-unstyled">
         {% for post in site.posts %}
           <li class="article-list__item">
-            <div class="article-summary">
-                <span class="article-summary__meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-                <h3 class="article-summary__title">
-                    <a class="article-summary__link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-                </h2>
-            </div>
+            {% if post.type == 'micro' %}
+                <div class="article-micro">
+                    <span class="article-micro__meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+                    <h3 class="article-micro__title text--title">
+                        {{ post.title }}
+                    </h2>
+                    <a class="article-micro__external" href="{{ post.link }}">
+                        {{ post.link }}
+                    </a>
+                    <div class="article-micro__content">
+                        {{ post.content }}
+                    </div>
+                </div>
+            {% else %}
+                <div class="article-summary">
+                    <span class="article-summary__meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+                    <h3 class="article-summary__title text--title">
+                        <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                    </h2>
+                </div>
+            {% endif %}
           </li>
         {% endfor %}
       </ul>

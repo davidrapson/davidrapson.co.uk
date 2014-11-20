@@ -19,8 +19,7 @@ var gulp = require('gulp'),
 /**
  * Require additional npm modules
  */
-var spawn = require('child_process').spawn,
-    hashFiles = require('hash-files'),
+var hashFiles = require('hash-files'),
     del = require('del');
 
 
@@ -145,9 +144,11 @@ gulp.task('assets', ['css', 'headCSS', 'js', 'version'], function () {
  * Jekyll
  */
 gulp.task('jekyll', ['css', 'headCSS', 'js'], function() {
-    spawn('bundle', ['exec', 'jekyll', 'build', '--drafts', '--future']);
+    require('child_process').spawn('jekyll', ['build', '--drafts', '--future'], {stdio: 'inherit'});
 });
-
+gulp.task('jekyll:production', ['css', 'headCSS', 'js'], function() {
+    require('child_process').spawn('jekyll', ['build'], {stdio: 'inherit'});
+});
 
 /**
  * Watch
@@ -159,6 +160,7 @@ gulp.task('watch', function() {
         paths.css + '/**',
         '_layouts/**',
         '_includes/**',
+        '_drafts/**',
         '_posts/**',
         '*.html'
     ], ['jekyll']);
