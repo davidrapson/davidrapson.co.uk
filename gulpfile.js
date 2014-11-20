@@ -182,7 +182,7 @@ gulp.task('serve', function() {
 /**
  * Deployment
  */
-gulp.task('deploy', ['jekyll', 'assets'], function() {
+gulp.task('deploy', ['jekyll:production', 'assets'], function() {
     gulp.src('_site/**')
         .pipe(plugins.sftp({
             host: secrets.servers.production.hostname,
