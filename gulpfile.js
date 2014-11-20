@@ -157,6 +157,11 @@ gulp.task('assets', function () {
             gzippedOnly: true
         }));
 
+    gulp.src([ 'static/touch-icons/**/*' ])
+        .pipe(plugins.gzip())
+        .pipe(plugins.rename({ dirname: "touch-icons" }))
+        .pipe(plugins.s3(aws));
+
     gulp.src([ '_site/images/output/**/*' ])
         .pipe(plugins.gzip())
         .pipe(plugins.rename({ dirname: "images/output" }))
@@ -164,7 +169,7 @@ gulp.task('assets', function () {
             headers: { 'Cache-Control': 'max-age=315360000, no-transform, public' }
         }));
 
-    gulp.src([ '_site/images/output/**/*' ])
+    gulp.src([ '_site/images/src/**/*' ])
         .pipe(plugins.gzip())
         .pipe(plugins.rename({ dirname: "images/src" }))
         .pipe(plugins.s3(aws));
