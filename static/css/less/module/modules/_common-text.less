@@ -88,11 +88,10 @@
         }
 
         blockquote {
-            margin: 0 0 1em 0;
+            margin: 1em 0;
             padding: .5em 0 .5em 20px;
             border-left: 5px solid @-site-color-border;
             font-family: @-site-typography-display;
-            font-style: italic;
 
             footer, .footer {
                 color: @-site-color-note;
@@ -115,7 +114,7 @@
         }
 
         pre {
-            padding: 1em;
+            padding: 1em @-site-width-margin;
             font-size: 90%;
         }
         pre code {
@@ -127,11 +126,32 @@
 
         @media only screen and ( min-width: @-site-breakpoint-medium ) {
             pre {
-                margin: 1em -1em 1em;
+                margin: 1em -(@-site-width-margin) 1em;
             }
             ol, ul {
                 margin: 1em 0 1em -1.5em;
             }
+        }
+
+    }
+
+/*  ========================================================================== */
+/*  @group Text - Media */
+/*  ========================================================================== */
+
+    figure {
+        background: @-site-color-tint-light;
+        padding: 1em @-site-width-margin;
+        margin: 1em 0;
+
+        width: 100% + ( @-site-width-margin * 2 );
+        margin-left: -(@-site-width-margin);
+
+        figcaption {
+            color: @-site-color-tint-dark;
+            margin-top: .5em;
+            font-size: 80%;
+            font-family: @-site-typography-caption;
         }
 
     }

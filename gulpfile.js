@@ -143,11 +143,13 @@ gulp.task('assets', ['css', 'headCSS', 'js', 'version'], function () {
 /**
  * Jekyll
  */
-gulp.task('jekyll', ['css', 'headCSS', 'js'], function() {
-    require('child_process').spawn('jekyll', ['build', '--drafts', '--future'], {stdio: 'inherit'});
+gulp.task('jekyll', function() {
+    var stream = require('child_process').spawn('jekyll', ['build', '--drafts', '--future'], {stdio: 'inherit'});
+    return stream;
 });
-gulp.task('jekyll:production', ['css', 'headCSS', 'js'], function() {
-    require('child_process').spawn('jekyll', ['build'], {stdio: 'inherit'});
+gulp.task('jekyll:production', function() {
+    var stream = require('child_process').spawn('jekyll', ['build'], {stdio: 'inherit'});
+    return stream;
 });
 
 /**
@@ -182,7 +184,7 @@ gulp.task('serve', function() {
 /**
  * Deployment
  */
-gulp.task('deploy', ['jekyll:production', 'assets'], function() {
+gulp.task('deploy', ['assets', 'jekyll:production'], function() {
     gulp.src('_site/**')
         .pipe(plugins.sftp({
             host: secrets.servers.production.hostname,

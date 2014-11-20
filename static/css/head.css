@@ -358,6 +358,14 @@ th {
 /*  @group Base */
 /*  ========================================================================== */
 html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+html {
   font-size: 100%;
   line-height: 1.5;
 }
@@ -830,11 +838,10 @@ html {
   text-indent: 1.5em;
 }
 .copy--full blockquote {
-  margin: 0 0 1em 0;
+  margin: 1em 0;
   padding: .5em 0 .5em 20px;
   border-left: 5px solid #dddddd;
   font-family: "abril-titling-narrow", Times, "Times New Roman", Georgia, serif;
-  font-style: italic;
 }
 .copy--full blockquote footer,
 .copy--full blockquote .footer {
@@ -859,7 +866,7 @@ html {
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.05) inset;
 }
 .copy--full pre {
-  padding: 1em;
+  padding: 1em 3%;
   font-size: 90%;
 }
 .copy--full pre code {
@@ -870,12 +877,28 @@ html {
 }
 @media only screen and (min-width: 48em) {
   .copy--full pre {
-    margin: 1em -1em 1em;
+    margin: 1em -3% 1em;
   }
   .copy--full ol,
   .copy--full ul {
     margin: 1em 0 1em -1.5em;
   }
+}
+/*  ========================================================================== */
+/*  @group Text - Media */
+/*  ========================================================================== */
+figure {
+  background: #fafafa;
+  padding: 1em 3%;
+  margin: 1em 0;
+  width: 106%;
+  margin-left: -3%;
+}
+figure figcaption {
+  color: #aaaaaa;
+  margin-top: .5em;
+  font-size: 80%;
+  font-family: sans-serif;
 }
 /*  ========================================================================== */
 /*  @group Intro */
