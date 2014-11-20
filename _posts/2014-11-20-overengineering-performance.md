@@ -114,7 +114,7 @@ This method depends on using XHR to initially load the stylesheet. As my CSS is 
 
 ## 3. Minify HTML
 
-The final step I took was to minify HTML output. The [Jekyll Minify HTML](Jekyll Minify Html) plugin let me do this with about three lines of config. I wouldn't go out of my way to do this but if your setup makes this easy for you without incurring any major overhead then you should do it.
+The final step I took was to minify HTML output. The [Jekyll Minify HTML](https://github.com/imathis/jekyll-minify-html) plugin let me do this with about three lines of config. I wouldn't go out of my way to do this but if your setup makes this easy for you without incurring any major overhead then you should do it.
 
 ## Final hold-out
 
