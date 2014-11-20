@@ -151,7 +151,7 @@ module Jekyll
         source_tags = ''
         source_keys.each { |source|
           media = " media=\"#{instance[source]['media']}\"" unless source == 'source_default'
-          source_tags += "#{markdown_escape * 4}<source srcset=\"#{instance[source][:generated_src]}\"#{media}>\n"
+          source_tags += "#{markdown_escape * 4}<source srcset=\"//#{site.config['cdn_url']}#{instance[source][:generated_src]}\"#{media}>\n"
         }
 
         # Note: we can't indent html output because markdown parsers will turn 4 spaces into code blocks
@@ -160,7 +160,7 @@ module Jekyll
                       "<!--[if IE 9]><video style=\"display: none;\"><![endif]-->\n"\
                       "#{source_tags}"\
                       "<!--[if IE 9]></video><![endif]-->"\
-                      "#{markdown_escape * 4}<img srcset=\"#{instance['source_default'][:generated_src]}\" #{html_attr_string}>\n"\
+                      "#{markdown_escape * 4}<img srcset=\"//#{site.config['cdn_url']}#{instance['source_default'][:generated_src]}\" #{html_attr_string}>\n"\
                       "#{markdown_escape * 2}</picture>\n"
 
       elsif settings['markup'] == 'img'
@@ -232,7 +232,8 @@ module Jekyll
       end
 
       # Return path relative to the site root for html
-      Pathname.new(File.join(baseurl, image_dest, image_dir, gen_name)).cleanpath
+      # Pathname.new(File.join(baseurl, image_dest, image_dir, gen_name)).cleanpath
+      Pathname.new(File.join(baseurl, image_dest, gen_name)).cleanpath
     end
   end
 end

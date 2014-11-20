@@ -149,13 +149,26 @@ gulp.task('assets', function () {
         bucket: secrets.aws.bucket,
         region: secrets.aws.region
     };
-    var stream = gulp.src([ paths.build + '/**' ])
+
+    gulp.src([ paths.build + '/**' ])
         .pipe(plugins.gzip())
         .pipe(plugins.s3(aws, {
             headers: { 'Cache-Control': 'max-age=315360000, no-transform, public' },
             gzippedOnly: true
         }));
-    return stream;
+
+    gulp.src([ '_site/images/output/**/*' ])
+        .pipe(plugins.gzip())
+        .pipe(plugins.rename({ dirname: "images/output" }))
+        .pipe(plugins.s3(aws, {
+            headers: { 'Cache-Control': 'max-age=315360000, no-transform, public' }
+        }));
+
+    gulp.src([ '_site/images/output/**/*' ])
+        .pipe(plugins.gzip())
+        .pipe(plugins.rename({ dirname: "images/src" }))
+        .pipe(plugins.s3(aws));
+
 });
 
 
