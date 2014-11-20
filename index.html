@@ -18,7 +18,7 @@ layout: default
             {% if post.type == 'micro' %}
                 <div class="article-micro">
                     <span class="article-micro__meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-                    <h3 class="article-micro__title text--title">
+                    <h2 class="article-micro__title text--title">
                         {{ post.title }}
                     </h2>
                     <a class="article-micro__external" href="{{ post.link }}">
@@ -31,7 +31,7 @@ layout: default
             {% else %}
                 <div class="article-summary">
                     <span class="article-summary__meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-                    <h3 class="article-summary__title text--title">
+                    <h2 class="article-summary__title text--title">
                         <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
                     </h2>
                 </div>
