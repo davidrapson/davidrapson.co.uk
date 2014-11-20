@@ -18,6 +18,10 @@
         text-transform: uppercase;
     }
 
+    .text--title {
+        margin-top: 0;
+    }
+
     .link--backward {
         font-weight: bold;
         &:before {
@@ -63,7 +67,6 @@
 
         .caps {
             font-size: 92%;
-            letter-spacing: 1px;
         }
 
         p:empty { display: none; }
@@ -113,11 +116,13 @@
 
         pre {
             padding: 1em;
+            font-size: 90%;
         }
         pre code {
             padding: 0;
             box-shadow: none;
             border: 0 none;
+            font-size: 100%;
         }
 
         @media only screen and ( min-width: @-site-breakpoint-medium ) {

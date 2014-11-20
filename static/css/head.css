@@ -423,18 +423,18 @@ h3,
 }
 h4,
 .h4 {
-  font-size: 20px;
-  font-size: 1.25rem;
-}
-h5,
-.h5 {
   font-size: 18px;
   font-size: 1.125rem;
 }
-h6,
+h5,
 .h5 {
   font-size: 16px;
   font-size: 1rem;
+}
+h6,
+.h6 {
+  font-size: 14px;
+  font-size: 0.875rem;
 }
 @media only screen and (min-width: 30em) {
   h1,
@@ -446,26 +446,6 @@ h6,
   .h2 {
     font-size: 28px;
     font-size: 1.75rem;
-  }
-  h3,
-  .h3 {
-    font-size: 24px;
-    font-size: 1.5rem;
-  }
-  h4,
-  .h4 {
-    font-size: 21px;
-    font-size: 1.3125rem;
-  }
-  h5,
-  .h5 {
-    font-size: 18px;
-    font-size: 1.125rem;
-  }
-  h6,
-  .h5 {
-    font-size: 16px;
-    font-size: 1rem;
   }
 }
 h1,
@@ -506,6 +486,10 @@ h1,
 h1,
 .h1 {
   font-weight: 800;
+}
+h6,
+.h6 {
+  text-transform: uppercase;
 }
 /*  ========================================================================== */
 /*  @group Base - Links */
@@ -779,6 +763,9 @@ html {
   font-size: 85%;
   text-transform: uppercase;
 }
+.text--title {
+  margin-top: 0;
+}
 .link--backward {
   font-weight: bold;
 }
@@ -817,7 +804,6 @@ html {
 .copy .caps,
 .copy--full .caps {
   font-size: 92%;
-  letter-spacing: 1px;
 }
 .copy p:empty,
 .copy--full p:empty {
@@ -874,11 +860,13 @@ html {
 }
 .copy--full pre {
   padding: 1em;
+  font-size: 90%;
 }
 .copy--full pre code {
   padding: 0;
   box-shadow: none;
   border: 0 none;
+  font-size: 100%;
 }
 @media only screen and (min-width: 48em) {
   .copy--full pre {

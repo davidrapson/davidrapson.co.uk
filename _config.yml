@@ -12,6 +12,7 @@ permalink: /:year/:title/
 markdown: Pypedown
 exclude: [ "README.md", "node_modules", "bin", "gulpfile", "Gemfile", "Gemfile.lock", "package.json", "secrets.json" ]
 env: production
+minify_html: false
 gems:
   - jekyll-pypedown
   - jekyll-minify-html

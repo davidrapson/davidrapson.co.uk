@@ -41,17 +41,13 @@
     h1, .h1 { .font-size( 28 ); }
     h2, .h2 { .font-size( 24 ); }
     h3, .h3 { .font-size( 21 ); }
-    h4, .h4 { .font-size( 20 ); }
-    h5, .h5 { .font-size( 18 ); }
-    h6, .h5 { .font-size( 16 ); }
+    h4, .h4 { .font-size( 18 ); }
+    h5, .h5 { .font-size( 16 ); }
+    h6, .h6 { .font-size( 14 ); }
 
     @media only screen and ( min-width: @-site-breakpoint-small ) {
         h1, .h1 { .font-size( 32 ); }
         h2, .h2 { .font-size( 28 ); }
-        h3, .h3 { .font-size( 24 ); }
-        h4, .h4 { .font-size( 21 ); }
-        h5, .h5 { .font-size( 18 ); }
-        h6, .h5 { .font-size( 16 ); }
     }
 
     h1, .h1, h2, .h2, h3, .h3,
@@ -67,6 +63,10 @@
 
     h1, .h1 {
         font-weight: @-font-weight-display-bold;
+    }
+
+    h6, .h6 {
+        text-transform: uppercase;
     }
 
 /*  ========================================================================== */
