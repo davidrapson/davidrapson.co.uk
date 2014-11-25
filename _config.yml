@@ -1,19 +1,36 @@
+# Config
+
 # Site settings
-gems:
-  - jekyll-pypedown
-  - jekyll-minify-html
-markdown: Pypedown
 title: David Rapson
 email: david@davidrapson.co.uk
 description: David Rapson is a client-side developer living and working in London, originally from Birmingham.
+twitter_username: davidrapson
+github_username:  davidrapson
+
+# URLs
 baseurl: ""
 url: "http://davidrapson.co.uk"
 cdn_url: static.davidrapson.co.uk
-twitter_username: davidrapson
-github_username:  davidrapson
 permalink: /:year/:title/
-exclude: [ "README.md", "node_modules", "bin", "gulpfile", "Gemfile", "Gemfile.lock", "bower.json", "package.json", "secrets.json", "static/css/less/" ]
-env: staging
+
+# Environment
+env: production
+
+# Build Excludes
+exclude: [
+  "README.md",
+  "node_modules",
+  "bin",
+  "gulpfile",
+  "Gemfile",
+  "Gemfile.lock",
+  "bower.json",
+  "package.json",
+  "secrets.json",
+  "static/css/less/"
+]
+
+# jekyll-picture-teg settings
 picture:
   source: "images/src"
   output: "images/output"
@@ -31,3 +48,9 @@ picture:
         width: "480"
       source_default:
         width: "320"
+
+# Gems
+markdown: Pypedown
+gems:
+  - jekyll-pypedown
+  - jekyll-minify-html
