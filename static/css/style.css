@@ -1355,7 +1355,7 @@ figure figcaption {
 /*  @group Aritcles - Links */
 /*  ========================================================================== */
 .article-micro {
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
   border-left: 5px solid #dddddd;
   padding-left: .75em;
 }
