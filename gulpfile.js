@@ -80,14 +80,12 @@ gulp.task('css', [ 'css:head' ], function () {
 /**
  * JavaScript
  */
-gulp.task('js', function () {
+gulp.task('js', ['lint'], function () {
     var stream = gulp.src([
         paths.js + '/components/picturefill/dist/picturefill.min.js',
         paths.js + '/app.js'
     ])
         .pipe(plugins.plumber())
-        // .pipe(plugins.jshint('.jshintrc'))
-        // .pipe(plugins.jshint.reporter('jshint-stylish'))
         .pipe(plugins.concat('app.min.js'))
         .pipe(plugins.uglify())
         .pipe(gulp.dest( paths.js + '/min' ))
@@ -95,6 +93,15 @@ gulp.task('js', function () {
     return stream;
 });
 
+gulp.task('lint', function() {
+    var stream = gulp.src([
+        paths.js + '/app.js'
+    ])
+        .pipe(plugins.jshint('.jshintrc'))
+        .pipe(plugins.jshint.reporter('jshint-stylish'));
+
+    return stream;
+});
 
 /**
  * Version
