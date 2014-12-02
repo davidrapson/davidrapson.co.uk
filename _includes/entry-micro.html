@@ -1,0 +1,16 @@
+<div class="article-micro" itemscope itemtype="http://schema.org/Article">
+    <span class="article-micro__meta">
+        <time datetime="{{ post.date | date: "%F %R%z" }}" itemprop="dateCreated">
+            {{ post.date | date: "%b %-d, %Y" }}
+        </time>
+    </span>
+    <h2 class="article-micro__title text--title" itemprop="headline">
+        {{ post.title }}
+    </h2>
+    <a class="article-micro__external link--external" href="{{ post.link }}" itemprop="url">
+        {{ post.link }}
+    </a>
+    <div class="article-micro__content" itemprop="description">
+        {{ post.content }}
+    </div>
+</div>

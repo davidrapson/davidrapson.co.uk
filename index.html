@@ -15,30 +15,11 @@ layout: default
       <ul class="article-list list-unstyled">
         {% for post in site.posts %}
           <li class="article-list__item">
+            {% capture post %}{{ post }}{% endcapture %}
             {% if post.type == 'micro' %}
-                <div class="article-micro">
-                    <span class="article-micro__meta">
-                        <time datetime="{{ post.date | date: "%F %R%z" }}">{{ post.date | date: "%b %-d, %Y" }}</time>
-                    </span>
-                    <h2 class="article-micro__title text--title">
-                        {{ post.title }}
-                    </h2>
-                    <a class="article-micro__external link--external" href="{{ post.link }}">
-                        {{ post.link }}
-                    </a>
-                    <div class="article-micro__content">
-                        {{ post.content }}
-                    </div>
-                </div>
+                {% include entry-micro.html %}
             {% else %}
-                <div class="article-summary">
-                    <span class="article-summary__meta">
-                        <time datetime="{{ post.date | date: "%F %R%z" }}">{{ post.date | date: "%b %-d, %Y" }}</time>
-                    </span>
-                    <h2 class="article-summary__title text--title">
-                        <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-                    </h2>
-                </div>
+                {% include entry-summary.html %}
             {% endif %}
           </li>
         {% endfor %}

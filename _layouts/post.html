@@ -6,23 +6,24 @@ layout: default
 
 <script>window.markUserTime('aft.Article Start')</script>
 
-<article class="article copy--full">
+<article class="article copy--full" itemscope itemtype="http://schema.org/Article">
 
     <header class="article__header">
         <div class="article__meta text--meta">
-            <time datetime="{{ page.date | date: "%F %R%z" }}">{{ page.date | date: "%b %-d, %Y" }}</time>
+            <time datetime="{{ page.date | date: "%F %R%z" }}" itemprop="dateCreated">
+                {{ page.date | date: "%b %-d, %Y" }}
+            </time>
         </div>
-        <h1 class="article__title">{{ page.title }}</h1>
+        <h1 class="article__title" itemprop="headline">{{ page.title }}</h1>
     </header>
 
+    {% if page.lead %}
+        <div class="article__lead text--lead" itemprop="description">
+            {{ page.lead | markdownify }}
+        </div>
+    {% endif %}
 
-        {% if page.lead %}
-            <div class="article__lead text--lead">
-                {{ page.lead | markdownify }}
-            </div>
-        {% endif %}
-
-    <div class="article__body">
+    <div class="article__body" itemprop="tet">
         {{ content }}
     </div>
 
