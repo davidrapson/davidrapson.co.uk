@@ -38,7 +38,7 @@
     page-break-inside: avoid;
   }
   thead {
-    display: table-header-group;
+    display: table-header-group
     /* h5bp.com/t */
   }
   tr,
