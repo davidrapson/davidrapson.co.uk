@@ -1,6 +1,6 @@
 {
   "name": "davidrapson.co.uk",
-  "version": "3.2.2",
+  "version": "3.3.0",
   "description": "Personal website",
   "main": "gulpfile.js",
   "scripts": {

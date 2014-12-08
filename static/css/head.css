@@ -12,7 +12,7 @@ html {
   /* 1 */
   -ms-text-size-adjust: 100%;
   /* 2 */
-  -webkit-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%
   /* 2 */
 }
 /**
@@ -52,7 +52,7 @@ progress,
 video {
   display: inline-block;
   /* 1 */
-  vertical-align: baseline;
+  vertical-align: baseline
   /* 2 */
 }
 /**
@@ -210,7 +210,7 @@ textarea {
   /* 1 */
   font: inherit;
   /* 2 */
-  margin: 0;
+  margin: 0
   /* 3 */
 }
 /**
@@ -242,7 +242,7 @@ input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button;
   /* 2 */
-  cursor: pointer;
+  cursor: pointer
   /* 3 */
 }
 /**
@@ -278,7 +278,7 @@ input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box;
   /* 1 */
-  padding: 0;
+  padding: 0
   /* 2 */
 }
 /**
@@ -325,7 +325,7 @@ fieldset {
 legend {
   border: 0;
   /* 1 */
-  padding: 0;
+  padding: 0
   /* 2 */
 }
 /**
@@ -573,12 +573,6 @@ ul li ul {
 ol li {
   list-style: decimal outside;
 }
-li p {
-  margin: .75em 0 0;
-}
-li p:first-child {
-  margin-top: 0;
-}
 dl dt {
   font-weight: bold;
 }
@@ -768,7 +762,7 @@ html {
   margin-bottom: 1em;
 }
 .text--initialism {
-  font-size: 85%;
+  font-variant: small-caps;
   text-transform: uppercase;
 }
 .text--title {
@@ -830,10 +824,6 @@ html {
         http://dbushell.com/2012/04/18/scoping-typography-css/
         http://css-tricks.com/opt-in-typography/
     */
-.copy .caps,
-.copy--full .caps {
-  font-size: 92%;
-}
 .copy p:empty,
 .copy--full p:empty {
   display: none;
