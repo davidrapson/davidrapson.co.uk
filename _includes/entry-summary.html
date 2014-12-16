@@ -1,16 +1,16 @@
-<div class="article-summary" itemscope itemtype="http://schema.org/Article">
-    <span class="article-summary__meta">
+<div class="entry entry--summary" itemscope itemtype="http://schema.org/Article">
+    <span class="entry__meta">
         <time datetime="{{ post.date | date: "%F %R%z" }}" itemprop="dateCreated">
             {{ post.date | date: "%b %-d, %Y" }}
         </time>
     </span>
-    <h2 class="article-summary__title text--title">
+    <h2 class="entry__title text--title">
         <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url headline">
             {{ post.title }}
         </a>
     </h2>
     {% if post.description %}
-        <p class="article-summary__description">
+        <p class="entry__description">
             {{ post.description }}
         </p>
     {% endif %}
