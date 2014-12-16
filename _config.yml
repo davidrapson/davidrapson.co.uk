@@ -13,6 +13,9 @@ url: "http://davidrapson.co.uk"
 cdn_url: static.davidrapson.co.uk
 permalink: /:year/:title/
 
+# Pagination
+paginate: 5
+
 # Environment
 env: production
 

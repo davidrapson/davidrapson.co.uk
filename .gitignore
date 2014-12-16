@@ -4,3 +4,4 @@ bin/
 Gemfile.lock
 node_modules/
 secrets.json
+static/dist/
