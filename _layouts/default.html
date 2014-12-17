@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html lang="en-GB">
-
-  {% include head.html %}
-
-  <body itemscope itemtype="http://schema.org/WebPage">
-
-    <main class="main l-constrained" itemprop="mainContentOfPage">
+    {% include meta-head.html %}
+    <body itemscope itemtype="http://schema.org/WebPage">
+        {% include header.html %}
         {{ content }}
-    </main>
-
-    {% include footer.html %}
-
-  </body>
-
+        {% include footer.html %}
+        {% include meta-footer.html %}
+    </body>
 </html>

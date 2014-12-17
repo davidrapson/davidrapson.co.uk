@@ -4,13 +4,17 @@
 
 .intro {
     .clearfix();
-    margin: 2em 0 3em;
+    padding: 2em 0;
 }
     .intro__media {
-        display: none;
+        width: 100px;
+        margin: 0 auto 1em;
     }
     .intro__media img {
         border-radius: 50%;
+    }
+    .intro__body {
+        text-align: center;
     }
     .intro__title {
         .font-size(18);
@@ -30,8 +34,12 @@
         vertical-align: middle;
     }
     .intro__media {
-        width: 130px;
+        margin: 0;
+        width: 120px;
         padding-right: 20px;
+    }
+    .intro__body {
+        text-align: left;
     }
     .intro__title {
         .font-size(21);
@@ -40,7 +48,8 @@
 
 @media only screen and ( min-width: @-site-breakpoint-large ) {
     .intro {
-        margin-left: -130px;
+        position: relative;
+        left: -120px;
     }
     .intro__title {
         .font-size(24);

@@ -2,9 +2,7 @@
 layout: default
 ---
 
-{% include intro.html %}
-
-<section class="section-latest-articles">
+<main class="main section-latest-articles l-constrained" itemprop="mainContentOfPage">
     <ul class="entry-listing list-unstyled">
         {% for post in paginator.posts %}
             <li class="entry-listing__item">
@@ -18,4 +16,4 @@ layout: default
         {% endfor %}
     </ul>
     {% include pagination.html %}
-</section>
+</main>

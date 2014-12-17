@@ -745,7 +745,6 @@ html {
   border-top: 10px solid #b60000;
 }
 .main {
-  margin-top: 1.5em;
   margin-bottom: 3em;
 }
 /*  ========================================================================== */
@@ -891,10 +890,17 @@ figure figcaption {
   font-family: sans-serif;
 }
 /*  ========================================================================== */
+/*  @group Global Header */
+/*  ========================================================================== */
+.global-header {
+  background-color: #fafafa;
+  margin-bottom: 2em;
+}
+/*  ========================================================================== */
 /*  @group Intro */
 /*  ========================================================================== */
 .intro {
-  margin: 2em 0 3em;
+  padding: 2em 0;
 }
 .intro:before,
 .intro:after {
@@ -905,10 +911,14 @@ figure figcaption {
   clear: both;
 }
 .intro__media {
-  display: none;
+  width: 100px;
+  margin: 0 auto 1em;
 }
 .intro__media img {
   border-radius: 50%;
+}
+.intro__body {
+  text-align: center;
 }
 .intro__title {
   font-size: 18px;
@@ -928,8 +938,12 @@ figure figcaption {
     vertical-align: middle;
   }
   .intro__media {
-    width: 130px;
+    margin: 0;
+    width: 120px;
     padding-right: 20px;
+  }
+  .intro__body {
+    text-align: left;
   }
   .intro__title {
     font-size: 21px;
@@ -938,7 +952,8 @@ figure figcaption {
 }
 @media only screen and (min-width: 62.5em) {
   .intro {
-    margin-left: -130px;
+    position: relative;
+    left: -120px;
   }
   .intro__title {
     font-size: 24px;

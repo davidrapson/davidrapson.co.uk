@@ -5,8 +5,3 @@
         <li class="nav-trail__item"><a href="{{ site.baseurl }}/colophon.html">Colophon</a></li>
     </ul>
 </footer>
-{% if site.env == 'production' %}
-    <script src="//{{ site.cdn_url }}/{{ site.data.assets.version }}/js/app.min.js" async defer></script>
-{% else %}
-    <script src="/static/js/min/app.min.js"></script>
-{% endif %}
