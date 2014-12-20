@@ -1,0 +1,57 @@
+/*  ========================================================================== */
+/*  @group Intro */
+/*  ========================================================================== */
+
+.intro {
+    @include clearfix;
+    padding: 2em 0;
+}
+    .intro__media {
+        width: 100px;
+        margin: 0 auto 1em;
+    }
+    .intro__media img {
+        border-radius: 50%;
+    }
+    .intro__body {
+        text-align: center;
+    }
+    .intro__title {
+        @include font-size(18);
+        line-height: 1.3;
+        font-family: $typography-body;
+        font-weight: normal;
+        margin: 0;
+    }
+
+@include mq(small) {
+    .intro {
+        display: table;
+    }
+    .intro__media,
+    .intro__body {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .intro__media {
+        margin: 0;
+        width: 120px;
+        padding-right: 20px;
+    }
+    .intro__body {
+        text-align: left;
+    }
+    .intro__title {
+        @include font-size(21);
+    }
+}
+
+@include mq(large) {
+    .intro {
+        position: relative;
+        left: -120px;
+    }
+    .intro__title {
+        @include font-size(24);
+    }
+}

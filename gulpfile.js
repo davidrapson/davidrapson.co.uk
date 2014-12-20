@@ -63,17 +63,25 @@ gulp.task('clean', function() {
 /**
  * CSS
  */
-gulp.task('css', [ 'css:head' ], function () {
+gulp.task('css', function () {
+
     var stream = gulp.src([
-        paths.styleSrc + '/head.less',
-        paths.styleSrc + '/style.less',
-        paths.styleSrc + '/print.less'
+        paths.styleSrc + '/head.scss',
+        paths.styleSrc + '/style.scss',
+        paths.styleSrc + '/print.scss'
     ])
         .pipe(plugins.plumber())
-        .pipe(plugins.less())
+        .pipe(plugins.scssLint({
+            'config': '.scss-lint.yml',
+            'bundleExec': true
+        }))
+        .pipe(plugins.sourcemaps.init())
+        .pipe(plugins.sass())
         .pipe(plugins.autoprefixer('last 2 version', 'ie 8', 'ie 9'))
+        .pipe(plugins.sourcemaps.write())
         .pipe(gulp.dest( paths.styleDest ))
         .pipe(plugins.cssmin())
+        .pipe(plugins.sourcemaps.write())
         .pipe(plugins.rename({suffix: '.min'}))
         .pipe(gulp.dest( paths.styleDest ))
         .pipe(gulp.dest( paths.buildVersion + '/stylesheets' ))
@@ -131,7 +139,7 @@ gulp.task('version', function () {
 /**
  * Copy head.css
  */
-gulp.task('css:head', function () {
+gulp.task('css:head', ['css'], function () {
     var stream = gulp.src([
         paths.styleDest + '/head.min.css',
     ]).pipe(gulp.dest( '_includes' ));
@@ -198,7 +206,7 @@ gulp.task('jekyll:production', function() {
  * Watch
  */
 gulp.task('watch', function() {
-    gulp.watch( paths.styleSrc + '/**/*.less', ['css']);
+    gulp.watch( paths.styleSrc + '/**/*.scss', ['css']);
     gulp.watch( paths.jsSrc + '/**/*.js', ['js']);
     gulp.watch([
         paths.styleSrc + '/**',

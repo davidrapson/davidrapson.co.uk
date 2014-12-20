@@ -1,0 +1,30 @@
+/*  ========================================================================== */
+/*  @group Pagination */
+/*  ========================================================================== */
+
+    .pagination {
+        clear: both;
+        @include font-size(0);
+        margin: 1.5em 0;
+        border: solid $color-border;
+        border-width: 1px 0 0 0;
+    }
+        .pagination__item {
+            @include font-size(14);
+            font-weight: normal;
+            color: $color-border;
+            display: inline-block;
+            padding: .75em 1em;
+            border-top: 1px solid $color-border;
+            position: relative;
+            top: -1px;
+        }
+        .pagination__link {
+            font-weight: bold;
+            color: $color-text;
+        }
+        .pagination__current {
+            font-weight: bold;
+            color: $color-primary;
+            border-color: $color-primary;
+        }

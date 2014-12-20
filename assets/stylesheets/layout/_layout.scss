@@ -1,0 +1,24 @@
+/*  ========================================================================== */
+/*  @group Layout */
+/*  ========================================================================== */
+
+    .l-constrained {
+        @include clearfix;
+        width: 100% - ( $layout-gutter * 2 );
+        min-width: $layout-min-width;
+        max-width: $layout-max-width;
+        margin: 0 auto;
+    }
+
+/*  ========================================================================== */
+/*  @group Layout - Common */
+/*  ========================================================================== */
+
+    html {
+        height: 100%;
+        border-top: 10px solid $color-primary;
+    }
+
+    .main {
+        margin-bottom: 3em;
+    }
