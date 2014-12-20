@@ -1,0 +1,86 @@
+//  -------------------------------------------------------- //
+//  Variables
+//  -------------------------------------------------------- //
+
+//  -------------------------------------------------------- //
+//  Layout
+//  -------------------------------------------------------- //
+
+    $mq-breakpoints: (
+        small: 30em,
+        medium: 48em,
+        large: 62.5em
+    );
+
+    $layout-max-width: 680px;
+    $layout-min-width: 0;
+    $layout-gutter: 3%;
+
+    $global-border-radius: 3px;
+
+//  -------------------------------------------------------- //
+//  Colors
+//  -------------------------------------------------------- //
+
+    // Palette
+    $color-primary: #b60000;
+    $color-secondary: #f8f8f9;
+    $color-highlight: #e4006a;
+    $color-muted: #ddd;
+    $color-note: #595959;
+
+    // Text
+    $color-text: #222;
+    $color-text-headers: #222;
+    $color-text-alt: #fff;
+
+    // Background
+    $color-background: #fff;
+    $color-background-alt: #607D8B;
+    $color-background-inverse: #ddd;
+    $color-background-header: #f8f8f8;
+    $color-background-footer: #323232;
+
+    // Tints
+    $color-tint-light: #fafafa;
+    $color-tint-mid: #ddd;
+    $color-tint-dark: #565656;
+
+    // Borders
+    $color-border: #ddd;
+
+    // Links
+    $color-link: #b60000;
+    $color-link-hover: lighten( $color-link, 10%);
+    $color-link-active: $color-link;
+    $color-link-visited: $color-link;
+
+    // Messages
+    $color-message: #eee;
+    $color-success: #3e753f;
+    $color-info: #34708e;
+    $color-warning: #896c3f;
+    $color-danger: #d00;
+
+//  -------------------------------------------------------- //
+//  Font Stacks
+//  -------------------------------------------------------- //
+
+    // Display / Heading font-stack
+    $typography-display: "abril-titling-narrow", Times, "Times New Roman", Georgia, serif;
+
+    // Body / text font-stack
+    $typography-body: "soleil", sans-serif;
+
+    // Caption / small-print font-stack
+    $typography-caption: sans-serif;
+
+    // Monospace
+    $typography-monospace: "Menlo", "Bitstream Vera Sans", Monaco, "Andale Mono", "Lucida Console", "Droid Mono", monospace;
+
+    $font-weight-body-light: 300;
+    $font-weight-body-normal: 400;
+    $font-weight-body-bold: 600;
+
+    $font-weight-display-normal: 400;
+    $font-weight-display-bold: 800;

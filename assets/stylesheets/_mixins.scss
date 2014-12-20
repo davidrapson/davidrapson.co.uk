@@ -1,0 +1,18 @@
+//  -------------------------------------------------------- //
+//  Mixins
+//  -------------------------------------------------------- //
+
+@mixin clearfix() {
+    &:before, &:after {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+@mixin font-size($pxSize, $contextSize: 16 ) {
+    font-size: ($pxSize) + px;
+    font-size: (pxSize / $contextSize) + rem;
+}

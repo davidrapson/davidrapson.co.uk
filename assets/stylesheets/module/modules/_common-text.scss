@@ -1,0 +1,153 @@
+/*  ========================================================================== */
+/*  @group Text */
+/*  ========================================================================== */
+
+/*  ========================================================================== */
+/*  @group Text - Helpers */
+/*  ========================================================================== */
+
+    .text--lead, .text--lede {
+        font-size: 120%;
+        line-height: 1.333;
+        font-weight: 300;
+        margin-bottom: 1em;
+    }
+
+    .text--initialism {
+        font-variant: small-caps;
+        text-transform: uppercase;
+    }
+
+    .text--title {
+        margin-top: 0;
+    }
+
+    .link--backward {
+        font-weight: bold;
+        &:before {
+            content: '\2190';
+            padding-right: .25em;
+        }
+    }
+
+    .link--forward {
+        font-weight: bold;
+        &:after {
+            content: '\2192';
+            padding-left: .25em;
+        }
+    }
+
+/*  ========================================================================== */
+/*  @group Text - Titles */
+/*  ========================================================================== */
+
+    .section-title {
+        @include font-size(16);
+        line-height: 1.3;
+        font-family: $typography-body;
+        text-transform: uppercase;
+        margin: 0 0 .5em 0;
+    }
+
+/*  ========================================================================== */
+/*  @group Opt-in Typography */
+/*  ========================================================================== */
+
+    /*
+        Opt-in typography
+
+        http://anthonyshort.me/global-typographic-styles-suck
+        http://dbushell.com/2012/04/18/scoping-typography-css/
+        http://css-tricks.com/opt-in-typography/
+    */
+
+    .copy,
+    .copy--full  {
+
+        p:empty { display: none; }
+
+        a, a:visited { text-decoration: underline; }
+        a:hover {
+           text-decoration: underline;
+        }
+        a:active { color: $color-link-active; }
+    }
+
+    .copy--full {
+
+        p {
+            margin-bottom: 0;
+        }
+        p + p {
+            text-indent: 1.5em;
+        }
+
+        blockquote {
+            margin: 1em 0;
+            padding: .5em 0 .5em 20px;
+            border-left: 5px solid $color-border;
+            font-family: $typography-display;
+
+            footer, .footer {
+                color: $color-note;
+                font-size: 80%;
+                line-height: 1.3;
+                padding: 0.5em 0;
+                clear: left;
+            }
+
+            @include mq(small) {
+                @include font-size(18);
+                margin-left: -25px;
+            }
+        }
+
+        kbd, code, pre {
+            padding: 0 .3em;
+            border: 1px solid $color-border;
+            box-shadow: 0 0 1em rgba(0, 0, 0, 0.05) inset;
+        }
+
+        pre {
+            padding: 1em $layout-gutter;
+            font-size: 90%;
+        }
+        pre code {
+            padding: 0;
+            box-shadow: none;
+            border: 0 none;
+            font-size: 100%;
+        }
+
+        @include mq(medium) {
+            pre {
+                margin: 1em (-$layout-gutter) 1em;
+            }
+            ol, ul {
+                margin: 1em 0 1em -1.5em;
+            }
+        }
+
+    }
+
+/*  ========================================================================== */
+/*  @group Text - Media */
+/*  ========================================================================== */
+
+    figure {
+        background: $color-tint-light;
+        padding: 1em $layout-gutter;
+        margin: 1em 0;
+
+        width: 100% + ( $layout-gutter * 2 );
+        margin-left: -($layout-gutter);
+
+        figcaption {
+            color: $color-tint-dark;
+            margin-top: .5em;
+            font-size: 80%;
+            font-family: $typography-caption;
+        }
+
+    }

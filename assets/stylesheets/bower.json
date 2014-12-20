@@ -1,0 +1,11 @@
+{
+  "name": "davidrapson.co.uk stylesheets",
+  "homepage": "https://github.com/davidrapson/davidrapson.co.uk",
+  "authors": [
+    "David Rapson"
+  ],
+  "private": true,
+  "dependencies": {
+    "sass-mq": "~3.1.1"
+  }
+}
