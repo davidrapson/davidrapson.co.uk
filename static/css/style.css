@@ -754,7 +754,7 @@ html {
 /*  @group Global Header */
 /*  ========================================================================== */
 .global-header {
-  background-color: #fafafa;
+  background-color: #f8f8f8;
   margin-bottom: 2em;
 }
 /*  ========================================================================== */
@@ -1465,7 +1465,7 @@ pre .ge {
   font-style: italic;
 }
 pre .gr {
-  color: #ff0000;
+  color: red;
 }
 pre .gh {
   color: navy;
@@ -1475,7 +1475,7 @@ pre .gi {
   color: #00a000;
 }
 pre .go {
-  color: #808080;
+  color: gray;
 }
 pre .gp {
   color: #c65d09;
@@ -1535,7 +1535,7 @@ pre .nd {
   font-weight: 700;
 }
 pre .ni {
-  color: #800000;
+  color: maroon;
 }
 pre .ne {
   color: #F00000;
