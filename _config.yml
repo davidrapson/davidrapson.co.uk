@@ -23,20 +23,20 @@ env: production
 exclude: [
   "README.md",
   "node_modules",
+  "assets",
   "bin",
   "gulpfile",
   "Gemfile",
   "Gemfile.lock",
   "bower.json",
   "package.json",
-  "secrets.json",
-  "static/css/less/"
+  "secrets.json"
 ]
 
 # jekyll-picture-teg settings
 picture:
-  source: "images/src"
-  output: "images/output"
+  source: "assets/images"
+  output: "images"
   markup: "picture"
   presets:
     default:

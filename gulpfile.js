@@ -30,11 +30,15 @@ var hashFiles = require('hash-files'),
  * Define common paths
  */
 var paths = {
-    'static': 'static',
-    'css': 'static/css',
-    'js': 'static/js',
-    'build': 'static/dist',
-    'buildVersion': 'static/dist/' + pkg.version
+    'static': 'assets',
+    'styleSrc': 'assets/stylesheets',
+    'styleDest': 'public/stylesheets',
+    'jsSrc': 'assets/javascripts',
+    'jsDest': 'public/javascripts',
+    'build': 'public',
+    'buildVersion': 'public/dist/' + pkg.version,
+    'publicImages': '_site/public/images',
+    'publicDist': '_site/public/dist'
 };
 
 
@@ -61,18 +65,18 @@ gulp.task('clean', function() {
  */
 gulp.task('css', [ 'css:head' ], function () {
     var stream = gulp.src([
-        paths.css + '/less/head.less',
-        paths.css + '/less/style.less',
-        paths.css + '/less/print.less'
+        paths.styleSrc + '/head.less',
+        paths.styleSrc + '/style.less',
+        paths.styleSrc + '/print.less'
     ])
         .pipe(plugins.plumber())
         .pipe(plugins.less())
         .pipe(plugins.autoprefixer('last 2 version', 'ie 8', 'ie 9'))
-        .pipe(gulp.dest( paths.css ))
+        .pipe(gulp.dest( paths.styleDest ))
         .pipe(plugins.cssmin())
         .pipe(plugins.rename({suffix: '.min'}))
-        .pipe(gulp.dest( paths.css ))
-        .pipe(gulp.dest( paths.buildVersion + '/css' ))
+        .pipe(gulp.dest( paths.styleDest ))
+        .pipe(gulp.dest( paths.buildVersion + '/stylesheets' ))
     return stream;
 });
 
@@ -82,20 +86,20 @@ gulp.task('css', [ 'css:head' ], function () {
  */
 gulp.task('js', ['lint'], function () {
     var stream = gulp.src([
-        paths.js + '/components/picturefill/dist/picturefill.min.js',
-        paths.js + '/app.js'
+        paths.jsSrc + '/components/picturefill/dist/picturefill.min.js',
+        paths.jsSrc + '/app.js'
     ])
         .pipe(plugins.plumber())
         .pipe(plugins.concat('app.min.js'))
         .pipe(plugins.uglify())
-        .pipe(gulp.dest( paths.js + '/min' ))
-        .pipe(gulp.dest( paths.buildVersion + '/js' ));
+        .pipe(gulp.dest( paths.jsDest ))
+        .pipe(gulp.dest( paths.buildVersion + '/javascripts' ));
     return stream;
 });
 
 gulp.task('lint', function() {
     var stream = gulp.src([
-        paths.js + '/app.js'
+        paths.jsSrc + '/app.js'
     ])
         .pipe(plugins.jshint('.jshintrc'))
         .pipe(plugins.jshint.reporter('jshint-stylish'));
@@ -115,10 +119,10 @@ gulp.task('version', function () {
     var stream = stringSrc('assets.json', JSON.stringify({
         "version": pkg.version,
         "head": {
-            "hash": hashFiles.sync({ files: [ paths.css + '/head.min.css' ] })
+            "hash": hashFiles.sync({ files: [ paths.styleDest + '/head.min.css' ] })
         },
         "style": {
-            "hash": hashFiles.sync({ files: [ paths.css + '/style.min.css' ] })
+            "hash": hashFiles.sync({ files: [ paths.styleDest + '/style.min.css' ] })
         }
     })).pipe(gulp.dest( '_data' ));
     return stream;
@@ -129,7 +133,7 @@ gulp.task('version', function () {
  */
 gulp.task('css:head', function () {
     var stream = gulp.src([
-        paths.css + '/head.min.css',
+        paths.styleDest + '/head.min.css',
     ]).pipe(gulp.dest( '_includes' ));
     return stream;
 });
@@ -139,7 +143,7 @@ gulp.task('css:head', function () {
  * Minify Images
  */
  gulp.task('imagemin', function () {
-    var dir = '_site/images/output';
+    var dir = paths.publicImages;
     return gulp.src( dir + '/**' )
         .pipe(plugins.imagemin({
             progressive: true
@@ -150,6 +154,7 @@ gulp.task('css:head', function () {
  * Assets
  */
 gulp.task('assets', function () {
+
     var aws = {
         key: secrets.aws.key,
         secret: secrets.aws.secret,
@@ -157,31 +162,18 @@ gulp.task('assets', function () {
         region: secrets.aws.region
     };
 
-    gulp.src([ paths.build + '/**' ])
+    gulp.src([ paths.publicDist + '/**' ])
         .pipe(plugins.gzip())
         .pipe(plugins.s3(aws, {
             headers: { 'Cache-Control': 'max-age=315360000, no-transform, public' },
             gzippedOnly: true
         }));
 
-    gulp.src([ 'static/touch-icons/**/*' ])
-        .pipe(plugins.gzip())
-        .pipe(plugins.rename({ dirname: "touch-icons" }))
+    gulp.src([ paths.publicImages + '**/*' ])
+        .pipe(plugins.rename({ dirname: "images" }))
         .pipe(plugins.s3(aws, {
             headers: { 'Cache-Control': 'max-age=315360000, no-transform, public' }
         }));
-
-    gulp.src([ '_site/images/output/**/*' ])
-        .pipe(plugins.gzip())
-        .pipe(plugins.rename({ dirname: "images/output" }))
-        .pipe(plugins.s3(aws, {
-            headers: { 'Cache-Control': 'max-age=315360000, no-transform, public' }
-        }));
-
-    gulp.src([ '_site/images/src/**/*' ])
-        .pipe(plugins.gzip())
-        .pipe(plugins.rename({ dirname: "images/src" }))
-        .pipe(plugins.s3(aws));
 
 });
 
@@ -194,6 +186,7 @@ gulp.task('jekyll', function() {
         .spawn('jekyll', ['build', '--drafts', '--future', '--config',  '_config.yml,_config-dev.yml'], {stdio: 'inherit'});
     return stream;
 });
+
 gulp.task('jekyll:production', function() {
     var stream = require('child_process')
         .spawn('jekyll', ['build'], {stdio: 'inherit'});
@@ -205,10 +198,10 @@ gulp.task('jekyll:production', function() {
  * Watch
  */
 gulp.task('watch', function() {
-    gulp.watch( paths.css + '/less/**/*.less', ['css']);
-    gulp.watch( paths.js + '/**/*.js', ['js']);
+    gulp.watch( paths.styleSrc + '/**/*.less', ['css']);
+    gulp.watch( paths.jsSrc + '/**/*.js', ['js']);
     gulp.watch([
-        paths.css + '/**',
+        paths.styleSrc + '/**',
         '_layouts/**',
         '_includes/**',
         '_drafts/**',
@@ -251,10 +244,10 @@ gulp.task('deploy', function() {
  */
 gulp.task('build', function (done) {
     runSequence(
-        'jekyll:production',
         'clean',
         'css',
         'js',
+        'jekyll:production',
         'imagemin',
         'version',
         'assets',

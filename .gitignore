@@ -3,5 +3,5 @@ _site/
 bin/
 Gemfile.lock
 node_modules/
+public/
 secrets.json
-static/dist/
