@@ -22,7 +22,6 @@ var runSequence = require('run-sequence');    // Temporary solution until gulp 4
  * Require additional npm modules
  */
 var hashFiles = require('hash-files'),
-    versiony = require('versiony'),
     del = require('del');
 
 
@@ -121,9 +120,6 @@ gulp.task('lint', function() {
  * Saves duplicating version number
  */
 gulp.task('version', function () {
-    // Sync version from package.json to bower.json
-    versiony.from('./package.json').to('./bower.json')
-    // Write new assets.json manifest
     var stream = stringSrc('assets.json', JSON.stringify({
         "version": pkg.version,
         "head": {
@@ -259,6 +255,16 @@ gulp.task('build', function (done) {
         'imagemin',
         'version',
         'assets',
+    done);
+});
+gulp.task('build:simple', function (done) {
+    runSequence(
+        'clean',
+        'css',
+        'js',
+        'jekyll:production',
+        'imagemin',
+        'version',
     done);
 });
 

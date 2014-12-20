@@ -1,0 +1,7 @@
+{
+  "name": "davidrapson.co.uk javascripts",
+  "private": true,
+  "dependencies": {
+    "picturefill": "~2.2.0"
+  }
+}
