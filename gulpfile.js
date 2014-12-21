@@ -21,7 +21,7 @@ var runSequence = require('run-sequence');    // Temporary solution until gulp 4
 /**
  * Require additional npm modules
  */
-var logMetrics = require('./gulp/logMetrics'),
+var logMetrics = require('./tasks/logMetrics'),
     hashFiles = require('hash-files'),
     del = require('del');
 

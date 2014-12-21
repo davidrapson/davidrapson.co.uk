@@ -21,16 +21,17 @@ env: production
 
 # Build Excludes
 exclude: [
-  "README.md",
-  "node_modules",
   "assets",
   "bin",
-  "gulpfile",
+  "bower.json",
   "Gemfile",
   "Gemfile.lock",
-  "bower.json",
+  "gulpfile",
+  "node_modules",
   "package.json",
-  "secrets.json"
+  "README.md",
+  "secrets.json",
+  "tasks"
 ]
 
 # jekyll-picture-teg settings
