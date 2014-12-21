@@ -8,6 +8,8 @@ var AWS = require('aws-sdk');
 
 module.exports = function(options) {
 
+    var pluginName = 'logMetrics';
+
     function toKB(size) {
         return Math.round((size / 1024)).toFixed(0);
     }
@@ -22,16 +24,24 @@ module.exports = function(options) {
         }
 
         if (file.isStream()) {
-            return cb(new PluginError('gulp-less', 'Streaming not supported'));
+            return cb(new PluginError(pluginName, 'Streaming not supported'));
         }
 
         if (file.isBuffer()) {
 
-            AWS.config.update({
-                region: options.secrets.aws.region,
-                accessKeyId: options.secrets.aws.key,
-                secretAccessKey: options.secrets.aws.secret
-            });
+            if( typeof options.secrets !== 'undefined') {
+                AWS.config.update({
+                    region: options.secrets.aws.region,
+                    accessKeyId: options.secrets.aws.key,
+                    secretAccessKey: options.secrets.aws.secret
+                });
+            } else {
+                return cb(new PluginError(pluginName, [
+                    'No credentials provided. ',
+                    'Please set your credentials in `~/.aws/credentials` ',
+                    'or provide a `secrets` config.'
+                ].join('')));
+            }
 
             cloudwatch = new AWS.CloudWatch();
 
