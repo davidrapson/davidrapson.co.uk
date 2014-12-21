@@ -21,7 +21,8 @@ var runSequence = require('run-sequence');    // Temporary solution until gulp 4
 /**
  * Require additional npm modules
  */
-var hashFiles = require('hash-files'),
+var logMetrics = require('./gulp/logMetrics'),
+    hashFiles = require('hash-files'),
     del = require('del');
 
 
@@ -58,7 +59,6 @@ gulp.task('clean', function() {
     del([ paths.build + '/**' ]);
 });
 
-
 /**
  * CSS
  */
@@ -70,21 +70,26 @@ gulp.task('css', function () {
         paths.styleSrc + '/print.scss'
     ])
         .pipe(plugins.plumber())
+        // Lint CSS
         .pipe(plugins.scssLint({
             'config': '.scss-lint.yml',
             'bundleExec': true
         }))
+        // Build CSS
         .pipe(plugins.sourcemaps.init())
         .pipe(plugins.sass())
         .pipe(plugins.autoprefixer('last 2 version', 'ie 8', 'ie 9'))
         .pipe(plugins.sourcemaps.write())
         .pipe(gulp.dest( paths.styleDest ))
+        // Minify CSS
         .pipe(plugins.cssmin())
-        .pipe(plugins.sourcemaps.write())
         .pipe(plugins.rename({suffix: '.min'}))
         .pipe(gulp.dest( paths.styleDest ))
+        // Versioned build
         .pipe(gulp.dest( paths.buildVersion + '/stylesheets' ))
+
     return stream;
+
 });
 
 
@@ -113,6 +118,7 @@ gulp.task('lint', function() {
 
     return stream;
 });
+
 
 /**
  * Version
@@ -167,7 +173,21 @@ gulp.task('assets', function () {
     };
 
     gulp.src([ paths.publicDist + '/**' ])
+        .pipe(logMetrics({
+            'secrets': secrets,
+            'dimensions': [{
+                'Name' : 'Compression',
+                'Value' : 'None'
+            }]
+        }))
         .pipe(plugins.gzip())
+        .pipe(logMetrics({
+            'secrets': secrets,
+            'dimensions': [{
+                'Name' : 'Compression',
+                'Value' : 'GZip'
+            }]
+        }))
         .pipe(plugins.s3(aws, {
             headers: { 'Cache-Control': 'max-age=315360000, no-transform, public' },
             gzippedOnly: true
