@@ -38,20 +38,20 @@ exclude: [
 picture:
   source: "assets/images"
   output: "images"
-  markup: "picture"
+  markup: "img"
+  lazysizes: true
   presets:
     default:
-      source_large:
-        media: "(min-width: 45em)"
+      source_4:
         width: "800"
-      source_medium:
-        media: "(min-width: 30em)"
+      source_3:
         width: "600"
-      source_small:
-        media: "(min-width: 20em)"
+      source_2:
         width: "480"
-      source_default:
+      source_1:
         width: "320"
+      source_default:
+        width: "480"
 
 # Gems
 markdown: Pypedown

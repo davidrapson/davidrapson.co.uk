@@ -40,6 +40,7 @@ module Jekyll
       settings = site.config['picture']
       markup = /^(?:(?<preset>[^\s.:\/]+)\s+)?(?<image_src>[^\s]+\.[a-zA-Z0-9]{3,4})\s*(?<source_src>(?:(source_[^\s.:\/]+:\s+[^\s]+\.[a-zA-Z0-9]{3,4})\s*)+)?(?<html_attr>[\s\S]+)?$/.match(render_markup)
       preset = settings['presets'][ markup[:preset] ] || settings['presets']['default']
+      url_base = "//#{site.config['cdn_url']}"
 
       raise "Picture Tag can't read this tag. Try {% picture [preset] path/to/img.jpg [source_key: path/to/alt-img.jpg] [attr=\"value\"] %}." unless markup
 
@@ -72,11 +73,6 @@ module Jekyll
         html_attr = instance.delete('attr').merge(html_attr)
       end
 
-      if settings['markup'] == 'picturefill'
-        html_attr['data-picture'] = nil
-        html_attr['data-alt'] = html_attr.delete('alt')
-      end
-
       html_attr_string = html_attr.inject('') { |string, attrs|
         if attrs[1]
           string << "#{attrs[0]}=\"#{attrs[1]}\" "
@@ -84,11 +80,6 @@ module Jekyll
           string << "#{attrs[0]} "
         end
       }
-
-      # Prepare ppi variables
-      ppi = if instance['ppi'] then instance.delete('ppi').sort.reverse else nil end
-      # this might work??? ppi = instance.delete('ppi'){ |ppi|  [nil] }.sort.reverse
-      ppi_sources = {}
 
       # Switch width and height keys to the symbols that generate_image() expects
       instance.each { |key, source|
@@ -112,34 +103,6 @@ module Jekyll
         instance[key][:src] = source_src[key] || markup[:image_src]
       }
 
-      # Construct ppi sources
-      # Generates -webkit-device-ratio and resolution: dpi media value for cross browser support
-      # Reference: http://www.brettjankord.com/2012/11/28/cross-browser-retinahigh-resolution-media-queries/
-      if ppi
-        instance.each { |key, source|
-          ppi.each { |p|
-            if p != 1
-              ppi_key = "#{key}-x#{p}"
-
-              ppi_sources[ppi_key] = {
-                :width => if source[:width] then (source[:width].to_f * p).round else nil end,
-                :height => if source[:height] then (source[:height].to_f * p).round else nil end,
-                'media' => if source['media']
-                  "#{source['media']} and (-webkit-min-device-pixel-ratio: #{p}), #{source['media']} and (min-resolution: #{(p * 96).round}dpi)"
-                else
-                  "(-webkit-min-device-pixel-ratio: #{p}), (min-resolution: #{(p * 96).to_i}dpi)"
-                end,
-                :src => source[:src]
-              }
-
-              # Add ppi_key to the source keys order
-              source_keys.insert(source_keys.index(key), ppi_key)
-            end
-          }
-        }
-      instance.merge!(ppi_sources)
-      end
-
       # Generate resized images
       instance.each { |key, source|
         instance[key][:generated_src] = generate_image(source, site.source, site.dest, settings['source'], settings['output'], site.config["baseurl"])
@@ -151,25 +114,43 @@ module Jekyll
         source_tags = ''
         source_keys.each { |source|
           media = " media=\"#{instance[source]['media']}\"" unless source == 'source_default'
-          source_tags += "#{markdown_escape * 4}<source srcset=\"//#{site.config['cdn_url']}#{instance[source][:generated_src]}\"#{media}>\n"
+          source_tags += "#{markdown_escape * 4}<source srcset=\"#{url_base}#{instance[source][:generated_src]}\"#{media}>\n"
         }
 
         # Note: we can't indent html output because markdown parsers will turn 4 spaces into code blocks
         # Note: Added backslash+space escapes to bypass markdown parsing of indented code below -WD
-        picture_tag = "<picture>\n"\
-                      "<!--[if IE 9]><video style=\"display: none;\"><![endif]-->\n"\
-                      "#{source_tags}"\
-                      "<!--[if IE 9]></video><![endif]-->"\
-                      "#{markdown_escape * 4}<img srcset=\"//#{site.config['cdn_url']}#{instance['source_default'][:generated_src]}\" #{html_attr_string}>\n"\
-                      "#{markdown_escape * 2}</picture>\n"
+        tag = "<picture>\n"\
+          "<!--[if IE 9]><video style=\"display: none;\"><![endif]-->\n"\
+          "#{source_tags}"\
+          "<!--[if IE 9]></video><![endif]-->"\
+          "#{markdown_escape * 4}<img srcset=\"#{url_base}#{instance['source_default'][:generated_src]}\" #{html_attr_string}>\n"\
+          "#{markdown_escape * 2}</picture>\n"
 
       elsif settings['markup'] == 'img'
-        # TODO implement <img srcset/sizes>
+
+        sizes = []
+        source_keys.each { |source|
+          sizes.push "#{url_base}#{instance[source][:generated_src]} #{instance[source][:width]}w"
+        }
+
+        if settings["lazysizes"]
+          srcset_attr = "data-srcset=\"#{sizes.join(', ')}\""
+          extra_classes = "class=\"\js-lazyload lazyload\""
+        else
+          srcset_attr = "data-srcset=\"#{sizes.join(', ')}\""
+          extra_classes = ''
+        end
+        tag = "<img src=\"#{url_base}#{instance['source_default'][:generated_src]}\"
+               #{srcset_attr}
+               sizes=\"100vw\"
+               #{html_attr_string} #{extra_classes}/>"
       end
 
-        # Return the markup!
-        picture_tag
+      return tag
+
     end
+
+
 
     def generate_image(instance, site_source, site_dest, image_source, image_dest, baseurl)
       image = MiniMagick::Image.open(File.join(site_source, image_source, instance[:src]))
