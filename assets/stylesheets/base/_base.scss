@@ -255,6 +255,18 @@
     figure > img,
     figure > picture {
         display: block;
+        width: 100%;
+    }
+
+    /**
+     * Lazyloadable images
+     */
+    img.lazyload {
+        opacity: 0;
+        transition: opacity ease-out 1s;
+    }
+    img.is-loaded {
+        opacity: 1;
     }
 
     /* Correct overflow displayed oddly in IE9 */

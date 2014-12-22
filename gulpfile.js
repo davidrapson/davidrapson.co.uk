@@ -99,6 +99,7 @@ gulp.task('css', function () {
 gulp.task('js', ['lint'], function () {
     var stream = gulp.src([
         paths.jsSrc + '/components/picturefill/dist/picturefill.min.js',
+        paths.jsSrc + '/components/lazysizes/lazysizes.min.js',
         paths.jsSrc + '/app.js'
     ])
         .pipe(plugins.plumber())
