@@ -68,13 +68,12 @@ gulp.task('css', function () {
         // Build CSS
         .pipe(plugins.sourcemaps.init())
         .pipe(plugins.sass())
-        .pipe(plugins.autoprefixer('last 2 version', 'ie 8', 'ie 9'))
         .pipe(plugins.sourcemaps.write())
+        .pipe(plugins.autoprefixer('last 2 version', 'ie 8', 'ie 9'))
         .pipe(gulp.dest( paths.styleDest ))
         // Minify CSS
         .pipe(plugins.cssmin())
         .pipe(plugins.rename({suffix: '.min'}))
-        .pipe(plugins.sourcemaps.write())
         .pipe(gulp.dest( paths.styleDest ))
         // Versioned build
         .pipe(gulp.dest( paths.buildVersion + '/stylesheets' ));
