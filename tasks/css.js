@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
-var paths = require('../config').paths;
+var paths = require('../config.json').paths;
+var pkg = require('../package.json');
 
 gulp.task('css', function () {
     return gulp.src([
@@ -24,7 +25,7 @@ gulp.task('css', function () {
         .pipe(plugins.rename({suffix: '.min'}))
         .pipe(gulp.dest( paths.styleDest ))
         // Versioned build
-        .pipe(gulp.dest( paths.buildVersion + '/stylesheets' ));
+        .pipe(gulp.dest( paths.buildDist + '/' + pkg.version + '/stylesheets' ));
 });
 
 gulp.task('css:head', ['css'], function () {

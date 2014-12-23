@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
 var paths = require('../config').paths;
+var pkg = require('../package.json');
 
 gulp.task('js', ['jshint'], function () {
     return gulp.src([
@@ -8,10 +9,13 @@ gulp.task('js', ['jshint'], function () {
         paths.jsSrc + '/components/lazysizes/lazysizes.min.js'
     ])
         .pipe(plugins.plumber())
+        // Contatenate
         .pipe(plugins.concat('combined.min.js'))
+        // Minify
         .pipe(plugins.uglify())
         .pipe(gulp.dest( paths.jsDest ))
-        .pipe(gulp.dest( paths.buildVersion + '/javascripts' ));
+        // Versioned build
+        .pipe(gulp.dest( paths.buildDist + '/' + pkg.version + '/javascripts' ));
 });
 
 gulp.task('jshint', function() {

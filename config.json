@@ -1,0 +1,13 @@
+{
+    "paths": {
+        "static": "assets",
+        "styleSrc": "assets/stylesheets",
+        "styleDest": "public/stylesheets",
+        "jsSrc": "assets/javascripts",
+        "jsDest": "public/javascripts",
+        "build": "public",
+        "buildDist": "public/dist/",
+        "publicImages": "_site/images",
+        "publicDist": "_site/public/dist"
+    }
+}
