@@ -8,7 +8,7 @@
     };
 </script>
 {% if site.env == 'production' %}
-    <script src="//{{ site.cdn_url }}/{{ site.data.assets.version }}/javascripts/app.min.js" async defer></script>
+    <script src="//{{ site.cdn_url }}/{{ site.data.assets.version }}/javascripts/combined.min.js" async defer></script>
 {% else %}
-    <script src="/public/javascripts/app.min.js"></script>
+    <script src="/public/javascripts/combined.min.js"></script>
 {% endif %}
