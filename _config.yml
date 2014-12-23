@@ -27,6 +27,7 @@ exclude: [
   "Gemfile",
   "Gemfile.lock",
   "gulpfile",
+  "lib",
   "node_modules",
   "package.json",
   "README.md",
