@@ -12,7 +12,7 @@
     }
 }
 
-@mixin font-size($pxSize, $contextSize: 16 ) {
+@mixin font-size($pxSize, $baseFontSize: 16 ) {
     font-size: ($pxSize) + px;
-    font-size: (pxSize / $contextSize) + rem;
+    font-size: ($pxSize / $baseFontSize) + rem;
 }
