@@ -9,12 +9,6 @@
  */
 var pkg = require('./package.json');
 var secrets = require('./secrets.json');
-var awsConfig = {
-    bucket: secrets.aws.bucket,
-    region: secrets.aws.region,
-    key: secrets.aws.accessKeyId,
-    secret: secrets.aws.secretAccessKey
-};
 
 
 /**
@@ -37,6 +31,7 @@ var runSequence = require('run-sequence');
  * Require custom tasks
  */
 var stringSrc = require('./lib/stringSrc');
+var s3Publish = require('./lib/s3Publish');
 var logAssetSize = require('./lib/logAssetSize');
 
 
@@ -149,16 +144,13 @@ gulp.task('version', function () {
  gulp.task('images', function () {
     var dir = paths.publicImages;
     return gulp.src( dir + '/**' )
-        .pipe(plugins.imagemin({
-            progressive: true
-        }))
-        .pipe(gulp.dest( dir ))
-        .pipe(plugins.rename(function(path){
-            path.dirname = "images/" + path.dirname;
-            return path;
-        }))
-        .pipe(plugins.s3(awsConfig, {
-            headers: { 'Cache-Control': 'max-age=315360000, no-transform, public' }
+        .pipe(plugins.imagemin({ progressive: true }))
+        .pipe(s3Publish({
+            bucket: secrets.aws.bucket,
+            pathPrefix: 'images/',
+            awsConfig: secrets.aws
+        }, {
+            'CacheControl': 'max-age=315360000, no-transform, public'
         }));
  });
 
@@ -177,9 +169,11 @@ gulp.task('publishAssets', function () {
             'config': secrets.aws,
             'compressionType': 'GZip'
         }))
-        .pipe(plugins.s3(awsConfig, {
-            headers: { 'Cache-Control': 'max-age=315360000, no-transform, public' },
-            gzippedOnly: true
+        .pipe(s3Publish({
+            bucket: secrets.aws.bucket,
+            awsConfig: secrets.aws
+        }, {
+            'CacheControl': 'max-age=315360000, no-transform, public'
         }));
 });
 

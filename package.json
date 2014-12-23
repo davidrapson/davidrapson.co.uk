@@ -1,6 +1,6 @@
 {
   "name": "davidrapson.co.uk",
-  "version": "3.5.3",
+  "version": "3.5.4-alpha",
   "description": "Personal website",
   "main": "gulpfile.js",
   "repository": "https://github.com/davidrapson/davidrapson.co.uk.git",
@@ -12,6 +12,7 @@
   "devDependencies": {
     "aws-sdk": "^2.1.4",
     "del": "^1.1.0",
+    "extend": "^2.0.0",
     "gulp": "^3.8.10",
     "gulp-autoprefixer": "^2.0.0",
     "gulp-concat": "^2.4.2",
@@ -24,7 +25,6 @@
     "gulp-notify": "^2.1.0",
     "gulp-plumber": "^0.6.6",
     "gulp-rename": "^1.2.0",
-    "gulp-s3": "^0.3.0",
     "gulp-sass": "^1.2.4",
     "gulp-scss-lint": "^0.1.4",
     "gulp-sourcemaps": "^1.2.8",
@@ -33,6 +33,7 @@
     "gulp-webserver": "^0.9.0",
     "hash-files": "^1.0.0",
     "jshint-stylish": "^1.0.0",
+    "mime": "^1.2.11",
     "run-sequence": "^1.0.2",
     "through2": "^0.6.3"
   }
