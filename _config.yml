@@ -24,6 +24,7 @@ exclude: [
   "assets",
   "bin",
   "bower.json",
+  "config.json",
   "Gemfile",
   "Gemfile.lock",
   "gulpfile",
