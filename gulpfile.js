@@ -51,7 +51,7 @@ var paths = {
     'jsDest': 'public/javascripts',
     'build': 'public',
     'buildVersion': 'public/dist/' + pkg.version,
-    'publicImages': '_site/public/images',
+    'publicImages': '_site/images',
     'publicDist': '_site/public/dist'
 };
 
@@ -153,7 +153,10 @@ gulp.task('version', function () {
             progressive: true
         }))
         .pipe(gulp.dest( dir ))
-        .pipe(plugins.rename({ dirname: "images" }))
+        .pipe(plugins.rename(function(path){
+            path.dirname = "images/" + path.dirname;
+            return path;
+        }))
         .pipe(plugins.s3(awsConfig, {
             headers: { 'Cache-Control': 'max-age=315360000, no-transform, public' }
         }));
