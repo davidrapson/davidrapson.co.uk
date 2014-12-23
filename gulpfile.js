@@ -17,11 +17,13 @@ var gulp = require('gulp'),
     hashFiles = require('hash-files'),
     del = require('del');
 
+
 /**
  * Temporary solution until gulp 4
  * https://github.com/gulpjs/gulp/issues/355
  */
 var runSequence = require('run-sequence');
+
 
 /**
  * Require custom tasks
@@ -219,6 +221,10 @@ gulp.task('jekyll', function() {
     return stream;
 });
 
+
+/**
+ * Jekyll: Production
+ */
 gulp.task('jekyll:production', function() {
     var stream = require('child_process')
         .spawn('jekyll', ['build'], {stdio: 'inherit'});
