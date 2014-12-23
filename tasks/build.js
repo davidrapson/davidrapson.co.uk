@@ -8,26 +8,22 @@ var del = require('del');
  */
 var runSequence = require('run-sequence');
 
-gulp.task('clean', function() {
-    del([ paths.build + '/**' ]);
+gulp.task('clean', function(done) {
+    del([ paths.build + '/**' ], done);
 });
 
-gulp.task('build', function (done) {
-    return runSequence(
-        'clean',
-        'css',
-        'js',
+gulp.task('build', ['clean'], function (done) {
+    runSequence(
+        ['css', 'js'],
         'jekyll:production',
         'version',
         'publishAssets',
     done);
 });
 
-gulp.task('build:simple', function (done) {
-    return runSequence(
-        'clean',
-        'css',
-        'js',
+gulp.task('build:simple', ['clean'], function (done) {
+    runSequence(
+        ['css', 'js'],
         'jekyll:production',
         'version',
     done);
