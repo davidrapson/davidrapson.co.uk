@@ -1,12 +1,20 @@
+/*jshint node:true*/
 /**
  * gulpfile.js
  */
+
 
 /**
  * Config
  */
 var pkg = require('./package.json');
 var secrets = require('./secrets.json');
+var awsConfig = {
+    bucket: secrets.aws.bucket,
+    region: secrets.aws.region,
+    key: secrets.aws.accessKeyId,
+    secret: secrets.aws.secretAccessKey
+};
 
 
 /**
@@ -28,7 +36,8 @@ var runSequence = require('run-sequence');
 /**
  * Require custom tasks
  */
-var logMetrics = require('./tasks/logMetrics');
+var stringSrc = require('./lib/stringSrc');
+var logAssetSize = require('./lib/logAssetSize');
 
 
 /**
@@ -48,19 +57,10 @@ var paths = {
 
 
 /**
- * Clean
- */
-gulp.task('clean', function() {
-    del([ paths.build + '/**' ]);
-});
-
-
-/**
- * CSS
+ * Build CSS
  */
 gulp.task('css', function () {
-
-    var stream = gulp.src([
+    return gulp.src([
         paths.styleSrc + '/head.scss',
         paths.styleSrc + '/style.scss'
     ])
@@ -82,29 +82,25 @@ gulp.task('css', function () {
         .pipe(plugins.sourcemaps.write())
         .pipe(gulp.dest( paths.styleDest ))
         // Versioned build
-        .pipe(gulp.dest( paths.buildVersion + '/stylesheets' ))
-
-    return stream;
-
+        .pipe(gulp.dest( paths.buildVersion + '/stylesheets' ));
 });
 
 
 /**
- * Copy head.css
+ * Copy head.css to _includes
  */
 gulp.task('css:head', ['css'], function () {
-    var stream = gulp.src([
+    return gulp.src([
         paths.styleDest + '/head.min.css',
     ]).pipe(gulp.dest( '_includes' ));
-    return stream;
 });
 
 
 /**
- * JavaScript
+ * Build JavaScript
  */
 gulp.task('js', ['lint'], function () {
-    var stream = gulp.src([
+    return gulp.src([
         paths.jsSrc + '/components/picturefill/dist/picturefill.min.js',
         paths.jsSrc + '/components/lazysizes/lazysizes.min.js'
     ])
@@ -113,39 +109,29 @@ gulp.task('js', ['lint'], function () {
         .pipe(plugins.uglify())
         .pipe(gulp.dest( paths.jsDest ))
         .pipe(gulp.dest( paths.buildVersion + '/javascripts' ));
-    return stream;
 });
 
 
 /**
- * Lint
+ * JSHint
  */
 gulp.task('lint', function() {
-    var stream = gulp.src([
+    return gulp.src([
+        'lib/*.js',
+        './gulpfile.js',
         paths.jsSrc + '/app.js'
     ])
         .pipe(plugins.jshint('.jshintrc'))
         .pipe(plugins.jshint.reporter('jshint-stylish'));
-
-    return stream;
 });
 
 
 /**
- * Version
- * Build a version file to be used in Jekyll _data
- * Saves duplicating version number
+ * Version manifest
+ * Build a version manifest file to be used in Jekyll _data
  */
 gulp.task('version', function () {
-    function stringSrc(filename, string) {
-        var src = require('stream').Readable({ objectMode: true });
-        src._read = function () {
-            this.push(new plugins.util.File({ cwd: "", base: "", path: filename, contents: new Buffer(string) }))
-            this.push(null)
-        };
-        return src;
-    }
-    var stream = stringSrc('assets.json', JSON.stringify({
+    return stringSrc('assets.json', JSON.stringify({
         "version": pkg.version,
         "head": {
             "hash": hashFiles.sync({ files: [ paths.styleDest + '/head.min.css' ] })
@@ -154,61 +140,44 @@ gulp.task('version', function () {
             "hash": hashFiles.sync({ files: [ paths.styleDest + '/style.min.css' ] })
         }
     })).pipe(gulp.dest( '_data' ));
-    return stream;
 });
 
 
 /**
- * Minify Images
+ * Publish and optimise images
  */
- gulp.task('imagemin', function () {
+ gulp.task('images', function () {
     var dir = paths.publicImages;
     return gulp.src( dir + '/**' )
         .pipe(plugins.imagemin({
             progressive: true
-        })).pipe(gulp.dest( dir ));
+        }))
+        .pipe(gulp.dest( dir ))
+        .pipe(plugins.rename({ dirname: "images" }))
+        .pipe(plugins.s3(awsConfig, {
+            headers: { 'Cache-Control': 'max-age=315360000, no-transform, public' }
+        }));
  });
 
 
 /**
- * Publish Assets
+ * Publish assets
  */
 gulp.task('publishAssets', function () {
-
-    var aws = {
-        key: secrets.aws.key,
-        secret: secrets.aws.secret,
-        bucket: secrets.aws.bucket,
-        region: secrets.aws.region
-    };
-
-    gulp.src([ paths.publicDist + '/**' ])
-        .pipe(logMetrics({
-            'secrets': secrets,
-            'dimensions': [{
-                'Name' : 'Compression',
-                'Value' : 'None'
-            }]
+    return gulp.src([ paths.publicDist + '/**' ])
+        .pipe(logAssetSize({
+            'config': secrets.aws,
+            'compressionType': 'None'
         }))
         .pipe(plugins.gzip())
-        .pipe(logMetrics({
-            'secrets': secrets,
-            'dimensions': [{
-                'Name' : 'Compression',
-                'Value' : 'GZip'
-            }]
+        .pipe(logAssetSize({
+            'config': secrets.aws,
+            'compressionType': 'GZip'
         }))
-        .pipe(plugins.s3(aws, {
+        .pipe(plugins.s3(awsConfig, {
             headers: { 'Cache-Control': 'max-age=315360000, no-transform, public' },
             gzippedOnly: true
         }));
-
-    gulp.src([ paths.publicImages + '**/*' ])
-        .pipe(plugins.rename({ dirname: "images" }))
-        .pipe(plugins.s3(aws, {
-            headers: { 'Cache-Control': 'max-age=315360000, no-transform, public' }
-        }));
-
 });
 
 
@@ -273,7 +242,14 @@ gulp.task('deploy', function() {
         secrets.servers.production.destination
     ].join('');
     require('child_process').spawn('rsync', ['-azP', '--delete', '_site/', dest ], {stdio: 'inherit'});
+});
 
+
+/**
+ * Clean build directory
+ */
+gulp.task('clean', function() {
+    del([ paths.build + '/**' ]);
 });
 
 
@@ -286,7 +262,7 @@ gulp.task('build', function (done) {
         'css',
         'js',
         'jekyll:production',
-        'imagemin',
+        'images',
         'version',
         'publishAssets',
     done);
@@ -303,7 +279,7 @@ gulp.task('build:simple', function (done) {
         'css',
         'js',
         'jekyll:production',
-        'imagemin',
+        'images',
         'version',
     done);
 });
