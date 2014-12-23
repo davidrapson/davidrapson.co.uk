@@ -234,21 +234,6 @@ gulp.task('serve', function() {
 
 
 /**
- * Deployment
- */
-gulp.task('deploy', function() {
-    var dest = [
-        secrets.servers.production.username,
-        '@',
-        secrets.servers.production.hostname,
-        ':',
-        secrets.servers.production.destination
-    ].join('');
-    require('child_process').spawn('rsync', ['-azP', '--delete', '_site/', dest ], {stdio: 'inherit'});
-});
-
-
-/**
  * Clean build directory
  */
 gulp.task('clean', function() {
@@ -260,7 +245,7 @@ gulp.task('clean', function() {
  * Build
  */
 gulp.task('build', function (done) {
-    runSequence(
+    return runSequence(
         'clean',
         'css',
         'js',
@@ -277,7 +262,7 @@ gulp.task('build', function (done) {
  * Build without publish
  */
 gulp.task('build:simple', function (done) {
-    runSequence(
+    return runSequence(
         'clean',
         'css',
         'js',
@@ -286,6 +271,30 @@ gulp.task('build:simple', function (done) {
         'version',
     done);
 });
+
+
+/**
+ * Deployment
+ */
+gulp.task('deploy', function() {
+    var dest = [
+        secrets.servers.production.username,
+        '@',
+        secrets.servers.production.hostname,
+        ':',
+        secrets.servers.production.destination
+    ].join('');
+    require('child_process').spawn('rsync', ['-azP', '--delete', '_site/', dest ], {stdio: 'inherit'});
+});
+
+
+/**
+ * Publish
+ * Build + Deploy
+ */
+ gulp.task('publish', function (done) {
+    runSequence('build', 'deploy', done);
+ });
 
 
 /**
