@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var paths = require('../config').paths;
 var serverConfig = require('../secrets.json').servers.production;
+var exec = require('child_process').exec;
 
 /**
  * Temporary solution until gulp 4
@@ -15,7 +16,7 @@ gulp.task('deploy', function(done) {
     done);
 });
 
-gulp.task('rsync', function() {
+gulp.task('rsync', function(done) {
     var dest = [
         serverConfig.username,
         '@',
@@ -23,5 +24,9 @@ gulp.task('rsync', function() {
         ':',
         serverConfig.destination
     ].join('');
-    require('child_process').spawn('rsync', ['-azP', '--delete', '_site/', dest ], {stdio: 'inherit'});
+    exec('rsync -azP --delete _site/ ' + dest, function(error, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+        done();
+    });
 })
