@@ -17,14 +17,5 @@ gulp.task('build', ['clean'], function (done) {
         ['css', 'js'],
         'jekyll:production',
         'version',
-        'publishAssets',
-    done);
-});
-
-gulp.task('build:simple', ['clean'], function (done) {
-    runSequence(
-        ['css', 'js'],
-        'jekyll:production',
-        'version',
     done);
 });
