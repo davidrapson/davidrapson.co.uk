@@ -261,11 +261,11 @@
     /**
      * Lazyloadable images
      */
-    img.lazyload {
+    .js img.lazyload {
         opacity: 0;
         transition: opacity ease-out 1s;
     }
-    img.is-loaded {
+    .js img.is-loaded {
         opacity: 1;
     }
 
