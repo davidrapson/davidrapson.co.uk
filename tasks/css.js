@@ -3,8 +3,15 @@ var plugins = require('gulp-load-plugins')();
 var paths = require('../config.json').paths;
 var pkg = require('../package.json');
 var reload = require('browser-sync').reload;
+var path = require('path');
 
-gulp.task('css', function () {
+/**
+ * Temporary solution until gulp 4
+ * https://github.com/gulpjs/gulp/issues/355
+ */
+var runSequence = require('run-sequence');
+
+gulp.task('css', function (done) {
     return gulp.src([
         paths.styleSrc + '/head.scss',
         paths.styleSrc + '/style.scss'
@@ -15,7 +22,7 @@ gulp.task('css', function () {
             'config': '.scss-lint.yml',
             'bundleExec': true
         }))
-        // Build CSS
+        // Build CSS (Sass, Source maps, AutoPrefixer)
         .pipe(plugins.sourcemaps.init())
         .pipe(plugins.sass())
         .pipe(plugins.sourcemaps.write())
@@ -25,13 +32,12 @@ gulp.task('css', function () {
         .pipe(plugins.csso())
         .pipe(plugins.rename({suffix: '.min'}))
         .pipe(gulp.dest( paths.styleDest ))
+        // Pipe head.min.css to _includes for inlining
+        .pipe(plugins.if(function(file) {
+            return (path.basename(file.path) === 'head.min.css');
+        }, gulp.dest( '_includes' )))
         // Versioned build
         .pipe(gulp.dest( paths.buildDist + '/' + pkg.version + '/stylesheets' ))
+        // BrowserSync reload
         .pipe(reload({ stream:true }));
-});
-
-gulp.task('css:head', ['css'], function () {
-    return gulp.src([
-        paths.styleDest + '/head.min.css',
-    ]).pipe(gulp.dest( '_includes' ));
 });
