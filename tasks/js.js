@@ -9,9 +9,8 @@ gulp.task('js', ['jshint'], function () {
         paths.jsSrc + '/components/lazysizes/lazysizes.min.js'
     ])
         .pipe(plugins.plumber())
-        // Contatenate
+        // Contatenate & Minify
         .pipe(plugins.concat('combined.min.js'))
-        // Minify
         .pipe(plugins.uglify())
         .pipe(gulp.dest( paths.jsDest ))
         // Versioned build

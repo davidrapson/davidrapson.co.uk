@@ -5,7 +5,6 @@ var stringSrc = require('../lib/stringSrc');
 var hashFiles = require('hash-files');
 
 /**
- * Version manifest
  * Build a version manifest file to be used in Jekyll _data
  */
 gulp.task('version', function () {
