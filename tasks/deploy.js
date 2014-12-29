@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 var paths = require('../config').paths;
-var serverConfig = require('../secrets.json').servers.production;
+var serverConfig = require('../secrets.json').deploy;
 var exec = require('child_process').exec;
 
 /**
