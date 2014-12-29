@@ -19,6 +19,10 @@ paginate: 5
 # Environment
 env: production
 
+# Gems
+gems:
+  - jekyll-sitemap
+
 # Build Excludes
 exclude: [
   "assets",
