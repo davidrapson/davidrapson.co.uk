@@ -37,6 +37,7 @@ exclude: [
   "package.json",
   "README.md",
   "secrets.json",
+  "setup.sh",
   "tasks"
 ]
 
