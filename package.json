@@ -35,6 +35,7 @@
     "hash-files": "^1.0.0",
     "jshint-stylish": "^1.0.0",
     "mime": "^1.2.11",
+    "minimist": "^1.1.0",
     "psi": "^0.1.6",
     "require-dir": "^0.1.0",
     "run-sequence": "^1.0.2",
