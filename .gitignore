@@ -1,3 +1,5 @@
+*.sublime-project
+*.sublime-workspace
 .bundle/
 _site/
 bin/

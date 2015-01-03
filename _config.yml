@@ -29,6 +29,8 @@ exclude: [
   "bin",
   "bower.json",
   "config.json",
+  "davidrapson.sublime-project",
+  "davidrapson.sublime-workspace",
   "Gemfile",
   "Gemfile.lock",
   "gulpfile",
