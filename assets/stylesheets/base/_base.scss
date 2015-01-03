@@ -27,8 +27,7 @@
         font-family: $typography-body;
     }
 
-    h1, .h1, h2, .h2, h3, .h3,
-    h4, .h4, h5, .h5, h6, .h6, .ff-display {
+    h1, h2, h3, h4, h5, h6, .ff-display {
         font-weight: bold;
         font-family: $typography-display;
     }
@@ -45,34 +44,30 @@
 /*  @group Base - Headings */
 /*  ========================================================================== */
 
-    h1, .h1 { @include font-size( 28 ); }
-    h2, .h2 { @include font-size( 24 ); }
-    h3, .h3 { @include font-size( 21 ); }
-    h4, .h4 { @include font-size( 18 ); }
-    h5, .h5 { @include font-size( 16 ); }
-    h6, .h6 { @include font-size( 14 ); }
+    h1 { @include font-size( 28 ); }
+    h2 { @include font-size( 24 ); }
+    h3 { @include font-size( 21 ); }
+    h4 { @include font-size( 18 ); }
+    h5 { @include font-size( 16 ); }
+    h6 { @include font-size( 14 ); }
 
     @include mq(small) {
-        h1, .h1 { @include font-size( 32 ); }
-        h2, .h2 { @include font-size( 28 ); }
+        h1 { @include font-size( 32 ); }
+        h2 { @include font-size( 28 ); }
     }
 
-    h1, .h1, h2, .h2, h3, .h3,
-    h4, .h4, h5, .h5, h6, .h6 {
+    h1, h2, h3, h4, h5, h6 {
         line-height: 1.1;
         margin: 1em 0 .5em;
         color: $color-text-headers;
         font-weight: $font-weight-display-normal;
         strong { color: lighten( $color-text-headers, 10% ); }
     }
-
-    h1, .h1 { margin-top: 0; }
-
-    h1, .h1 {
+    h1 {
+        margin-top: 0;
         font-weight: $font-weight-display-bold;
     }
-
-    h6, .h6 {
+    h6 {
         text-transform: uppercase;
     }
 
@@ -90,28 +85,10 @@
     a:hover { cursor: pointer; }
     a:hover, a:active { outline: 0; }
 
-    a {
-        color: $color-link;
-        &:visited {
-            color: $color-link-visited;
-        }
-        &:active {
-            color: $color-link-active;
-        }
-        &:hover {
-            color: $color-link-hover;
-        }
-    }
-
-    [data-href] {
-        cursor: pointer;
-    }
-
-    .block-link {
-        font-weight: inherit;
-        display: block;
-        height: 100%;
-    }
+    a { color: $color-link; }
+    a:visited { color: $color-link-visited; }
+    a:active { color: $color-link-active; }
+    a:hover { color: $color-link-hover; }
 
 /*  ========================================================================== */
 /*  @group Base - Text level elements */
@@ -122,24 +99,10 @@
         margin-bottom: .75em;
     }
 
-    /* Lists */
-    ul, ol, dl {
-        padding: 0;
-    }
-    ul ul, ol ol, dl dl {
-        margin-top: 0;
-        margin-bottom: 0;
-    }
-    ul li, ol li {
-        margin-left: 1.5em;
-    }
-    ul li {
+    ul {
         list-style: disc outside;
     }
-    ul li ul {
-        margin: 0;
-    }
-    ol li {
+    ol {
         list-style: decimal outside;
     }
     dl dt {
@@ -149,43 +112,8 @@
         margin: 0 0 1.5em 0;
     }
 
-    .list-unstyled,
-    .list-inline {
-        @include clearfix;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        li {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-    }
-
-    .list-inline {
-        & > li,
-        & li > a {
-            display: inline-block;
-            zoom: 1;
-        }
-    }
-
-    /* Text Marking */
-    b, strong, mark { font-weight: bold; }
-    dfn, mark { font-style: italic; }
-    ins { text-decoration: none; }
-    del { text-decoration: line-through; }
-
     blockquote {
         margin: 0;
-    }
-
-    mark {
-        background-color: #ffeF95;
-        font-weight: normal;
-        font-style: normal;
-        padding: 2px 4px;
-        border-radius: 3px;
     }
 
     abbr[title], dfn[title] {
@@ -193,7 +121,10 @@
         border-bottom: 1px dotted;
     }
 
-    // Position subscript and superscript content without affecting line-height: h5bp.com/k
+    /**
+     * Position subscript and superscript content
+     * without affecting line-height: h5bp.com/k
+     */
     sub, sup {
         font-size: 75%;
         line-height: 0;
@@ -202,72 +133,3 @@
     }
     sup { top: -0.5em; }
     sub { bottom: -0.25em; }
-
-    /*
-     * Remove text-shadow in selection highlight: h5bp.com/i
-     * These selection rule sets have to be separate.
-     * Customize the background color to match your design.
-     */
-    ::-moz-selection {
-        background: #b3d4fc;
-        text-shadow: none;
-    }
-    ::selection {
-        background: #b3d4fc;
-        text-shadow: none;
-    }
-
-/*  ========================================================================== */
-/*  @group Media */
-/*  ========================================================================== */
-
-    /**
-     * Fluid images
-     */
-    img, picture, embed, object, video {
-        max-width: 100%;
-    }
-
-    img {
-        border: 0 none;
-        -ms-interpolation-mode: bicubic;
-        vertical-align: middle;
-    }
-
-    /**
-     * Non-fluid images if you specify `width` and/or `height` attributes.
-     */
-    img[width],
-    img[height] {
-        max-width: none;
-    }
-
-    .img--full {
-        width: 100%;
-    }
-
-    /**
-     * Images in `figure` elements.
-     */
-    figure {
-        margin: 0;
-    }
-    figure > img,
-    figure > picture {
-        display: block;
-        width: 100%;
-    }
-
-    /**
-     * Lazyloadable images
-     */
-    .js img.lazyload {
-        opacity: 0;
-        transition: opacity ease-out 1s;
-    }
-    .js img.is-loaded {
-        opacity: 1;
-    }
-
-    /* Correct overflow displayed oddly in IE9 */
-    svg:not(:root) { overflow: hidden; }

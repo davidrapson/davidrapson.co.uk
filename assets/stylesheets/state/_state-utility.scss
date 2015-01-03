@@ -18,16 +18,8 @@
         .u-desktop { display: block }
     }
 
-    /**
-     * JS helpers
-     */
-    .js-only { }
-    .no-js .js-only {
-        display: none !important;
-    }
-    .js .js-hidden,
-    .is-contextual {
-        display: none;
+    .u-full-width {
+        width: 100% !important;
     }
 
     /**
@@ -67,4 +59,16 @@
             width: auto;
         }
 
+    }
+
+    /**
+     * JS helpers
+     */
+    .js-only { }
+    .no-js .js-only {
+        display: none !important;
+    }
+    .js .js-hidden,
+    .is-contextual {
+        display: none;
     }
