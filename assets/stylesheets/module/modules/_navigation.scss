@@ -14,7 +14,7 @@
             content: '\B7';
             display: inline-block;
             margin-left: .5em;
-            color: $color-tint-dark;
+            color: palette(tint, dark);
         }
         &:last-child { margin-right: 0; }
         &:last-child:after { display: none; }

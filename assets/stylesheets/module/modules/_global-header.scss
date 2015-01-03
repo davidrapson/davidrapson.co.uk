@@ -3,6 +3,6 @@
 /*  ========================================================================== */
 
     .global-header {
-        background-color: $color-background-header;
+        background-color: palette(background, header);
         margin-bottom: 2em;
     }

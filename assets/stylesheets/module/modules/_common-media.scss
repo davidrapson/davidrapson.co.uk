@@ -26,18 +26,18 @@
      * Figures
      */
     figure {
-        background: $color-tint-light;
-        padding: 1em $layout-gutter;
+        background: palette(tint, light);
+        padding: 1em layout(gutter);
         margin: 1em 0;
 
-        width: 100% + ( $layout-gutter * 2 );
-        margin-left: -($layout-gutter);
+        width: 100% + ( layout(gutter) * 2 );
+        margin-left: -(layout(gutter));
     }
     figure > figcaption {
-        color: $color-tint-dark;
+        color: palette(tint, dark);
         margin-top: .5em;
         font-size: 80%;
-        font-family: $typography-caption;
+        font-family: font-stack(caption);
     }
     figure > img,
     figure > picture {

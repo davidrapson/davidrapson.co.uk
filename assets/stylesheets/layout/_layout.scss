@@ -4,9 +4,9 @@
 
     .l-constrained {
         @include clearfix;
-        width: 100% - ( $layout-gutter * 2 );
-        min-width: $layout-min-width;
-        max-width: $layout-max-width;
+        width: 100% - ( layout(gutter) * 2 );
+        min-width: layout(min);
+        max-width: layout(max);
         margin: 0 auto;
     }
 
@@ -16,7 +16,7 @@
 
     html {
         height: 100%;
-        border-top: 10px solid $color-primary;
+        border-top: 10px solid palette(primary);
     }
 
     .main {
