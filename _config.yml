@@ -2,10 +2,12 @@
 
 # Site settings
 title: David Rapson
-email: david@davidrapson.co.uk
+name: David Rapson
 description: David Rapson is a client-side developer living and working in London, originally from Birmingham.
+email: david@davidrapson.co.uk
 twitter_username: davidrapson
 github_username:  davidrapson
+timezone: Europe/London
 
 # URLs
 baseurl: ""
@@ -18,10 +20,6 @@ paginate: 5
 
 # Environment
 env: production
-
-# Gems
-gems:
-  - jekyll-sitemap
 
 # Build Excludes
 exclude: [
@@ -63,5 +61,6 @@ picture:
 # Gems
 markdown: Pypedown
 gems:
+  - jekyll-sitemap
   - jekyll-pypedown
   - jekyll-minify-html
