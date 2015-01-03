@@ -11,8 +11,3 @@
         clear: both;
     }
 }
-
-@mixin font-size($pxSize, $baseFontSize: 16 ) {
-    font-size: ($pxSize) + px;
-    font-size: ($pxSize / $baseFontSize) + rem;
-}
