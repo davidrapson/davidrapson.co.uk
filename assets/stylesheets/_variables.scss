@@ -29,22 +29,18 @@
             base: $_color-brand,
             light: lighten($_color-brand, 10%)
         ),
+        tint: (
+            dark: #565656,
+            base: #ddd,
+            light: #f8f8f8
+        ),
         text: (
             dark: #222,
             base: #444,
             light: #595959
         ),
         background: (
-            base: #fff,
-            header: #f8f8f8
-        ),
-        tint: (
-            dark: #565656,
-            base: #ddd,
-            light: #fafafa
-        ),
-        border: (
-            base: #ddd
+            base: #fff
         )
     );
 
