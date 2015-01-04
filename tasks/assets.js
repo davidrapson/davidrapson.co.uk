@@ -7,19 +7,21 @@ var imagemin = require('gulp-imagemin');
 var s3Publish = require('../lib/s3Publish');
 var awsConfig = require('../secrets.json').aws;
 var logAssetSize = require('../lib/logAssetSize');
+var shouldLogAssets = (typeof argv.metrics == 'undefined') ? true : argv.metrics;
 var cacheControl = 'max-age=315360000, no-transform, public';
 
 gulp.task('publishAssets', ['publishImages'], function () {
+
     return gulp.src(paths.publicDist + '/**')
         // Log pre-gzipped size to CloudWatch
-        .pipe(gulpif(argv.metrics, logAssetSize({
+        .pipe(gulpif(shouldLogAssets, logAssetSize({
             awsConfig: awsConfig,
             compressionType: 'None'
         })))
         // Gzip assets
         .pipe(gzip())
         // Log post-gzipped size to CloudWatch
-        .pipe(gulpif(argv.metrics, logAssetSize({
+        .pipe(gulpif(shouldLogAssets, logAssetSize({
             awsConfig: awsConfig,
             compressionType: 'GZip'
         })))
