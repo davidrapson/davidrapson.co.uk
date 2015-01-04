@@ -25,7 +25,8 @@ gulp.task('publishAssets', ['publishImages'], function () {
         // Publish assets to S3
         .pipe(s3Publish({
             awsConfig: awsConfig,
-            bucket: awsConfig.bucket
+            bucket: awsConfig.bucket,
+            pathPrefix: 'assets/'
         }, {
             'CacheControl': cacheControl
         }));
