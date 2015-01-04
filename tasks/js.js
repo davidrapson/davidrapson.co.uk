@@ -17,12 +17,22 @@ gulp.task('js', ['jshint'], function () {
         .pipe(gulp.dest( paths.buildDist + '/' + pkg.version + '/javascripts' ));
 });
 
-gulp.task('jshint', function() {
+gulp.task('jshint', ['jshint:dev'], function() {
     return gulp.src([
-        'lib/*.js',
-        './gulpfile.js',
         paths.jsSrc + '/app.js'
     ])
         .pipe(plugins.jshint('.jshintrc'))
+        .pipe(plugins.jshint.reporter('jshint-stylish'));
+});
+
+gulp.task('jshint:dev', function() {
+    return gulp.src([
+        'lib/*.js',
+        'tasks/*.js',
+        './gulpfile.js'
+    ])
+        .pipe(plugins.jshint({
+            node: true
+        }))
         .pipe(plugins.jshint.reporter('jshint-stylish'));
 });

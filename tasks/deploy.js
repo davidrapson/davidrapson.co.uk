@@ -29,4 +29,4 @@ gulp.task('rsync', function(done) {
         console.log(stderr);
         done();
     });
-})
+});
