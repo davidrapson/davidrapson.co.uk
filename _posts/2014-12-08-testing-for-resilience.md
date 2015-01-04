@@ -13,17 +13,17 @@ A. Who cares. It's an edge case, fine. More often, JS *disables itself*. Request
 
 This got me thinking about how I build websites and the tools I use to make sure my work has the broadest reach possible. The following are a few tools I've found invaluable when testing for resilience. **TL;DR: Buy a copy of Charles. Use WebPagetest. Test on lots of devices.**
 
-## [Charles](http://www.charlesproxy.com/)
+## Charles
 
 [Charles](http://www.charlesproxy.com/) is a powerful proxy application. Nearly all of the other tools below Charles can perform the same task in some shape or form. I use if for many things including proxying so I can test local environments on devices, redirecting assets so I can test local changes against a live site, but also to view and manipulate headers. Even so, I know I've only scratched the surface of what this app can do.
 
-## [Network Link Conditioner](http://nshipster.com/network-link-conditioner/)
+## Network Link Conditioner
 
 [Network Link Conditioner](http://nshipster.com/network-link-conditioner/) is a system preference pane for OS X that lets you condition network traffic. It's fantastic for quickly testing against different network speeds.
 
 It's worth noting that [Chrome DevTools can do network conditioning](https://developer.chrome.com/devtools/docs/device-mode#network-conditions) now, but it's nice to have this at the system level rather than just for on browser. Also: Charles can do this too.
 
-## [SPOF-O-Matic](https://chrome.google.com/webstore/detail/spof-o-matic/plikhggfbplemddobondkeogomgoodeg)
+## SPOF-O-Matic
 
 SPOF-O-Matic is a [Chrome extesion](https://chrome.google.com/webstore/detail/spof-o-matic/plikhggfbplemddobondkeogomgoodeg) for testing single-points-of-failure on a page. The tool higlights any scripts that could potentially block your page from loading. This is fantastic tool to check that you are loading all your third-party scripts asynchronously. Oh, and It's written by the guy behind [webpagetest.org](http://www.webpagetest.org) so you know it's good.
 
@@ -31,7 +31,7 @@ WebPagetest provide a blackhole server, and the Chrome extension is essentially 
 
 Oh, and guess what: Charles can do this too.
 
-## [Webpagetest.org](http://www.webpagetest.org)
+## Webpagetest.org
 
 [WebPagetest](http://www.webpagetest.org) is an essential tool for measuring the effect of any performances updates you make as this will help you determine if those changes are actually improving the UX of your site. It will also make you sad that your website isn't as fast as you thought.
 
