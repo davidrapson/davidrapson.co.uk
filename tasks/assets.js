@@ -22,7 +22,7 @@ gulp.task('publishAssets', ['publishImages'], function () {
             awsConfig: awsConfig,
             compressionType: 'GZip'
         }))
-        Publish assets to S3
+        // Publish assets to S3
         .pipe(s3Publish({
             awsConfig: awsConfig,
             bucket: awsConfig.bucket
