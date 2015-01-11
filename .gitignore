@@ -1,6 +1,8 @@
 *.sublime-project
 *.sublime-workspace
 .bundle/
+_data/assets.json
+_includes/head.min.css
 _site/
 bin/
 Gemfile.lock
