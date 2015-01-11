@@ -11,6 +11,7 @@ var runSequence = require('run-sequence');
 
 gulp.task('deploy', function(done) {
     runSequence(
+        'build',
         'publishAssets',
         'rsync',
     done);
