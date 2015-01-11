@@ -74,19 +74,22 @@
 /*  ========================================================================== */
 
     a {
+        color: palette(primary);
         font-weight: bold;
         text-decoration: none;
         word-wrap: break-word;
         line-height: inherit;
     }
-    a:focus { outline: thin dotted; }
-    a:hover { cursor: pointer; }
-    a:hover, a:active { outline: 0; }
-
-    a { color: palette(primary); }
-    a:visited { color: palette(primary, light); }
-    a:active { color: palette(primary); }
-    a:hover { color: palette(primary); }
+    a:hover {
+        color: palette(primary, dark);
+        cursor: pointer;
+    }
+    a:hover, a:active {
+        outline: 0;
+    }
+    a:focus {
+        outline: thin dotted;
+    }
 
 /*  ========================================================================== */
 /*  @group Base - Text level elements */

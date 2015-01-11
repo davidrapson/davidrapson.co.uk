@@ -22,25 +22,26 @@
 //  Colors
 //  -------------------------------------------------------- //
 
-    $_color-brand: #b60000;
+    $_color-primary: #b60000;
 
     $palettes: (
         primary: (
-            base: $_color-brand,
-            light: lighten($_color-brand, 10%)
+            dark: shade($_color-primary, 50%),
+            base: $_color-primary,
+            light: tint($_color-primary, 50%)
         ),
         tint: (
             dark: #565656,
-            base: #ddd,
+            base: #dddddd,
             light: #f8f8f8
         ),
         text: (
-            dark: #222,
-            base: #444,
+            dark: #222222,
+            base: #444444,
             light: #595959
         ),
         background: (
-            base: #fff
+            base: #ffffff
         )
     );
 
