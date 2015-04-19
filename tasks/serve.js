@@ -15,6 +15,7 @@ gulp.task('serve', function() {
 
     gulp.watch([
         paths.styleDest + '/*.css',
+        paths.jsDest + '/*.js',
         '_layouts/**',
         '_includes/**',
         '_drafts/**',
