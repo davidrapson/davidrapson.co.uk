@@ -6,8 +6,7 @@ var pkg = require('../package.json');
 gulp.task('js', ['jshint'], function () {
     return gulp.src([
         paths.jsSrc + '/components/picturefill/dist/picturefill.min.js',
-        paths.jsSrc + '/components/lazysizes/lazysizes.min.js',
-        paths.jsSrc + '/main.js'
+        paths.jsSrc + '/components/lazysizes/lazysizes.min.js'
     ])
         .pipe(plugins.plumber())
         // Contatenate & Minify
