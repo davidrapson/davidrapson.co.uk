@@ -14,7 +14,7 @@
 
     $layout: (
         min: 0,
-        max: 680px,
+        max: 620px,
         gutter: 3%
     );
 
@@ -50,7 +50,7 @@
 //  -------------------------------------------------------- //
 
     $font-stacks: (
-        display: '"abril-titling-narrow", Times, "Times New Roman", Georgia, serif',
+        display: '"jaf-bernina-sans-condensed", sans-serif',
         body: '"soleil", sans-serif',
         caption: 'sans-serif',
         mono: '"Menlo", "Bitstream Vera Sans", Monaco, "Andale Mono", "Lucida Console", "Droid Mono", monospace'

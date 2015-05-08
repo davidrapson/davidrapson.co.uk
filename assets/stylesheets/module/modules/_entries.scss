@@ -53,7 +53,7 @@
     }
 
     .entry--project {
-        background-color: palette(tint);
         padding: 1em 1em .4em;
+        background-color: palette(tint, light);
         -webkit-font-smoothing: antialiased;
     }
