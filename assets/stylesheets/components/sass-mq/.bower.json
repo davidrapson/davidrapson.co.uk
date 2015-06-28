@@ -31,12 +31,12 @@
     "url": "https://github.com/sass-mq/sass-mq"
   },
   "homepage": "https://github.com/sass-mq/sass-mq",
-  "version": "3.1.1",
-  "_release": "3.1.1",
+  "version": "3.1.2",
+  "_release": "3.1.2",
   "_resolution": {
     "type": "version",
-    "tag": "v3.1.1",
-    "commit": "bfa03da2024cfef18f956eaa31f88a2dcc651cec"
+    "tag": "v3.1.2",
+    "commit": "8fbfd83831f4beaf66af241daa52b5f2e71644c1"
   },
   "_source": "git://github.com/sass-mq/sass-mq.git",
   "_target": "~3.1.1",
