@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
-var paths = require('../config').paths;
+var paths = require('./_config.json').paths;
 var pkg = require('../package.json');
 
 gulp.task('js', ['jshint'], function () {

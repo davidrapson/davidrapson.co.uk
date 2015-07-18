@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 var pkg = require('../package.json');
-var paths = require('../config').paths;
+var paths = require('./_config.json').paths;
 var stringSrc = require('./_lib/stringSrc');
 var hashFiles = require('hash-files');
 

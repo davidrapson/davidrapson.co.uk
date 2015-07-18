@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var paths = require('../config').paths;
+var paths = require('./_config.json').paths;
 var gzip = require('gulp-gzip');
 var imagemin = require('gulp-imagemin');
 var s3Publish = require('./_lib/s3Publish');

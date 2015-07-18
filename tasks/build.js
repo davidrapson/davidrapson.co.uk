@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var paths = require('../config').paths;
+var paths = require('./_config.json').paths;
 var del = require('del');
 
 /**

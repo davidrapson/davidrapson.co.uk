@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
-var paths = require('../config.json').paths;
+var paths = require('./_config.json').paths;
 var pkg = require('../package.json');
 var reload = require('browser-sync').reload;
 var path = require('path');
