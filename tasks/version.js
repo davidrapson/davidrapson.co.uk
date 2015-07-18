@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var pkg = require('../package.json');
 var paths = require('../config').paths;
-var stringSrc = require('../lib/stringSrc');
+var stringSrc = require('./_lib/stringSrc');
 var hashFiles = require('hash-files');
 
 /**
@@ -16,5 +16,5 @@ gulp.task('version', function () {
         "style": {
             "hash": hashFiles.sync({ files: [ paths.styleDest + '/style.min.css' ] })
         }
-    })).pipe(gulp.dest( '_data' ));
+    })).pipe(gulp.dest( paths.sourceDir + '/_data' ));
 });

@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>David Rapson</title>
+    <description>David Rapson is a client-side developer living and working in London, originally from Birmingham.</description>
+    <link>http://davidrapson.co.uk/</link>
+    <atom:link href="http://davidrapson.co.uk/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 28 Jun 2015 22:39:59 +0100</pubDate>
+    <lastBuildDate>Sun, 28 Jun 2015 22:39:59 +0100</lastBuildDate>
+    <generator>Jekyll v2.5.1</generator>
+    
+      <item>
+        <title>You should listen to</title>
+        <description>&lt;p&gt;Randomly recommends an album from Metacritic’s top rated list. A little experiment to learn React. Built with &lt;span class=&quot;caps&quot;&gt;JSPM&lt;/span&gt;, React, &lt;span class=&quot;caps&quot;&gt;ES6&lt;/span&gt; and gaffer taped together with shell scripts and some old-school&amp;nbsp;web-scraping.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 01 Mar 2015 00:00:00 +0000</pubDate>
+        <link>http://davidrapson.co.uk/2015/yslt/</link>
+        <guid isPermaLink="true">http://davidrapson.co.uk/2015/yslt/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Testing for resilience</title>
+        <description>&lt;p&gt;Earlier this week &lt;a href=&quot;http://scottjehl.com/&quot;&gt;Scott Jehl&lt;/a&gt; posted a fantastic&amp;nbsp;tweet:&lt;/p&gt;
+
+&lt;blockquote&gt;
+    &lt;p&gt;Q: “But who disables&amp;nbsp;&lt;span class=&quot;caps&quot;&gt;JS&lt;/span&gt;?”
+A. Who cares. It’s an edge case, fine. More often, &lt;span class=&quot;caps&quot;&gt;JS&lt;/span&gt; &lt;em&gt;disables itself&lt;/em&gt;. Requests fail, errors occur. Plan for&amp;nbsp;it.
+&lt;a href=&quot;https://twitter.com/scottjehl/status/540152094314217472&quot;&gt;https://twitter.com/scottjehl/status/540152094314217472&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This got me thinking about how I build websites and the tools I use to make sure my work has the broadest reach possible. The following are a few tools I’ve found invaluable when testing for resilience. &lt;strong&gt;&lt;span class=&quot;caps&quot;&gt;TL&lt;/span&gt;;&lt;span class=&quot;caps&quot;&gt;DR&lt;/span&gt;: Buy a copy of Charles. Use WebPagetest. Test on lots of&amp;nbsp;devices.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;charles&quot;&gt;Charles&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.charlesproxy.com/&quot;&gt;Charles&lt;/a&gt; is a powerful proxy application. Nearly all of the other tools below Charles can perform the same task in some shape or form. I use if for many things including proxying so I can test local environments on devices, redirecting assets so I can test local changes against a live site, but also to view and manipulate headers. Even so, I know I’ve only scratched the surface of what this app can&amp;nbsp;do.&lt;/p&gt;
+
+&lt;h2 id=&quot;network-link-conditioner&quot;&gt;Network Link&amp;nbsp;Conditioner&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://nshipster.com/network-link-conditioner/&quot;&gt;Network Link Conditioner&lt;/a&gt; is a system preference pane for &lt;span class=&quot;caps&quot;&gt;OS&lt;/span&gt; X that lets you condition network traffic. It’s fantastic for quickly testing against different network&amp;nbsp;speeds.&lt;/p&gt;
+
+&lt;p&gt;It’s worth noting that &lt;a href=&quot;https://developer.chrome.com/devtools/docs/device-mode#network-conditions&quot;&gt;Chrome DevTools can do network conditioning&lt;/a&gt; now, but it’s nice to have this at the system level rather than just for on browser. Also: Charles can do this&amp;nbsp;too.&lt;/p&gt;
+
+&lt;h2 id=&quot;spof-o-matic&quot;&gt;&lt;span class=&quot;caps&quot;&gt;SPOF&lt;/span&gt;-O-Matic&lt;/h2&gt;
+
+&lt;p&gt;&lt;span class=&quot;caps&quot;&gt;SPOF&lt;/span&gt;-O-Matic is a &lt;a href=&quot;https://chrome.google.com/webstore/detail/spof-o-matic/plikhggfbplemddobondkeogomgoodeg&quot;&gt;Chrome extesion&lt;/a&gt; for testing single-points-of-failure on a page. The tool higlights any scripts that could potentially block your page from loading. This is fantastic tool to check that you are loading all your third-party scripts asynchronously. Oh, and It’s written by the guy behind &lt;a href=&quot;http://www.webpagetest.org&quot;&gt;webpagetest.org&lt;/a&gt; so you know it’s&amp;nbsp;good.&lt;/p&gt;
+
+&lt;p&gt;WebPagetest provide a blackhole server, and the Chrome extension is essentially a wrapper around that so you can use that directly . Patrick Meenan has a &lt;a href=&quot;http://blog.patrickmeenan.com/2011/10/testing-for-frontend-spof.html&quot;&gt;great blog post&lt;/a&gt; about &lt;span class=&quot;caps&quot;&gt;SPOF&lt;/span&gt;-testing if you want to learn more about&amp;nbsp;this.&lt;/p&gt;
+
+&lt;p&gt;Oh, and guess what: Charles can do this&amp;nbsp;too.&lt;/p&gt;
+
+&lt;h2 id=&quot;webpagetestorg&quot;&gt;Webpagetest.org&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.webpagetest.org&quot;&gt;WebPagetest&lt;/a&gt; is an essential tool for measuring the effect of any performances updates you make as this will help you determine if those changes are actually improving the &lt;span class=&quot;caps&quot;&gt;UX&lt;/span&gt; of your site. It will also make you sad that your website isn’t as fast as you&amp;nbsp;thought.&lt;/p&gt;
+
+&lt;h2 id=&quot;device-testing&quot;&gt;Device&amp;nbsp;Testing&lt;/h2&gt;
+
+&lt;p&gt;This is not a single tool, buy seriously test on some devices. Testing across range of different devices is by far the best way to build resilient websites as you can see how much stuff breaks in a real-world use case. &lt;a href=&quot;http://larahogan.me/blog/&quot;&gt;Lara Hogan&lt;/a&gt; has a great article about how &lt;a href=&quot;https://codeascraft.com/2013/08/09/mobile-device-lab/&quot;&gt;Etsy built their device lab&lt;/a&gt; and it gives some great advice about choosing the most appropriate devices. You don’t need a huge budget, testing on one or two devices is better than no&amp;nbsp;testing.&lt;/p&gt;
+
+&lt;h2 id=&quot;test-on-the-worst-screen-you-can-find&quot;&gt;Test on the worst screen you can&amp;nbsp;find&lt;/h2&gt;
+
+&lt;p&gt;Building for resilience is as much about design as it is technology. don’t just design for shiny new retina screens. Test on the crapiest monitor you can find, on the oldest browser you support. If your design and your still stands up there then you are doing&amp;nbsp;&lt;span class=&quot;caps&quot;&gt;OK.&lt;/span&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;wrap-up&quot;&gt;Wrap-up&lt;/h2&gt;
+
+&lt;p&gt;Building resilient websites is hard, but there’s a big payoff when it’s done right. Hopefully some of these tools make the process that little bit&amp;nbsp;better.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 08 Dec 2014 00:00:00 +0000</pubDate>
+        <link>http://davidrapson.co.uk/2014/testing-for-resilience/</link>
+        <guid isPermaLink="true">http://davidrapson.co.uk/2014/testing-for-resilience/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Responsible Responsive Design</title>
+        <description>&lt;p&gt;Scott Jehl’s Responsible Responsive Design is now out and it’s fantastic reading. Required reading if you are remotely involved in building things for the&amp;nbsp;web.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 25 Nov 2014 00:00:00 +0000</pubDate>
+        <link>http://davidrapson.co.uk/2014/responsible-responsive-design/</link>
+        <guid isPermaLink="true">http://davidrapson.co.uk/2014/responsible-responsive-design/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Perf.rocks</title>
+        <description>&lt;p&gt;A fantastic collection of web performance&amp;nbsp;resources.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 20 Nov 2014 00:00:00 +0000</pubDate>
+        <link>http://davidrapson.co.uk/2014/perf-rocks/</link>
+        <guid isPermaLink="true">http://davidrapson.co.uk/2014/perf-rocks/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Improving performance</title>
+        <description>&lt;h2 id=&quot;pre-requisites&quot;&gt;Pre-requisites&lt;/h2&gt;
+
+&lt;p&gt;Some pre-requisites. I use &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; for my site and serve all static assets from &lt;a href=&quot;http://aws.amazon.com/cloudfront/&quot;&gt;CloudFront&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;It’s also worth noting that I’ve deliberately left out mentions of &lt;a href=&quot;https://sites.google.com/a/webpagetest.org/docs/using-webpagetest/metrics/speed-index&quot;&gt;SpeedIndex&lt;/a&gt; from this article. It was a key metric when I was working on these improvements but it’s something I want to explore in more detail at another&amp;nbsp;time.&lt;/p&gt;
+
+&lt;p&gt;Rather than focussing on every performance improvement I’ve made, I wanted to focus on three specific changes that have taken this site from good-performance to&amp;nbsp;great-performance.&lt;/p&gt;
+
+&lt;h2 id=&quot;inlining-critical-css&quot;&gt;1. Inlining critical&amp;nbsp;&lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt;&lt;/h2&gt;
+
+&lt;p&gt;A lot has been written about the benefits of &lt;a href=&quot;https://developers.google.com/speed/pagespeed/service/PrioritizeCriticalCss&quot;&gt;inlining critical &lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt;&lt;/a&gt;. I’ve experimented with tools like &lt;a href=&quot;https://github.com/addyosmani/critical&quot;&gt;critical&lt;/a&gt; before but never quite got the results I was looking&amp;nbsp;for.&lt;/p&gt;
+
+&lt;p&gt;The biggest switch for me was to think of this as &lt;strong&gt;critical&lt;/strong&gt; &lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt; rather than the “above-the-fold” approach that most tools focus on. This change in approach as allowed me to find an approach I’m really happy&amp;nbsp;with.&lt;/p&gt;
+
+&lt;p&gt;I’m using &lt;span class=&quot;caps&quot;&gt;LESS&lt;/span&gt; as a pre-processor and already split components out into individual includes so I was able to generate the critical &lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt; manually. For me this looked something like the&amp;nbsp;following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;k&quot;&gt;@import&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;base/_normalize.less&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@import&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;base/_base.less&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@import&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;layout/_layout.less&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@import&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;module/modules/_common-text&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@import&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;module/modules/_intro&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@import&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;module/modules/_navigation&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;@import&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;state/_state-utility&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Critical&lt;/em&gt; for this site meant layout styles, base typography styles and navigation. Essentially anything that causes major changes to layout or gives a good baseline experience. By setting a budget of about &lt;strong&gt;10 kb&lt;/strong&gt; for this file I was able to keep it small enough to inline in the &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; of the&amp;nbsp;page.&lt;/p&gt;
+
+&lt;p&gt;Before inlining critical &lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt; my mobile PageSpeed score was &lt;strong&gt;78/100&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;figure&gt;
+    
+          &lt;img src=&quot;//static.davidrapson.co.uk/images/improving-performance/pagespeed-before-480by264-7d2815.jpg&quot; sizes=&quot;100vw&quot; data-srcset=&quot;//static.davidrapson.co.uk/images/improving-performance/pagespeed-before-800by441-7d2815.jpg 800w, //static.davidrapson.co.uk/images/improving-performance/pagespeed-before-600by331-7d2815.jpg 600w, //static.davidrapson.co.uk/images/improving-performance/pagespeed-before-480by264-7d2815.jpg 480w, //static.davidrapson.co.uk/images/improving-performance/pagespeed-before-320by176-7d2815.jpg 320w, //static.davidrapson.co.uk/images/improving-performance/pagespeed-before-480by264-7d2815.jpg 480w&quot; class=&quot;js-lazyload lazyload&quot; alt=&quot;Before inlining critical CSS&quot; /&gt;
+        
+    &lt;figcaption&gt;Before inlining critical &lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;After inlining critical &lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt; the PageSpeed score is now &lt;strong&gt;98/100&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;figure&gt;
+    
+          &lt;img src=&quot;//static.davidrapson.co.uk/images/improving-performance/pagespeed-after-480by264-473f29.jpg&quot; sizes=&quot;100vw&quot; data-srcset=&quot;//static.davidrapson.co.uk/images/improving-performance/pagespeed-after-800by440-473f29.jpg 800w, //static.davidrapson.co.uk/images/improving-performance/pagespeed-after-600by330-473f29.jpg 600w, //static.davidrapson.co.uk/images/improving-performance/pagespeed-after-480by264-473f29.jpg 480w, //static.davidrapson.co.uk/images/improving-performance/pagespeed-after-320by176-473f29.jpg 320w, //static.davidrapson.co.uk/images/improving-performance/pagespeed-after-480by264-473f29.jpg 480w&quot; class=&quot;js-lazyload lazyload&quot; alt=&quot;After inlining critical CSS&quot; /&gt;
+        
+    &lt;figcaption&gt;After inlining critical &lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Combining this with storing &lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt; in localStorage (see next point) has given me the best results. The initial flash of styles that can happen when async loading the rest of the &lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt; now only happens on first page&amp;nbsp;load.&lt;/p&gt;
+
+&lt;h2 id=&quot;store-css-in-localstorage&quot;&gt;2. Store &lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt; in&amp;nbsp;localStorage&lt;/h2&gt;
+
+&lt;p&gt;In addition to inlining critical &lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt; I’ve also stolen a fantastic technique from Patrick Hamann in his &lt;a href=&quot;https://speakerdeck.com/patrickhamann/breaking-news-at-1000ms-velocity-eu-2014&quot;&gt;Breaking news at 1000ms&lt;/a&gt; talk. The basic idea is that initially you load the main stylesheet via ajax and serve it from localStorage from then&amp;nbsp;on.&lt;/p&gt;
+
+&lt;p&gt;I highly recommend &lt;a href=&quot;https://github.com/guardian/frontend/blob/72f21c8bad4b1093a4699a532bddb1d127e971c8/common/app/views/fragments/javaScriptLaterSteps.scala.html#L104-L118&quot;&gt;poking&lt;/a&gt; &lt;a href=&quot;https://github.com/guardian/frontend/blob/236af31e0588457f1721f3cf0ffda58ad409c74a/common/app/views/fragments/loadCss.scala.html#L11-L75&quot;&gt;around&lt;/a&gt; the Guardian’s &lt;a href=&quot;https://github.com/guardian/frontend&quot;&gt;public source&lt;/a&gt; to see how they’ve approached it but you can also see the &lt;a href=&quot;https://github.com/davidrapson/davidrapson.co.uk/blob/master/_includes/head.html#L31-L105&quot;&gt;full source for my attempt on&amp;nbsp;GitHub&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;cachebusting&quot;&gt;Cachebusting&lt;/h3&gt;
+
+&lt;p&gt;It took me a while of reading the &lt;a href=&quot;https://github.com/guardian/frontend/blob/236af31e0588457f1721f3cf0ffda58ad409c74a/common/app/views/fragments/loadCss.scala.html#L31-L40&quot;&gt;original code&lt;/a&gt; but the trick to ensuring that user doesn’t get stuck with out-of-date &lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt; in localStorage   is to use a hash of the stylesheet contents as the localStorage key. The main check that makes this work&amp;nbsp;is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;loadCssFromStorage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;localStorage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;css.6adf242d29936ef2d6ba93c22547512f765d97e9&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;style&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementsByTagName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;head&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setAttribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;data-loaded-from&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;local&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cssLoaded&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;loadCssFromStorage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cssLoaded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As this script is inlined in the &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; we can make sure the hash referenced in &lt;code&gt;localStorage.getItem&lt;/code&gt; is for the current stylesheet; meaning the &lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt; will only get loaded if the user has the &lt;em&gt;latest&lt;/em&gt; version in storage already. Otherwise the new &lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt; should be requested and stored and any old versions&amp;nbsp;cleared.&lt;/p&gt;
+
+&lt;h3 id=&quot;getting-the-hash-into-jekyll&quot;&gt;Getting the hash into&amp;nbsp;Jekyll&lt;/h3&gt;
+
+&lt;p&gt;As I’m using Jekyll I needed a way to reference the latest hash in the &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; of the page. Thankfully Jekyll allows the creating of &lt;a href=&quot;http://jekyllrb.com/docs/datafiles/&quot;&gt;custom data files&lt;/a&gt; as a means of allowing data to be referenced in&amp;nbsp;templates.&lt;/p&gt;
+
+&lt;p&gt;To get the correct hash I used Gulp to get an &lt;span class=&quot;caps&quot;&gt;MD5&lt;/span&gt; hash of the contents of my stylesheets and generate a &lt;span class=&quot;caps&quot;&gt;JSON&lt;/span&gt; file in the &lt;code&gt;_data&lt;/code&gt; directory with the following&amp;nbsp;format:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;version&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;3.1.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;head&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;quot;hash&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;ae127b3e71571938ce0e7a6a39e63d738afd0577&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;style&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;quot;hash&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;6adf242d29936ef2d6ba93c22547512f765d97e9&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This then allowed me to reference the correct hash in my templates as &lt;code&gt;site.data.assets.style.hash&lt;/code&gt;. I also use this file to determining the correct version of the stylesheet to get from&amp;nbsp;CloudFront.&lt;/p&gt;
+
+&lt;h3 id=&quot;a-note-on-cors-and-cloudfront&quot;&gt;A note on &lt;abbr title=&quot;Cross-origin resource sharing&quot;&gt;&lt;span class=&quot;caps&quot;&gt;CORS&lt;/span&gt;&lt;/abbr&gt; and&amp;nbsp;CloudFront&lt;/h3&gt;
+
+&lt;p&gt;This method depends on using &lt;span class=&quot;caps&quot;&gt;XHR&lt;/span&gt; to initially load the stylesheet. As my &lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt; is served from CloudFront and stored on &lt;span class=&quot;caps&quot;&gt;S3&lt;/span&gt; I added a &lt;abbr title=&quot;Cross-origin resource sharing&quot;&gt;&lt;span class=&quot;caps&quot;&gt;CORS&lt;/span&gt;&lt;/abbr&gt; config to my &lt;span class=&quot;caps&quot;&gt;S3&lt;/span&gt; bucket. The thing that caught me out was that by default CloudFront doesn’t forward any headers so the &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; header was ignored. Thankfully the solution is to set CloudFront to forward the &lt;code&gt;Origin&lt;/code&gt;&amp;nbsp;header:&lt;/p&gt;
+
+&lt;blockquote&gt;
+    &lt;p&gt;&lt;abbr title=&quot;Cross-origin resource sharing&quot;&gt;&lt;span class=&quot;caps&quot;&gt;CORS&lt;/span&gt;&lt;/abbr&gt; (Cross Origin Resource Sharing) - CloudFront can now be used to deliver web assets such as JavaScript and fonts to other websites. Because CloudFront can now be configured to pass the Origin header along to the origin server, you can now use &lt;abbr title=&quot;Cross-origin resource sharing&quot;&gt;&lt;span class=&quot;caps&quot;&gt;CORS&lt;/span&gt;&lt;/abbr&gt; to allow cross-origin access to your&amp;nbsp;content.&lt;/p&gt;
+
+    &lt;p&gt;– &lt;a href=&quot;http://aws.amazon.com/blogs/aws/enhanced-cloudfront-customization/&quot;&gt;Deliver Custom Content With&amp;nbsp;CloudFront&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;minify-html&quot;&gt;3. Minify&amp;nbsp;&lt;span class=&quot;caps&quot;&gt;HTML&lt;/span&gt;&lt;/h2&gt;
+
+&lt;p&gt;The final step I took was to minify &lt;span class=&quot;caps&quot;&gt;HTML&lt;/span&gt; output. The &lt;a href=&quot;https://github.com/imathis/jekyll-minify-html&quot;&gt;Jekyll Minify &lt;span class=&quot;caps&quot;&gt;HTML&lt;/span&gt;&lt;/a&gt; plugin let me do this with about three lines of config. I wouldn’t go out of my way to do this but if your setup makes this easy for you without incurring any major overhead then you should do&amp;nbsp;it.&lt;/p&gt;
+
+&lt;h2 id=&quot;final-hold-out&quot;&gt;Final&amp;nbsp;hold-out&lt;/h2&gt;
+
+&lt;p&gt;The elephant in the room when it comes to remaining performance bottlenecks is that I’m serving web-fonts from Typekit. I’m using the &lt;a href=&quot;http://help.typekit.com/customer/portal/articles/649336-embed-code&quot;&gt;async embed code&lt;/a&gt; but ultimately using external web-fonts is a hit to&amp;nbsp;performance.&lt;/p&gt;
+
+&lt;p&gt;I’m using web-fonts from &lt;a href=&quot;http://www.type-together.com/&quot;&gt;TypeTogether&lt;/a&gt; so I could potentially look at self-hosting but currently the cost of doing so is prohibitive, so the trade off is worth&amp;nbsp;it.&lt;/p&gt;
+
+&lt;h2 id=&quot;wrap-up&quot;&gt;Wrap-up&lt;/h2&gt;
+
+&lt;p&gt;If you’ve already got the basics down – minify, gzip, cache – it’s worth spending the time exploring further optimisations. These techniques can take some fine-tuning, and as always &lt;abbr title=&quot;Your mileage may vary&quot;&gt;&lt;span class=&quot;caps&quot;&gt;YMMV&lt;/span&gt;&lt;/abbr&gt;, but if you can get something that works for you it can drastically improve the performance of your&amp;nbsp;page.&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 20 Nov 2014 00:00:00 +0000</pubDate>
+        <link>http://davidrapson.co.uk/2014/improving-performance/</link>
+        <guid isPermaLink="true">http://davidrapson.co.uk/2014/improving-performance/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Deploying JavaScript Applications Revisited</title>
+        <description>&lt;p&gt;At the time the article was published I was only scratching the surface of the techniques mentioned. Initially I excused this in part because I was working largely on typical content-driven websites, not &lt;del&gt;web applications&lt;/del&gt; &lt;a href=&quot;http://adactio.com/journal/6246/&quot;&gt;web thangs&lt;/a&gt;. It’s been interesting to revisit the article every few months and see how much more of those techniques I use, even when working on websites that weren’t full client-side&amp;nbsp;applications.&lt;/p&gt;
+
+&lt;p&gt;As always, the exact approaches depend on the needs of the project but I wanted to explore the techniques Alex covered and how they’ve applied for&amp;nbsp;me:&lt;/p&gt;
+
+&lt;h2 id=&quot;loading-what-you-need-is-better-than-byte-shaving&quot;&gt;Loading what you need is better than byte&amp;nbsp;shaving&lt;/h2&gt;
+
+&lt;p&gt;This has been the biggest change in approach for me and it’s not even about deployment. By considering performance as part of the design and discovery process you can make large performance gains before you’ve even started writing any code. The impact of a feature has been considered beforehand. For me this mostly meant the&amp;nbsp;following:&lt;/p&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;Moving to a simple share link and loading social widgets on-demand rather than just showing the default widgets&amp;nbsp;up-front.&lt;/li&gt;
+    &lt;li&gt;If a site has third-party comments, making them accessible via a link and deferring the load of the comments &lt;span class=&quot;caps&quot;&gt;JS&lt;/span&gt; until the user needs&amp;nbsp;them.&lt;/li&gt;
+    &lt;li&gt;Defer infrequently used but heavy features until they are absolutely&amp;nbsp;needed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Notice a theme here&lt;/strong&gt;: defer, defer, defer; especially for third-party code. Nothing groundbreaking, but making this part of the design phase has meant it’s far more likely to get done right from the&amp;nbsp;outset.&lt;/p&gt;
+
+&lt;h2 id=&quot;dont-penalise-modern-users&quot;&gt;Don’t penalise modern&amp;nbsp;users&lt;/h2&gt;
+
+&lt;p&gt;My focus has been on content-driven sites where &lt;a href=&quot;http://responsivenews.co.uk/post/18948466399/cutting-the-mustard&quot;&gt;Cutting the Mustard&lt;/a&gt; has proven to be a more appropriate approach for me rather than going down the route of lots of conditional&amp;nbsp;builds.&lt;/p&gt;
+
+&lt;p&gt;Tim Kadlec suggested an approach I like a lot in his &lt;a href=&quot;http://www.youtube.com/watch?v=kylciFbrwcY&quot;&gt;Reaching Everyone Fast&lt;/a&gt; talk which combined &lt;a href=&quot;https://github.com/filamentgroup/loadJS&quot;&gt;Filament Group’s load&lt;span class=&quot;caps&quot;&gt;JS&lt;/span&gt;&lt;/a&gt; with a cutting the mustard check to only load the main &lt;span class=&quot;caps&quot;&gt;JS&lt;/span&gt; on modern&amp;nbsp;browsers:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;querySelector&amp;#39;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;localStorage&amp;#39;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;addEventListener&amp;#39;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;loadJS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;path/to/enhanced.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I like this approach as it forces you to focus on building a strong core foundation for all users which becomes the default view for &lt;span class=&quot;caps&quot;&gt;IE8&lt;/span&gt; and low-powered mobile devices whilst freeing you up to user newer techniques and technologies for modern&amp;nbsp;browsers.&lt;/p&gt;
+
+&lt;h2 id=&quot;one-less-jpeg&quot;&gt;One less&amp;nbsp;jpeg&lt;/h2&gt;
+
+&lt;p&gt;Images are often the elephant in the room, particularly with responsive web design. One less jpeg is certainly catchy and gets you thinking about relative sizes of images vs. JavaScript but doesn’t cover the whole picture. In many cases &lt;a href=&quot;http://timkadlec.com/2014/09/js-parse-and-execution-time/&quot;&gt;parse and execution time&lt;/a&gt; is the more important consideration—especially on low powered devices—and often images are the content, rather than just being&amp;nbsp;decorative.&lt;/p&gt;
+
+&lt;p&gt;That said there are a couple of tools that I’ve been using to make sure I’m being responsible with&amp;nbsp;images:&lt;/p&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;https://github.com/scottjehl/picturefill&quot;&gt;Picturefill&lt;/a&gt; – Since the original article was written picturefill has become a really viable option and (parts of) &lt;code&gt;picture&lt;/code&gt; have started to land in major&amp;nbsp;browsers.&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://cloudinary.com/&quot;&gt;Cloudinary&lt;/a&gt; – Cloudinary is an image management &lt;abbr title=&quot;Software as a service&quot;&gt;SaaS&lt;/abbr&gt;. There are many like it, but this one does some smart content-negation to automatically serve WebP where supported. Chrome only for now but it makes a huge&amp;nbsp;difference.&lt;/li&gt;
+    &lt;li&gt;Lazy load non-essential images – Fairly standard practice but I’ve been making sure to defer load of any non-essential images (list images, thumbnails&amp;nbsp;etc.)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;package-all-the-pieces-together&quot;&gt;Package all the pieces&amp;nbsp;together&lt;/h2&gt;
+
+&lt;h3 id=&quot;fonts-and-icons&quot;&gt;Fonts and&amp;nbsp;Icons&lt;/h3&gt;
+
+&lt;p&gt;Alex’s article mentioned using icon fonts for &lt;span class=&quot;caps&quot;&gt;UI&lt;/span&gt; icons. A lot has been written since about the &lt;a href=&quot;http://ianfeather.co.uk/ten-reasons-we-switched-from-an-icon-font-to-svg/&quot;&gt;relative merits of using icon fonts&lt;/a&gt;. I’ve had a lot of success with &lt;a href=&quot;https://github.com/filamentgroup/grunticon&quot;&gt;grunticon&lt;/a&gt; and even &lt;a href=&quot;http://css-tricks.com/svg-sprites-use-better-icon-fonts/&quot;&gt;&lt;span class=&quot;caps&quot;&gt;SVG&lt;/span&gt; sprites&lt;/a&gt; which give you even more freedom than icon fonts when it comes to styling individual elements. It’s interesting to see how far these different techniques have&amp;nbsp;come.&lt;/p&gt;
+
+&lt;h3 id=&quot;css-files&quot;&gt;&lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt;&amp;nbsp;Files&lt;/h3&gt;
+
+&lt;p&gt;The orignal article discussed building &lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt; directly into the &lt;span class=&quot;caps&quot;&gt;JS&lt;/span&gt; application build as a string. It was a pretty interesting approach and one I can see working really well for third-party client-side apps. I’ve not had same contstraints yet so stick with the old minify, gzip, cdn, cache heavily&amp;nbsp;approach.&lt;/p&gt;
+
+&lt;h2 id=&quot;build-apps-into-self-contained-folders&quot;&gt;Build apps into self-contained&amp;nbsp;folders&lt;/h2&gt;
+
+&lt;p&gt;Building all static assets into self contained folders makes sense even when not all your application code is client-side. By having&amp;nbsp;versioned&lt;/p&gt;
+
+&lt;ol&gt;
+    &lt;li&gt;Build the packaged, minified versions of all static assets into a build folder, e.g., &lt;code&gt;/build/1.1.0&lt;/code&gt;, using the version number specified in a &lt;code&gt;package.json&lt;/code&gt;&amp;nbsp;file.&lt;/li&gt;
+    &lt;li&gt;Push that build folder up to &lt;span class=&quot;caps&quot;&gt;S3&lt;/span&gt; using &lt;a href=&quot;https://github.com/jpillora/grunt-aws&quot;&gt;grunt-aws&lt;/a&gt; (grunt-s3 has since been deprecated) with a large Cache Control value and serve via&amp;nbsp;CloudFront.&lt;/li&gt;
+    &lt;li&gt;On the server, read the version number in from a &lt;code&gt;package.json&lt;/code&gt; file and write a helper which returns the versioned path to the &lt;span class=&quot;caps&quot;&gt;CDN&lt;/span&gt; in production (e.g., cdn.mysite.com/&lt;span class=&quot;caps&quot;&gt;1.1.0&lt;/span&gt;/) or else the default server path in development mode. Use this for serving the right version of&amp;nbsp;assets.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The versioning of assets alongside makes it easy to rollback to a previous version, or test against a pre-release version safely. &lt;code&gt;grunt-aws&lt;/code&gt; does some smart stuff to auto gzip relevant assets and makes it easy to add any extra headers you want. Being so used to &lt;code&gt;mod_deflate&lt;/code&gt; made the need to manually gzip files come as a slight surprise so it’s good to have a tool that  automates this stuff away for&amp;nbsp;you.&lt;/p&gt;
+
+&lt;h2 id=&quot;wrap-up-redux&quot;&gt;Wrap Up&amp;nbsp;Redux&lt;/h2&gt;
+
+&lt;p&gt;Revisiting &lt;a href=&quot;https://alexsexton.com/blog/2013/03/deploying-javascript-applications/&quot;&gt;Deploying JavaScript Applications&lt;/a&gt; over time has been an interesting process. It’s cool to see how much of this has become part of my standard practice but also how things have changed. This doesn’t even cover any of the fascinating work thats being done around &lt;a href=&quot;https://docs.google.com/a/davidrapson.co.uk/presentation/&quot;&gt;Optimising the critical rendering path&lt;/a&gt; such as inlining &lt;del&gt;above-the-fold&lt;/del&gt; &lt;a href=&quot;https://github.com/addyosmani/critical&quot;&gt;critical &lt;span class=&quot;caps&quot;&gt;CSS&lt;/span&gt;&lt;/a&gt;. Let’s hope even more has changed if I revisit it again in 6&amp;nbsp;months.&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 16 Nov 2014 00:00:00 +0000</pubDate>
+        <link>http://davidrapson.co.uk/2014/deploying-javascript-applications-revisited/</link>
+        <guid isPermaLink="true">http://davidrapson.co.uk/2014/deploying-javascript-applications-revisited/</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

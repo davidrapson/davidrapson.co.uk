@@ -5,20 +5,18 @@ var reload = browserSync.reload;
 
 gulp.task('serve', function() {
 
-    var baseDir = '_site';
-
     browserSync({
         server: {
-            baseDir: baseDir
+            baseDir: paths.buildDir
         }
     });
 
     gulp.watch([
         paths.styleDest + '/*.css',
-        '_layouts/**',
-        '_includes/**',
-        '_drafts/**',
-        '_posts/**'
+        paths.sourceDir + '/_layouts/**',
+        paths.sourceDir + '/_includes/**',
+        paths.sourceDir + '/_drafts/**',
+        paths.sourceDir + '/_posts/**'
     ], ['jekyll']);
 
     gulp.watch(paths.styleSrc + '/**/*.scss',['css']);
@@ -28,6 +26,6 @@ gulp.task('serve', function() {
     gulp.watch([
         paths.styleDest + '/*.css',
         paths.jsDest + '/*.js'
-    ], {cwd: baseDir}, reload);
+    ], {cwd: paths.buildDir}, reload);
 
 });

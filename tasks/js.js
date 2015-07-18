@@ -27,8 +27,7 @@ gulp.task('jshint', ['jshint:dev'], function() {
 
 gulp.task('jshint:dev', function() {
     return gulp.src([
-        'lib/*.js',
-        'tasks/*.js',
+        'tasks/**/*.js',
         './gulpfile.js'
     ])
         .pipe(plugins.jshint({

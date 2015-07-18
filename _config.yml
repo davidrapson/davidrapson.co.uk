@@ -1,5 +1,8 @@
 # Config
 
+source: ./source
+destination: ./build
+
 # Environment
 env: production
 
@@ -39,23 +42,7 @@ picture:
 
 # Build Excludes
 exclude: [
-  "*.log",
-  "assets",
-  "bin",
-  "bower.json",
-  "config.json",
-  "davidrapson.sublime-project",
-  "davidrapson.sublime-workspace",
-  "Gemfile",
-  "Gemfile.lock",
-  "gulpfile",
-  "lib",
-  "node_modules",
-  "package.json",
-  "README.md",
-  "secrets.json",
-  "setup.sh",
-  "tasks"
+  "assets"
 ]
 
 # Gems

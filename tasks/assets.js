@@ -2,9 +2,9 @@ var gulp = require('gulp');
 var paths = require('../config').paths;
 var gzip = require('gulp-gzip');
 var imagemin = require('gulp-imagemin');
-var s3Publish = require('../lib/s3Publish');
+var s3Publish = require('./_lib/s3Publish');
 var awsConfig = require('../secrets.json').aws;
-var logAssetSize = require('../lib/logAssetSize');
+var logAssetSize = require('./_lib/logAssetSize');
 var cacheControl = 'max-age=315360000, no-transform, public';
 
 gulp.task('publishAssets', ['publishImages'], function () {

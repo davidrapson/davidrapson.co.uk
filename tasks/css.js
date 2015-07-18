@@ -35,7 +35,7 @@ gulp.task('css', function (done) {
         // Pipe head.min.css to _includes for inlining
         .pipe(plugins.if(function(file) {
             return (path.basename(file.path) === 'head.min.css');
-        }, gulp.dest( '_includes' )))
+        }, gulp.dest( paths.sourceDir + '/_includes' )))
         // Versioned build
         .pipe(gulp.dest( paths.buildDist + '/' + pkg.version + '/stylesheets' ))
         // BrowserSync reload

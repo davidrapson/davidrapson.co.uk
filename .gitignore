@@ -1,11 +1,11 @@
 *.sublime-project
 *.sublime-workspace
 .bundle/
-_data/assets.json
-_includes/head.min.css
-_site/
 bin/
+build/
 Gemfile.lock
 node_modules/
 public/
 secrets.json
+source/_data/assets.json
+source/_includes/head.min.css
