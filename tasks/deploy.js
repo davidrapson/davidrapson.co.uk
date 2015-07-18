@@ -25,7 +25,7 @@ gulp.task('rsync', function(done) {
         ':',
         serverConfig.destination
     ].join('');
-    exec('rsync -azP --delete _site/ ' + dest, function(error, stdout, stderr) {
+    exec('rsync -azP --delete ' + paths.buildDir + ' ' + dest, function(error, stdout, stderr) {
         console.log(stdout);
         console.log(stderr);
         done();
