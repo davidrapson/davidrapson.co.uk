@@ -1,57 +1,59 @@
-#!/bin/bash -e
+#!/bin/bash
+set -e
 
-#####################################################
-# Install NPM modules
-#####################################################
+installed() {
+    hash "$1" 2>/dev/null
+}
 
-printf "\n\r\n\r====================================\n\r\n\r"
-printf "Installing NPM modules"
-printf "\n\r\n\r====================================\n\r\n\r"
+banner() {
+    printf "\n\r\n\r====================================\n\r"
+    printf "${1}"
+    printf "\n\r====================================\n\r\n\r"
+}
 
-npm install
+install_gems() {
+    if installed bundle; then
+        banner "Running bundle install for jekyll"
+        bundle
+    else
+        EXTRA_STEPS+=("You need to install ruby to continue: https://www.ruby-lang.org/")
+        EXTRA_STEPS+=("Once you have ruby you will need to install Bundler with: gem install bundler")
+    fi
+}
 
-#####################################################
-# Install Bower JS components
-#####################################################
+install_npm() {
+    if installed node || installed npm; then
+        banner "Running npm install"
+        npm install
+    else
+        EXTRA_STEPS+=("You need to install node to continue https://nodejs.org/")
+    fi
+}
 
-printf "\n\r\n\r====================================\n\r\n\r"
-printf "Installing bower JS components"
-printf "\n\r\n\r====================================\n\r\n\r"
+install_dependencies() {
+    install_gems
+    install_npm
+}
 
-pushd assets/javascripts
-rm -rf components
-bower install
+compile_assets() {
+    banner "Compiling assets"
+    gulp build:simple
+}
 
-popd
+report() {
+    if [[ ${#EXTRA_STEPS[@]} -gt 0 ]]; then
+        echo -e
+        echo "Remaining tasks: "
+        for i in "${!EXTRA_STEPS[@]}"; do
+            echo "  $((i+1)). ${EXTRA_STEPS[$i]}"
+        done
+    fi
+}
 
-#####################################################
-# Install Bower CSS components
-#####################################################
+main() {
+    install_dependencies
+    compile_assets
+    report
+}
 
-printf "\n\n"
-printf "Installing bower css components"
-printf "\n\n"
-
-pushd assets/stylesheets
-rm -rf components
-bower install
-
-popd
-
-#####################################################
-# Compile clientside assets
-#####################################################
-
-printf "\n\r\n\r====================================\n\r\n\r"
-printf "Compiling assets"
-printf "\n\r\n\r====================================\n\r\n\r"
-
-gulp build:simple
-
-#####################################################
-# Done
-#####################################################
-
-printf "\n\r\n\r====================================\n\r\n\r"
-printf "Good to go."
-printf "\n\r\n\r====================================\n\r\n\r"
+main

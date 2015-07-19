@@ -19,3 +19,10 @@ gulp.task('build', ['clean'], function (done) {
         'version',
     done);
 });
+
+gulp.task('build:simple', ['clean'], function (done) {
+    runSequence(
+        ['css', 'js'],
+        'jekyll',
+    done);
+});

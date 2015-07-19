@@ -75,7 +75,6 @@ GEM
     pygments.rb (0.6.0)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.1.0)
-    rainbow (2.0.0)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -83,9 +82,6 @@ GEM
     rubypants (0.2.0)
     safe_yaml (1.0.4)
     sass (3.4.8)
-    scss-lint (0.31.0)
-      rainbow (~> 2.0)
-      sass (~> 3.4.1)
     timers (4.0.1)
       hitimes
     toml (0.1.2)
@@ -106,5 +102,3 @@ DEPENDENCIES
   jekyll-pypedown
   jekyll-sitemap
   mini_magick
-  sass
-  scss-lint
