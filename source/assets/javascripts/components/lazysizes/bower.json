@@ -1,9 +1,9 @@
 {
 	"name": "lazysizes",
 	"repo": "afarkas/lazysizes",
-	"version": "0.5.3",
-	"main": "lazysizes.min.js",
+	"main": "lazysizes.js",
 	"scripts": [
+		"lazysizes.js",
 		"lazysizes.min.js"
 	],
 	"license": "MIT",
@@ -28,8 +28,11 @@
 		"/test",
 		"/tests",
 		"index.html",
+	  	"no-src.html",
+	  	"animate.html",
 		"Gruntfile.js",
 		"component.json",
-		"package.json"
+		"package.json",
+	    "plato-report"
 	]
 }

@@ -25,19 +25,20 @@ For background images, use data-bg attribute:
 (function(window, document){
 	/*jshint eqnull:true */
 	'use strict';
-	var config, bgLoad;
+	var bgLoad;
 	var uniqueUrls = {};
 
-	if(document.addEventListener && window.getComputedStyle){
-		config = window.lazySizesConfig || (window.lazySizes && lazySizes.cfg) || {};
+	if(document.addEventListener){
 
 		bgLoad = function (url, cb){
 			var img = document.createElement('img');
 			img.onload = function(){
 				img.onload = null;
+				img.onerror = null;
 				img = null;
 				cb();
 			};
+			img.onerror = img.onload;
 
 			img.src = url;
 
@@ -46,68 +47,23 @@ For background images, use data-bg attribute:
 			}
 		};
 
-		document.addEventListener('lazybeforeunveil', function(e){
-			var tmp, bg, load;
+		addEventListener('lazybeforeunveil', function(e){
+			var tmp, load, bg, poster;
 			if(!e.defaultPrevented) {
 
 				if(e.target.preload == 'none'){
 					e.target.preload = 'auto';
-					e.preventDefault();
 				}
 
 				tmp = e.target.getAttribute('data-link');
 				if(tmp){
 					addStyleScript(tmp, true);
-					if(config.clearAttr){
-						e.target.removeAttribute('data-link');
-					}
-				}
-
-				// handle data-bg
-				tmp = e.target.getAttribute('data-bg');
-				if (tmp) {
-					bg = getComputedStyle(e.target).getPropertyValue("backgroundImage");
-					load = function(){
-						e.target.style.backgroundImage = 'url(' + tmp + ')';
-					};
-
-					if(bg && bg != 'none'){
-						bgLoad(tmp, load);
-					} else {
-						load();
-					}
-
-					if(config.clearAttr){
-						e.target.removeAttribute('data-bg');
-					}
-				}
-
-				// handle data-poster
-				tmp = e.target.getAttribute('data-poster');
-				if(tmp){
-
-					load = function(){
-						e.target.poster = tmp;
-					};
-
-					if(e.target.getAttribute('poster')){
-						bgLoad(tmp, load);
-					} else {
-						load();
-					}
-
-					if(config.clearAttr){
-						e.target.removeAttribute('data-poster');
-					}
 				}
 
 				// handle data-script
 				tmp = e.target.getAttribute('data-script');
 				if(tmp){
 					addStyleScript(tmp);
-					if(config.clearAttr){
-						e.target.removeAttribute('data-script');
-					}
 				}
 
 				// handle data-require
@@ -116,9 +72,33 @@ For background images, use data-bg attribute:
 					if(window.require){
 						require([tmp]);
 					}
-					if(config.clearAttr){
-						e.target.removeAttribute('data-require');
-					}
+				}
+
+				// handle data-bg
+				bg = e.target.getAttribute('data-bg');
+				if (bg) {
+					e.detail.firesLoad = true;
+					load = function(){
+						e.target.style.backgroundImage = 'url(' + bg + ')';
+						e.detail.firesLoad = false;
+						lazySizes.fire(e.target, '_lazyloaded', {}, true, true);
+					};
+
+					bgLoad(bg, load);
+				}
+
+				// handle data-poster
+				poster = e.target.getAttribute('data-poster');
+				if(poster){
+					e.detail.firesLoad = true;
+					load = function(){
+						e.target.poster = poster;
+						e.detail.firesLoad = false;
+						lazySizes.fire(e.target, '_lazyloaded', {}, true, true);
+					};
+
+					bgLoad(poster, load);
+
 				}
 			}
 		}, false);

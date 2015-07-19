@@ -1,9 +1,9 @@
 {
   "name": "lazysizes",
   "repo": "afarkas/lazysizes",
-  "version": "0.5.3",
-  "main": "lazysizes.min.js",
+  "main": "lazysizes.js",
   "scripts": [
+    "lazysizes.js",
     "lazysizes.min.js"
   ],
   "license": "MIT",
@@ -37,19 +37,22 @@
     "/test",
     "/tests",
     "index.html",
+    "no-src.html",
+    "animate.html",
     "Gruntfile.js",
     "component.json",
-    "package.json"
+    "package.json",
+    "plato-report"
   ],
   "homepage": "https://github.com/aFarkas/lazysizes",
-  "_release": "0.5.3",
+  "version": "1.1.4",
+  "_release": "1.1.4",
   "_resolution": {
     "type": "version",
-    "tag": "0.5.3",
-    "commit": "31313644d9a273ee5f6e9716510fc824166965bf"
+    "tag": "1.1.4",
+    "commit": "df18babdda83f64ae486ccc6ee9b3be5b7e6abe6"
   },
   "_source": "git://github.com/aFarkas/lazysizes.git",
-  "_target": "~0.5.3",
-  "_originalSource": "lazysizes",
-  "_direct": true
+  "_target": "~1.1",
+  "_originalSource": "lazysizes"
 }
