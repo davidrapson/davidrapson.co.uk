@@ -17,11 +17,6 @@ gulp.task('css', function (done) {
         paths.styleSrc + '/style.scss'
     ])
         .pipe(plugins.plumber())
-        // Lint CSS
-        .pipe(plugins.scssLint({
-            'config': '.scss-lint.yml',
-            'bundleExec': true
-        }))
         // Build CSS (Sass, Source maps, AutoPrefixer)
         .pipe(plugins.sourcemaps.init())
         .pipe(plugins.sass())
