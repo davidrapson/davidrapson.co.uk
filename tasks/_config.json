@@ -8,7 +8,7 @@
         "jsSrc": "source/assets/javascripts",
         "jsDest": "source/public/javascripts",
         "build": "source/public",
-        "buildDist": "source/public/dis/",
+        "buildDist": "source/public/dist",
         "publicImages": "build/images",
         "publicDist": "build/public/dist"
     }
