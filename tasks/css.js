@@ -7,7 +7,7 @@ var path = require('path');
 gulp.task('css', function (done) {
 
     function isHead(file) {
-        return (path.basename(file.path) === 'head.min.css');
+        return (path.basename(file.path) === 'head.css');
     }
 
     return gulp.src([

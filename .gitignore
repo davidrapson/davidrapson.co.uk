@@ -6,4 +6,4 @@ build/
 node_modules/
 public/
 source/_data/manifest.json
-source/_includes/head.min.css
+source/_includes/head.css

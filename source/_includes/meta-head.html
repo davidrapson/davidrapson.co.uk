@@ -23,7 +23,7 @@
     {% capture stylesheet_url  %}//{{ site.cdn_url }}/assets/stylesheets/{{ site.data.manifest["style.css"] }}{% endcapture %}
     {% if site.env == 'production' %}
         <!-- Inline critical CSS -->
-        <style>{% include head.min.css %}</style>
+        <style>{% include head.css %}</style>
         <noscript>
             <link rel="stylesheet" href="{{ stylesheet_url }}">
         </noscript>

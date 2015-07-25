@@ -13,16 +13,20 @@ gulp.task('clean', function(done) {
     del([ paths.sourceDir + '/_data/manifest.json' ], done);
 });
 
-gulp.task('build', ['clean'], function (done) {
+gulp.task('build', function (done) {
     runSequence(
-        ['css', 'js'],
+        'clean',
+        'css',
+        'js',
         'jekyll:production',
     done);
 });
 
-gulp.task('build:simple', ['clean'], function (done) {
+gulp.task('build:simple', function (done) {
     runSequence(
-        ['css', 'js'],
+        'clean',
+        'css',
+        'js',
         'jekyll',
     done);
 });
