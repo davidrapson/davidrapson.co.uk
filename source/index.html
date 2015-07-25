@@ -9,8 +9,6 @@ layout: default
                 {% capture post %}{{ post }}{% endcapture %}
                 {% if post.type == 'micro' %}
                     {% include entry-micro.html %}
-                {% elsif post.type == 'project' %}
-                    {% include entry-project.html %}
                 {% else %}
                     {% include entry-summary.html %}
                 {% endif %}

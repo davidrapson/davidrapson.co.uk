@@ -32,16 +32,16 @@
         ),
         tint: (
             dark: #565656,
-            base: #dddddd,
+            base: #bababa,
             light: #f8f8f8
         ),
         text: (
-            dark: #222222,
-            base: #444444,
-            light: #595959
+            dark: #181822,
+            base: #333344,
+            light: #444455
         ),
         background: (
-            base: #ffffff
+            base: #efefef
         )
     );
 
@@ -50,8 +50,8 @@
 //  -------------------------------------------------------- //
 
     $font-stacks: (
-        display: '"jaf-bernina-sans-condensed", sans-serif',
-        body: '"soleil", sans-serif',
+        display: '"ff-meta-web-pro-condensed", sans-serif',
+        body: '"ff-meta-web-pro", sans-serif',
         caption: 'sans-serif',
         mono: '"Menlo", "Bitstream Vera Sans", Monaco, "Andale Mono", "Lucida Console", "Droid Mono", monospace'
     );
