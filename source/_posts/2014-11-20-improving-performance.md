@@ -56,8 +56,6 @@ Combining this with storing CSS in localStorage (see next point) has given me th
 
 In addition to inlining critical CSS I've also stolen a fantastic technique from Patrick Hamann in his [Breaking news at 1000ms](https://speakerdeck.com/patrickhamann/breaking-news-at-1000ms-velocity-eu-2014) talk. The basic idea is that initially you load the main stylesheet via ajax and serve it from localStorage from then on.
 
-I highly recommend [poking](https://github.com/guardian/frontend/blob/72f21c8bad4b1093a4699a532bddb1d127e971c8/common/app/views/fragments/javaScriptLaterSteps.scala.html#L104-L118) [around](https://github.com/guardian/frontend/blob/236af31e0588457f1721f3cf0ffda58ad409c74a/common/app/views/fragments/loadCss.scala.html#L11-L75) the Guardian's [public source](https://github.com/guardian/frontend) to see how they've approached it but you can also see the [full source for my attempt on GitHub](https://github.com/davidrapson/davidrapson.co.uk/blob/master/_includes/head.html#L31-L105)
-
 ### Cachebusting
 
 It took me a while of reading the [original code](https://github.com/guardian/frontend/blob/236af31e0588457f1721f3cf0ffda58ad409c74a/common/app/views/fragments/loadCss.scala.html#L31-L40) but the trick to ensuring that user doesn't get stuck with out-of-date CSS in localStorage   is to use a hash of the stylesheet contents as the localStorage key. The main check that makes this work is:
@@ -86,7 +84,7 @@ As this script is inlined in the `<head>` we can make sure the hash referenced i
 
 ### Getting the hash into Jekyll
 
-As I'm using Jekyll I needed a way to reference the latest hash in the `<head>` of the page. Thankfully Jekyll allows the creating of [custom data files](http://jekyllrb.com/docs/datafiles/) as a means of allowing data to be referenced in templates.
+As I'm using Jekyll I needed a way to reference the latest hash in the `<head>` of the page. Thankfully Jekyll allows the creation of [custom data files](http://jekyllrb.com/docs/datafiles/) as a means of allowing data to be referenced in templates.
 
 To get the correct hash I used Gulp to get an MD5 hash of the contents of my stylesheets and generate a JSON file in the `_data` directory with the following format:
 
@@ -119,8 +117,6 @@ The final step I took was to minify HTML output. The [Jekyll Minify HTML](https:
 ## Final hold-out
 
 The elephant in the room when it comes to remaining performance bottlenecks is that I'm serving web-fonts from Typekit. I'm using the [async embed code](http://help.typekit.com/customer/portal/articles/649336-embed-code) but ultimately using external web-fonts is a hit to performance.
-
-I'm using web-fonts from [TypeTogether](http://www.type-together.com/) so I could potentially look at self-hosting but currently the cost of doing so is prohibitive, so the trade off is worth it.
 
 ## Wrap-up
 
