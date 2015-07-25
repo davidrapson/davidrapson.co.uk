@@ -1,6 +1,7 @@
 {
     "paths": {
         "sourceDir": "source",
+        "sourceDirData": "source/_data",
         "buildDir": "build",
         "static": "source/assets",
         "styleSrc": "source/assets/stylesheets",
@@ -9,7 +10,10 @@
         "jsDest": "source/public/javascripts",
         "build": "source/public",
         "buildDist": "source/public/dist",
+        "buildDistCss": "source/public/dist/stylesheets",
+        "buildDistJs": "source/public/dist/javascripts",
         "publicImages": "build/images",
-        "publicDist": "build/public/dist"
+        "publicDist": "build/public/dist",
+        "publicDistCss": "build/public/dist/stylesheets"
     }
 }

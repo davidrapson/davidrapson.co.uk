@@ -20,7 +20,7 @@
 
     <meta name="theme-color" content="#b60000">
 
-    {% capture stylesheet_url  %}//{{ site.cdn_url }}/assets/{{ site.data.assets.version }}/stylesheets/style.min.css{% endcapture %}
+    {% capture stylesheet_url  %}//{{ site.cdn_url }}/assets/stylesheets/{{ site.data.manifest["style.css"] }}{% endcapture %}
     {% if site.env == 'production' %}
         <!-- Inline critical CSS -->
         <style>{% include head.min.css %}</style>
@@ -28,7 +28,7 @@
             <link rel="stylesheet" href="{{ stylesheet_url }}">
         </noscript>
     {% else %}
-        <link rel="stylesheet" href="/public/stylesheets/style.css">
+        <link rel="stylesheet" href="/public/dist/stylesheets/{{ site.data.manifest["style.css"] }}">
     {% endif %}
 
     {% include meta-headJs.html %}

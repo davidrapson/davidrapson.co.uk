@@ -9,14 +9,14 @@ var del = require('del');
 var runSequence = require('run-sequence');
 
 gulp.task('clean', function(done) {
-    del([ paths.build + '/**' ], done);
+    del([ paths.build + '/**' ]);
+    del([ paths.sourceDir + '/_data/manifest.json' ], done);
 });
 
 gulp.task('build', ['clean'], function (done) {
     runSequence(
         ['css', 'js'],
         'jekyll:production',
-        'version',
     done);
 });
 

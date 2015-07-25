@@ -9,12 +9,17 @@ gulp.task('js', ['jshint'], function () {
         paths.jsSrc + '/components/lazysizes/lazysizes.min.js'
     ])
         .pipe(plugins.plumber())
+        .pipe(plugins.sourcemaps.init())
         // Contatenate & Minify
-        .pipe(plugins.concat('combined.min.js'))
+        .pipe(plugins.concat('combined.js'))
         .pipe(plugins.uglify())
         .pipe(gulp.dest( paths.jsDest ))
-        // Versioned build
-        .pipe(gulp.dest( paths.buildDist + '/' + pkg.version + '/javascripts' ));
+        // Hash-rev
+        .pipe(plugins.rev())
+        .pipe(plugins.sourcemaps.write())
+        .pipe(gulp.dest( paths.buildDistJs ))
+        .pipe(plugins.rev.manifest('manifest.json', { merge: true }))
+        .pipe(gulp.dest( paths.sourceDirData ));
 });
 
 gulp.task('jshint', function() {
