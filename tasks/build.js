@@ -9,7 +9,7 @@ var del = require('del');
 var runSequence = require('run-sequence');
 
 gulp.task('clean', function(done) {
-    del([ paths.build + '/**' ]);
+    del([ paths.publicSource + '/**' ]);
     del([ paths.sourceDir + '/_data/manifest.json' ], done);
 });
 

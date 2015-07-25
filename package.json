@@ -1,6 +1,6 @@
 {
   "name": "davidrapson.co.uk",
-  "version": "4.2.1",
+  "version": "4.2.1-pre",
   "description": "Personal website",
   "main": "gulpfile.js",
   "repository": "https://github.com/davidrapson/davidrapson.co.uk.git",
@@ -19,7 +19,7 @@
     "gulp-autoprefixer": "^2.3.1",
     "gulp-concat": "^2.6.0",
     "gulp-csso": "^1.0.0",
-    "gulp-gzip": "1.2.0",
+    "gulp-gzip": "^1.2.0",
     "gulp-if": "^1.2.5",
     "gulp-imagemin": "^2.3.0",
     "gulp-jshint": "^1.11.2",

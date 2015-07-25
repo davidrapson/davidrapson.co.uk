@@ -41,15 +41,7 @@ module.exports = function(options) {
 
         if (file.isBuffer() && shouldLogAssets) {
 
-            if (typeof process.env.AWS_ACCESS_KEY_ID === 'undefined') {
-                return callback(new PluginError(pluginName, [
-                    'No credentials provided. ',
-                    'Please set your credentialls ',
-                    'http://docs.aws.amazon.com/AWSJavaScriptSDK/guide/node-configuring.html'
-                ].join('')));
-            }
-
-            AWS.config.update(options.region);
+            AWS.config.update({region: options.region});
 
             metricName = path.basename(file.path);
             size = toKB(file.contents.length);

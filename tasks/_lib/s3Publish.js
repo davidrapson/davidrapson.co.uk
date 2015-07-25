@@ -30,15 +30,7 @@ module.exports = function(options, params) {
 
         if (file.isBuffer()) {
 
-            if (typeof process.env.AWS_ACCESS_KEY_ID === 'undefined') {
-                return callback(new PluginError(pluginName, [
-                    'No credentials provided. ',
-                    'Please set your credentialls ',
-                    'http://docs.aws.amazon.com/AWSJavaScriptSDK/guide/node-configuring.html'
-                ].join('')));
-            }
-
-            AWS.config.update(options.region);
+            AWS.config.update({region: options.region});
 
             uploadPath = file.path.replace(file.base, options.pathPrefix || '');
             uploadPath = uploadPath.replace(new RegExp('\\\\', 'g'), '/');

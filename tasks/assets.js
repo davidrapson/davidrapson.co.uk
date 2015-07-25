@@ -23,6 +23,7 @@ gulp.task('publishAssets', ['publishImages'], function () {
         }))
         .pipe(s3Publish({
             bucket: awsConfig.bucket,
+            region: awsConfig.region,
             pathPrefix: 'assets/'
         }, {
             'CacheControl': cacheControl
