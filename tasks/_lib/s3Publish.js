@@ -30,15 +30,15 @@ module.exports = function(options, params) {
 
         if (file.isBuffer()) {
 
-            if (typeof options.awsConfig !== 'undefined') {
-                AWS.config.update(options.awsConfig);
-            } else {
+            if (typeof process.env.AWS_ACCESS_KEY_ID === 'undefined') {
                 return callback(new PluginError(pluginName, [
                     'No credentials provided. ',
-                    'Please set your credentials in `~/.aws/credentials` ',
-                    'or provide a `secrets` config.'
+                    'Please set your credentialls ',
+                    'http://docs.aws.amazon.com/AWSJavaScriptSDK/guide/node-configuring.html'
                 ].join('')));
             }
+
+            AWS.config.update(options.region);
 
             uploadPath = file.path.replace(file.base, options.pathPrefix || '');
             uploadPath = uploadPath.replace(new RegExp('\\\\', 'g'), '/');

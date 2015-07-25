@@ -41,15 +41,15 @@ module.exports = function(options) {
 
         if (file.isBuffer() && shouldLogAssets) {
 
-            if (typeof options.awsConfig !== 'undefined') {
-                AWS.config.update(options.awsConfig);
-            } else {
+            if (typeof process.env.AWS_ACCESS_KEY_ID === 'undefined') {
                 return callback(new PluginError(pluginName, [
                     'No credentials provided. ',
-                    'Please set your credentials in `~/.aws/credentials` ',
-                    'or provide a `secrets` config.'
+                    'Please set your credentialls ',
+                    'http://docs.aws.amazon.com/AWSJavaScriptSDK/guide/node-configuring.html'
                 ].join('')));
             }
+
+            AWS.config.update(options.region);
 
             metricName = path.basename(file.path);
             size = toKB(file.contents.length);

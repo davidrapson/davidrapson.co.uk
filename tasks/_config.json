@@ -1,4 +1,8 @@
 {
+    "aws": {
+        "region": "eu-west-1",
+        "bucket": "static.davidrapson.co.uk"
+    },
     "paths": {
         "sourceDir": "source",
         "sourceDirData": "source/_data",
