@@ -1,3 +1,6 @@
+general:
+  artifacts:
+  - "build"
 dependencies:
   override:
     - npm install
