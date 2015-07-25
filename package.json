@@ -1,11 +1,14 @@
 {
   "name": "davidrapson.co.uk",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "description": "Personal website",
   "main": "gulpfile.js",
   "repository": "https://github.com/davidrapson/davidrapson.co.uk.git",
   "author": "David Rapson",
   "license": "ISC",
+  "scripts": {
+    "test": "echo \"Error: no test specified.\""
+  },
   "devDependencies": {
     "aws-sdk": "^2.1.39",
     "browser-sync": "^2.7.13",

@@ -1,0 +1,12 @@
+dependencies:
+  override:
+    - npm install
+    - bundle install
+test:
+  override:
+    - gulp build
+deployment:
+  production:
+    branch: master
+    commands:
+    - gulp build
