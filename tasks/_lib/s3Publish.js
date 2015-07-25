@@ -30,15 +30,7 @@ module.exports = function(options, params) {
 
         if (file.isBuffer()) {
 
-            if (typeof options.awsConfig !== 'undefined') {
-                AWS.config.update(options.awsConfig);
-            } else {
-                return callback(new PluginError(pluginName, [
-                    'No credentials provided. ',
-                    'Please set your credentials in `~/.aws/credentials` ',
-                    'or provide a `secrets` config.'
-                ].join('')));
-            }
+            AWS.config.update({region: options.region});
 
             uploadPath = file.path.replace(file.base, options.pathPrefix || '');
             uploadPath = uploadPath.replace(new RegExp('\\\\', 'g'), '/');

@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var paths = require('./_config.json').paths;
-var serverConfig = require('../secrets.json').deploy;
 var exec = require('child_process').exec;
 
 /**
@@ -19,11 +18,11 @@ gulp.task('deploy', function(done) {
 
 gulp.task('rsync', function(done) {
     var dest = [
-        serverConfig.username,
+        process.env.DEPLOY_USERNAME,
         '@',
-        serverConfig.hostname,
+        process.env.DEPLOY_HOSTNAME,
         ':',
-        serverConfig.destination
+        process.env.DEPLOY_DESTINATION
     ].join('');
     exec('rsync -azP --delete ' + paths.buildDir + '/ ' + dest, function(error, stdout, stderr) {
         console.log(stdout);

@@ -1,16 +1,7 @@
-<script>
-    window.lazySizesConfig = {
-        lazyClass: 'js-lazyload',
-        addClasses: true,
-        loadingClass: 'is-loading',
-        loadedClass: 'is-loaded',
-        clearAttr: true
-    };
-</script>
 {% if site.env == 'production' %}
-    <script src="//{{ site.cdn_url }}/assets/{{ site.data.assets.version }}/javascripts/combined.min.js" async defer></script>
+    <script src="//{{ site.cdn_url }}/assets/javascripts/{{ site.data.manifest["combined.js"] }}" async></script>
 {% else %}
-    <script src="/public/javascripts/combined.min.js"></script>
+    <script src="/public/dist/javascripts/{{ site.data.manifest["combined.js"] }}"></script>
 {% endif %}
 <script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
