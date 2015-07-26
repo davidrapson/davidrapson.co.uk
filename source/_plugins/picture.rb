@@ -100,7 +100,7 @@ module Jekyll
 
       sizes = []
       source_keys.each { |source|
-        sizes.push "#{url_base}#{instance[source][:generated_src]} #{instance[source][:width]}w"
+        sizes.push "#{url_base}#{instance[source][:generated_src]} #{instance[source][:width]}w" if source != "source_default"
       }
 
       extra_attrs = %{ srcset="#{sizes.join(', ')}" }
