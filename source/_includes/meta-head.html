@@ -20,15 +20,14 @@
 
     <meta name="theme-color" content="#b60000">
 
-    {% capture stylesheet_url  %}//{{ site.cdn_url }}/assets/stylesheets/{{ site.data.manifest["style.css"] }}{% endcapture %}
+    {% capture versioned_stylesheet  %}{{ site.data.stylesheets["style.css"] }}{% endcapture %}
     {% if site.env == 'production' %}
-        <!-- Inline critical CSS -->
         <style>{% include head.css %}</style>
         <noscript>
-            <link rel="stylesheet" href="{{ stylesheet_url }}">
+            <link rel="stylesheet" href="https://{{ site.cdn_url }}/assets/stylesheets/{{ versioned_stylesheet }}">
         </noscript>
     {% else %}
-        <link rel="stylesheet" href="/public/dist/stylesheets/{{ site.data.manifest["style.css"] }}">
+        <link rel="stylesheet" href="/public/dist/stylesheets/{{ versioned_stylesheet }}">
     {% endif %}
 
     {% include meta-headJs.html %}

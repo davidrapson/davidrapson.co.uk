@@ -27,6 +27,6 @@ gulp.task('css', function (done) {
         .pipe(plugins.rev())
         .pipe(plugins.sourcemaps.write())
         .pipe(gulp.dest( paths.buildDistCss ))
-        .pipe(plugins.rev.manifest('manifest.json', { merge: true }))
+        .pipe(plugins.rev.manifest('stylesheets.json'))
         .pipe(gulp.dest( paths.sourceDirData ));
 });

@@ -1,7 +1,8 @@
+{% capture versioned_javascript  %}{{ site.data.javascripts["combined.js"] }}{% endcapture %}
 {% if site.env == 'production' %}
-    <script src="//{{ site.cdn_url }}/assets/javascripts/{{ site.data.manifest["combined.js"] }}" async></script>
+    <script src="//{{ site.cdn_url }}/assets/javascripts/{{ versioned_javascript }}" async></script>
 {% else %}
-    <script src="/public/dist/javascripts/{{ site.data.manifest["combined.js"] }}"></script>
+    <script src="/public/dist/javascripts/{{ versioned_javascript }}"></script>
 {% endif %}
 <script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

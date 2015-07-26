@@ -5,5 +5,6 @@ bin/
 build/
 node_modules/
 public/
-source/_data/manifest.json
+source/_data/javascripts.json
+source/_data/stylesheets.json
 source/_includes/head.css

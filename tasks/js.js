@@ -18,7 +18,7 @@ gulp.task('js', ['jshint'], function () {
         .pipe(plugins.rev())
         .pipe(plugins.sourcemaps.write())
         .pipe(gulp.dest( paths.buildDistJs ))
-        .pipe(plugins.rev.manifest('manifest.json', { merge: true }))
+        .pipe(plugins.rev.manifest('javascripts.json'))
         .pipe(gulp.dest( paths.sourceDirData ));
 });
 
