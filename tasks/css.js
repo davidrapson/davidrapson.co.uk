@@ -25,7 +25,7 @@ gulp.task('css', function (done) {
         .pipe(plugins.if(isHead, gulp.dest( paths.sourceDir + '/_includes' )))
         // Hash-rev
         .pipe(plugins.rev())
-        .pipe(plugins.sourcemaps.write())
+        .pipe(plugins.sourcemaps.write('.'))
         .pipe(gulp.dest( paths.buildDistCss ))
         .pipe(plugins.rev.manifest('stylesheets.json'))
         .pipe(gulp.dest( paths.sourceDirData ));
