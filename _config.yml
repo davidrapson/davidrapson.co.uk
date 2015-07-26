@@ -6,6 +6,13 @@ destination: ./build
 # Environment
 env: production
 
+# Meta
+encoding: UTF-8
+timezone: Europe/London
+baseurl: ""
+url: "http://davidrapson.co.uk"
+cdn_url: static.davidrapson.co.uk
+
 # Details
 title: David Rapson
 email: david@davidrapson.co.uk
@@ -13,14 +20,19 @@ description: David Rapson is a UX-driven Client-side developer living and workin
 twitter_username: davidrapson
 github_username:  davidrapson
 
-# Config
-baseurl: ""
-url: "http://davidrapson.co.uk"
-cdn_url: static.davidrapson.co.uk
+# Permalinks
 permalink: /:year/:title/
-timezone: Europe/London
+
+# Pagination
 paginate: 6
 paginate_path: "page-:num/"
+
+# Writing
+# See: https://github.com/jekyll/jekyll/issues/3371
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    inline_theme: github
 
 # Responsive images
 picture:
@@ -44,9 +56,7 @@ exclude: [
   "assets"
 ]
 
-# Gems
-markdown: Pypedown
+# PLugins
 gems:
+  - octopress-minify-html
   - jekyll-sitemap
-  - jekyll-pypedown
-  - jekyll-minify-html
