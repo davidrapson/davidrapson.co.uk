@@ -5,3 +5,8 @@ dependencies:
 test:
   override:
     - gulp build
+deployment:
+  production:
+    branch: master
+    commands:
+    - gulp deploy
