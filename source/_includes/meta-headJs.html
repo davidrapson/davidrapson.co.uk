@@ -1,15 +1,6 @@
 <script>
     // Add .js class, remove .no-js
     document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
-
-    window.lazySizesConfig = {
-        lazyClass: 'js-lazyload',
-        addClasses: true,
-        loadingClass: 'is-loading',
-        loadedClass: 'is-loaded',
-        clearAttr: true
-    };
-
     {% include markUserTime.js %}
 </script>
 {% if site.env == 'production' %}

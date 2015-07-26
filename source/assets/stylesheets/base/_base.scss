@@ -100,6 +100,31 @@ a:focus {
 }
 
 /*  =========================================================================
+    Embedded content
+    http://developers.whatwg.org/embedded-content-1
+    ========================================================================= */
+
+img {
+    border: 0 none;
+    vertical-align: middle;
+}
+
+/**
+ * Fluid images
+ */
+img, picture, embed, object, video {
+    max-width: 100%;
+}
+
+/**
+ * Non-fluid images if you specify `width` and/or `height` attributes.
+ */
+img[width],
+img[height] {
+    max-width: none;
+}
+
+/*  =========================================================================
     Text-level semantics
     http://developers.whatwg.org/text-level-semantics.html
     ========================================================================= */

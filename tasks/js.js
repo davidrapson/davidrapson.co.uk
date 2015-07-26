@@ -5,8 +5,7 @@ var pkg = require('../package.json');
 
 gulp.task('js', ['jshint'], function () {
     return gulp.src([
-        paths.jsSrc + '/components/picturefill/dist/picturefill.min.js',
-        paths.jsSrc + '/components/lazysizes/lazysizes.min.js'
+        paths.jsSrc + '/bower_components/picturefill/dist/picturefill.min.js'
     ])
         .pipe(plugins.plumber())
         .pipe(plugins.sourcemaps.init())
@@ -16,7 +15,7 @@ gulp.task('js', ['jshint'], function () {
         .pipe(gulp.dest( paths.jsDest ))
         // Hash-rev
         .pipe(plugins.rev())
-        .pipe(plugins.sourcemaps.write())
+        .pipe(plugins.sourcemaps.write('.'))
         .pipe(gulp.dest( paths.buildDistJs ))
         .pipe(plugins.rev.manifest('javascripts.json'))
         .pipe(gulp.dest( paths.sourceDirData ));

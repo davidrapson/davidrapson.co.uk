@@ -26,8 +26,6 @@ paginate_path: "page-:num"
 picture:
   source: "assets/images"
   output: "images"
-  markup: "img"
-  lazysizes: true
   presets:
     default:
       source_4:
@@ -39,7 +37,7 @@ picture:
       source_1:
         width: "320"
       source_default:
-        width: "480"
+        width: "320"
 
 # Build Excludes
 exclude: [
