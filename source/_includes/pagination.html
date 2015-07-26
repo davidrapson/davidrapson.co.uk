@@ -1,25 +1,29 @@
 {% if paginator.total_pages > 1 %}
 <div class="pagination">
     {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path }}" class="pagination__item pagination__link pagination__previous" title="Previous">&larr;</a>
+        <a href="{{ paginator.previous_page_path | replace: 'index.html', '' }}"
+           class="pagination__item pagination__link pagination__previous"
+           aria-label="Previous page">&larr;</a>
     {% else %}
-        <span class="pagination__item pagination__previous" title="Previous">&larr;</span>
+        <span class="pagination__item pagination__previous" ria-label="Previous page">&larr;</span>
     {% endif %}
 
     {% for page in (1..paginator.total_pages) %}
         {% if page == paginator.page %}
             <span class="pagination__item pagination__current">{{ page }}</span>
         {% elsif page == 1 %}
-            <a class="pagination__item pagination__link" href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+            <a class="pagination__item pagination__link" href="/">{{ page }}</a>
         {% else %}
             <a class="pagination__item pagination__link" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
         {% endif %}
     {% endfor %}
 
     {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path }}" class="pagination__item pagination__link pagination__next" title="Next">&rarr;</a>
+        <a href="{{ paginator.next_page_path }}"
+           class="pagination__item pagination__link pagination__next"
+           arial-label="Next page">&rarr;</a>
     {% else %}
-        <span class="pagination__item pagination__next" title="Next">&rarr;</span>
+        <span class="pagination__item pagination__next" arial-label="Next page">&rarr;</span>
     {% endif %}
 </div>
 {% endif %}
