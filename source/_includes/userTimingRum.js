@@ -1,4 +1,3 @@
-// Support routines for automatically reporting user timing for common analytics platforms
 (function() {
 
     if(!(
