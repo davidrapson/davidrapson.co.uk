@@ -53,13 +53,13 @@
 
     kbd, code, pre {
         padding: 0 .3em;
-        border: 1px solid palette(tint);
         background-color: palette(tint, light);
     }
 
     pre {
-        padding: 1em layout(gutter);
         font-size: 90%;
+        padding: 1em layout(gutter);
+        margin: 1em (-(layout(gutter))) 1em;
     }
     pre code {
         padding: 0;
@@ -69,9 +69,6 @@
     }
 
     @include mq(medium) {
-        pre {
-            margin: 1em (-(layout(gutter))) 1em;
-        }
         ol, ul {
             margin: 1em 0 1em -1.5em;
         }

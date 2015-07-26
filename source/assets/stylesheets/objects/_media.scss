@@ -3,12 +3,12 @@
     ========================================================================= */
 
 figure {
-    margin: 1em 0;
+    margin: 1em (-(layout(gutter)));
 }
 figure > figcaption {
     font-size: 80%;
     margin-top: .5em;
-    font-family: font-stack(caption);
+    margin-left: layout(gutter);
     color: palette(tint, dark);
 }
 figure > img,
