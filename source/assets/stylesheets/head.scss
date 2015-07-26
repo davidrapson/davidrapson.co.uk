@@ -1,30 +1,27 @@
-/**
- * head.css
- */
+@charset "UTF-8";
 
-//  -------------------------------------------------------- //
-//  Sass Features
-//  -------------------------------------------------------- //
+/* ==========================================================================
+   Settings & Tools
+   ========================================================================== */
 
-@import 'components/sass-mq/mq';
-@import 'variables';
-@import 'functions';
-@import 'mixins';
+@import "bower_components/sass-mq/mq";
+@import "functions";
+@import "variables";
+@import "mixins";
 
-//  -------------------------------------------------------- //
-//  Critical Components
-//  -------------------------------------------------------- //
+/* ==========================================================================
+   Critical Styles
+   ========================================================================== */
 
-@import 'base/normalize';
-@import 'base/base';
-@import 'layout/layout';
+@import "base/normalize";
+@import "base/base";
 
-@import 'module/modules/common-utilities';
-@import 'module/modules/common-text';
-@import 'module/modules/common-media';
-@import 'module/modules/global-header';
-@import 'module/modules/intro';
-@import 'module/modules/navigation';
-@import 'module/modules/entries';
+@import "objects/media";
 
-@import 'state/state';
+@import "components/intro";
+@import "components/navigation";
+@import "components/entries";
+
+@import "utilities/layout";
+@import "utilities/text";
+@import "utilities/state";

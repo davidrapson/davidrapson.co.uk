@@ -17,7 +17,7 @@ gulp.task('serve', function() {
         paths.sourceDir + '/_includes/**',
         paths.sourceDir + '/_drafts/**',
         paths.sourceDir + '/_posts/**'
-    ], ['jekyll']);
+    ], ['build:simple']);
 
     gulp.watch(paths.styleSrc + '/**/*.scss',['css']);
 

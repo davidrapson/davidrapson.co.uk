@@ -1,36 +1,54 @@
-/**
- * davidrapson.co.uk
- */
+@charset "UTF-8";
 
-//  -------------------------------------------------------- //
-//  Sass Features
-//  -------------------------------------------------------- //
+/* ==========================================================================
+   Settings & Tools
+   ========================================================================== */
 
-@import 'components/sass-mq/mq';
-@import 'functions';
-@import 'variables';
-@import 'mixins';
+@import "bower_components/sass-mq/mq";
+@import "functions";
+@import "variables";
+@import "mixins";
 
-//  -------------------------------------------------------- //
-//  Components
-//  -------------------------------------------------------- //
-// Styles are defined in the following order & groupings:
-// Base, Layout, Module, State
-//
-// - Base = Common, global and element styles.
-// - Layout = major components, e.g., header, footer etc.
-// - Module = minor components, e.g., navigation bar, callout, widgets etc.
-// - Responsive = responsive breakpoints.
-// - State  = a state is something that augments + overrides all other styles, e.g., success / active state
+/* ==========================================================================
+   Base
+   ========================================================================== */
 
-@import 'base/normalize';
-@import 'base/base';
-@import 'layout/layout';
-@import 'module/module';
-@import 'state/state';
+@import "base/normalize";
+@import "base/base";
 
-//  -------------------------------------------------------- //
-//  Inline Print Styles
-//  -------------------------------------------------------- //
+/* ==========================================================================
+   Scoped Contexts
+   ========================================================================== */
 
-@import 'print';
+@import "scopes/prose";
+
+/* ==========================================================================
+   Objects
+   ========================================================================== */
+
+@import "objects/media";
+
+/* ==========================================================================
+   Components
+   ========================================================================== */
+
+@import "components/intro";
+@import "components/entries";
+@import "components/articles";
+@import "components/navigation";
+@import "components/pagination";
+@import "components/code";
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+
+@import "utilities/layout";
+@import "utilities/text";
+@import "utilities/state";
+
+/* ==========================================================================
+   Print (inlined for performance)
+   ========================================================================== */
+
+@import "print";
