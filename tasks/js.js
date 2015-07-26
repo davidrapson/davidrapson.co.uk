@@ -15,7 +15,7 @@ gulp.task('js', ['jshint'], function () {
         .pipe(gulp.dest( paths.jsDest ))
         // Hash-rev
         .pipe(plugins.rev())
-        .pipe(plugins.sourcemaps.write())
+        .pipe(plugins.sourcemaps.write('.'))
         .pipe(gulp.dest( paths.buildDistJs ))
         .pipe(plugins.rev.manifest('javascripts.json'))
         .pipe(gulp.dest( paths.sourceDirData ));
