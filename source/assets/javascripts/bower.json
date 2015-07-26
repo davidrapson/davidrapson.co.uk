@@ -2,7 +2,6 @@
   "name": "davidrapson.co.uk javascripts",
   "private": true,
   "dependencies": {
-    "picturefill": "~2",
-    "lazysizes": "~1.1"
+    "picturefill": "3.0.0-beta1"
   }
 }
