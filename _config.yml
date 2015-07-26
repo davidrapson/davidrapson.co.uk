@@ -19,7 +19,7 @@ url: "http://davidrapson.co.uk"
 cdn_url: static.davidrapson.co.uk
 permalink: /:year/:title/
 timezone: Europe/London
-paginate: 10
+paginate: 6
 
 # Responsive images
 picture:

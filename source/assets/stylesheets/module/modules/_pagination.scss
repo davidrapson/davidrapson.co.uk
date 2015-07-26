@@ -10,11 +10,12 @@
         border-width: 1px 0 0 0;
     }
     .pagination__item {
-        font-size: rem(14);
+        font-size: rem(16);
+        font-family: font-stack(display);
         font-weight: normal;
         color: palette(tint);
         display: inline-block;
-        padding: .75em 1em;
+        padding: .5em 1em;
         border-top: 1px solid palette(tint);
         position: relative;
         top: -1px;
