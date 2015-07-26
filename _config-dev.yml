@@ -2,6 +2,3 @@
 
 # Environment
 env: staging
-
-# Override CDN url in dev. Straight to S3, not via CloudFront
-cdn_url: s3-eu-west-1.amazonaws.com/static.davidrapson.co.uk
