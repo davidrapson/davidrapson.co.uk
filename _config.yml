@@ -56,7 +56,10 @@ exclude: [
   "assets"
 ]
 
+# HTML Compression
+compress_html:
+  clippings: all
+
 # PLugins
 gems:
-  - octopress-minify-html
   - jekyll-sitemap
