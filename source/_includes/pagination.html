@@ -1,7 +1,7 @@
 {% if paginator.total_pages > 1 %}
 <div class="pagination">
     {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path | replace: 'index.html', '' }}"
+        <a href="{{ paginator.previous_page_path }}"
            class="pagination__item pagination__link pagination__previous"
            aria-label="Previous page">&larr;</a>
     {% else %}
