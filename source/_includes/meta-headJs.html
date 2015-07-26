@@ -13,6 +13,7 @@
     {% include markUserTime.js %}
 </script>
 {% if site.env == 'production' %}
+    {% capture versioned_stylesheet_head  %}{{ site.data.stylesheets["style.css"] }}{% endcapture %}
     <script>
     (function(global) {
         var cssURL = '{{ stylesheet_url }}';
@@ -25,7 +26,7 @@
             );
         }
         function loadCssFromStorage() {
-            var c = localStorage.getItem('css.{{ site.data.assets.style.hash }}'), s, head;
+            var c = localStorage.getItem('css.{{ versioned_stylesheet_head }}'), s, head;
             if ( c ) {
                 s = document.createElement('style');
                 head = document.getElementsByTagName('head')[0];
@@ -54,7 +55,7 @@
                 if (key.match(/^css./g)) { localStorage.removeItem(key); }
             });
             try {
-                localStorage.setItem('css.{{ site.data.assets.style.hash }}', c);
+                localStorage.setItem('css.{{ versioned_stylesheet_head }}', c);
             } catch(e) {}
         }
         function loadCssWithLink( url ) {
