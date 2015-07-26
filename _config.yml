@@ -56,10 +56,6 @@ exclude: [
   "assets"
 ]
 
-# HTML Compression
-compress_html:
-  clippings: all
-
 # PLugins
 gems:
   - jekyll-sitemap
