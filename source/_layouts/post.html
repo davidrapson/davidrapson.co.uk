@@ -2,9 +2,9 @@
 layout: default
 ---
 
-<main class="main l-constrained" itemprop="mainContentOfPage">
+<main class="main u-container" itemprop="mainContentOfPage">
     <script>window.markUserTime('aft.Article Start')</script>
-    <article class="article copy--full" itemscope itemtype="http://schema.org/Article">
+    <article class="article s-prose s-prose--full" itemscope itemtype="http://schema.org/Article">
         <header class="article__header">
             <div class="article__meta text--meta">
                 <time datetime="{{ page.date | date: "%F %R%z" }}" itemprop="dateCreated">
@@ -14,11 +14,11 @@ layout: default
             <h1 class="article__title" itemprop="headline">{{ page.title }}</h1>
         </header>
         {% if page.lead %}
-            <div class="article__lead u-text-lead copy" itemprop="description">
+            <div class="article__lead u-text-lead s-prose" itemprop="description">
                 {{ page.lead | markdownify }}
             </div>
         {% endif %}
-        <div class="article__body copy--full" itemprop="tet">
+        <div class="article__body" itemprop="tet">
             {% if page.type == 'micro' %}
                 <a href="{{ page.link }}" class="u-link-forward">{{ page.link }}</a>
             {% endif %}

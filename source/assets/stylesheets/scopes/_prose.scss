@@ -1,0 +1,80 @@
+/*  =========================================================================
+    Prose
+    ========================================================================= */
+/*
+    Opt-in typography:
+    http://anthonyshort.me/global-typographic-styles-suck
+    http://dbushell.com/2012/04/18/scoping-typography-css/
+    http://css-tricks.com/opt-in-typography/
+*/
+
+.s-prose {
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-bottom: .3em;
+    }
+
+    p + h1, p + h2, p + h3, p + h4, p + h5, p + h6 {
+        margin-top: 1.5em;
+    }
+
+    p:empty {
+        display: none;
+    }
+    a, a:visited, a:hover {
+        text-decoration: none;
+        border-bottom: 1px solid palette(tint);
+    }
+
+}
+
+.s-prose--full {
+
+    p {
+        margin-bottom: 0;
+    }
+    p + p {
+        text-indent: 1.5em;
+    }
+
+    blockquote {
+        color: palette(tint, dark);
+        margin: 1.5em 0;
+        padding: .5em 0;
+        border: solid palette(tint);
+        border-width: 0;
+
+        @include mq(small) {
+            margin-left: -25px;
+            padding-left: 1em;
+            border-width: 0 0 0 5px;
+        }
+    }
+
+    kbd, code, pre {
+        padding: 0 .3em;
+        border: 1px solid palette(tint);
+        background-color: palette(tint, light);
+    }
+
+    pre {
+        padding: 1em layout(gutter);
+        font-size: 90%;
+    }
+    pre code {
+        padding: 0;
+        box-shadow: none;
+        border: 0 none;
+        font-size: 100%;
+    }
+
+    @include mq(medium) {
+        pre {
+            margin: 1em (-(layout(gutter))) 1em;
+        }
+        ol, ul {
+            margin: 1em 0 1em -1.5em;
+        }
+    }
+
+}

@@ -2,56 +2,43 @@
 //  Variables
 //  -------------------------------------------------------- //
 
-//  -------------------------------------------------------- //
-//  Layout
-//  -------------------------------------------------------- //
+$mq-breakpoints: (
+    small: 30em,
+    medium: 50em,
+    large: 62.5em
+);
 
-    $mq-breakpoints: (
-        small: 30em,
-        medium: 50em,
-        large: 62.5em
-    );
+$layout: (
+    min: 0,
+    max: 620px,
+    gutter: 5%
+);
 
-    $layout: (
-        min: 0,
-        max: 620px,
-        gutter: 3%
-    );
+$_color-primary: #b60000;
+$palettes: (
+    primary: (
+        dark: shade($_color-primary, 50%),
+        base: $_color-primary,
+        light: tint($_color-primary, 50%)
+    ),
+    tint: (
+        dark: #6a6a6a,
+        base: #bababa,
+        light: #f8f8f8
+    ),
+    text: (
+        dark: #181822,
+        base: #333344,
+        light: #444455
+    ),
+    background: (
+        base: #efefef
+    )
+);
 
-//  -------------------------------------------------------- //
-//  Colors
-//  -------------------------------------------------------- //
-
-    $_color-primary: #b60000;
-
-    $palettes: (
-        primary: (
-            dark: shade($_color-primary, 50%),
-            base: $_color-primary,
-            light: tint($_color-primary, 50%)
-        ),
-        tint: (
-            dark: #6a6a6a,
-            base: #bababa,
-            light: #f8f8f8
-        ),
-        text: (
-            dark: #181822,
-            base: #333344,
-            light: #444455
-        ),
-        background: (
-            base: #efefef
-        )
-    );
-
-//  -------------------------------------------------------- //
-//  Font Stacks
-//  -------------------------------------------------------- //
-
-    $font-stacks: (
-        display: '"ff-meta-web-pro-condensed", sans-serif',
-        body: '"ff-meta-web-pro", sans-serif',
-        caption: 'sans-serif',
-        mono: '"Menlo", "Bitstream Vera Sans", Monaco, "Andale Mono", "Lucida Console", "Droid Mono", monospace'
-    );
+$font-stacks: (
+    display: '"ff-meta-web-pro-condensed", sans-serif',
+    body: '"ff-meta-web-pro", sans-serif',
+    caption: 'sans-serif',
+    mono: '"Menlo", "Bitstream Vera Sans", Monaco, "Andale Mono", "Lucida Console", "Droid Mono", monospace'
+);
