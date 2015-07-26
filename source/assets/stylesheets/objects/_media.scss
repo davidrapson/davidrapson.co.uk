@@ -2,29 +2,6 @@
     Media
     ========================================================================= */
 
-img {
-    border: 0 none;
-    vertical-align: middle;
-}
-
-/**
- * Fluid images
- */
-img, picture, embed, object, video {
-    max-width: 100%;
-}
-
-/**
- * Non-fluid images if you specify `width` and/or `height` attributes.
- */
-img[width],
-img[height] {
-    max-width: none;
-}
-
-/**
- * Figures
- */
 figure {
     margin: 1em 0;
 }
@@ -38,15 +15,4 @@ figure > img,
 figure > picture {
     display: block;
     width: 100%;
-}
-
-/**
- * Lazyloadable images
- */
-.js img.lazyload {
-    opacity: 0;
-    transition: opacity ease-out 1s;
-}
-.js img.is-loaded {
-    opacity: 1;
 }
