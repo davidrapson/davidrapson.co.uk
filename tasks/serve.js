@@ -13,6 +13,8 @@ gulp.task('serve', function() {
 
     gulp.watch([
         paths.styleDest + '/*.css',
+        paths.sourceDir + '/*.html',
+        paths.sourceDir + '/*.md',
         paths.sourceDir + '/_layouts/**',
         paths.sourceDir + '/_includes/**',
         paths.sourceDir + '/_drafts/**',

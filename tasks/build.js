@@ -24,7 +24,6 @@ gulp.task('build', function (done) {
 
 gulp.task('build:simple', function (done) {
     runSequence(
-        'clean',
         'css',
         'js',
         'jekyll',

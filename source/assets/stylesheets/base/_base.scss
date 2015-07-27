@@ -52,9 +52,9 @@ pre, code, kbd, samp, .ff-mono {
     font-family: font-stack(mono);
 }
 
-h1 { font-size: rem( 26 ); }
-h2 { font-size: rem( 24 ); }
-h3 { font-size: rem( 21 ); }
+h1 { font-size: rem( 24 ); }
+h2 { font-size: rem( 22 ); }
+h3 { font-size: rem( 20 ); }
 h4 { font-size: rem( 18 ); }
 h5 { font-size: rem( 16 ); }
 h6 { font-size: rem( 14 ); }
@@ -168,3 +168,12 @@ sub, sup {
 }
 sup { top: -0.5em; }
 sub { bottom: -0.25em; }
+
+hr {
+    display: block;
+    border: 0;
+    height: 0;
+    line-height: 0;
+    margin: 2em 0 1.5em;
+    border-top: 1px solid palette(tint);
+}
