@@ -1,11 +1,15 @@
 var gulp = require('gulp');
+var urls = require('./_config.json').urls;
 var paths = require('./_config.json').paths;
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
 gulp.task('serve', function() {
 
+    require('opn')(urls.local);
+
     browserSync({
+        open: false,
         server: {
             baseDir: paths.buildDir
         }
