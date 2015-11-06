@@ -9,8 +9,12 @@ var del = require('del');
 var runSequence = require('run-sequence');
 
 gulp.task('clean', function(done) {
-    del([ paths.publicSource + '/**' ]);
-    del([ paths.sourceDir + '/_data/manifest.json' ], done);
+    del.sync([ paths.publicSource + '/**' ]);
+    del.sync([
+        paths.sourceDir + '/_data/javascripts.json',
+        paths.sourceDir + '/_data/stylesheets.json'
+    ]);
+    done();
 });
 
 gulp.task('build', function (done) {
@@ -23,9 +27,5 @@ gulp.task('build', function (done) {
 });
 
 gulp.task('build:simple', function (done) {
-    runSequence(
-        'css',
-        'js',
-        'jekyll',
-    done);
+    runSequence('css', 'js', 'jekyll', done);
 });

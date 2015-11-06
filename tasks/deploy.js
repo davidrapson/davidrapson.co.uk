@@ -9,11 +9,7 @@ var exec = require('child_process').exec;
 var runSequence = require('run-sequence');
 
 gulp.task('deploy', function(done) {
-    runSequence(
-        'build',
-        'publishAssets',
-        'rsync',
-    done);
+    runSequence('build', 'publishAssets', 'rsync', done);
 });
 
 gulp.task('rsync', function(done) {
