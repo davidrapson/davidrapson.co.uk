@@ -1,14 +1,12 @@
 {
   "name": "davidrapson.co.uk",
-  "version": "4.2.1-pre",
+  "version": "4.3.0-pre",
   "description": "Personal website",
   "main": "gulpfile.js",
   "repository": "https://github.com/davidrapson/davidrapson.co.uk.git",
   "author": "David Rapson",
   "license": "ISC",
   "scripts": {
-    "preinstall": "bundle",
-    "postinstall": "gulp clean && gulp build:simple",
     "test": "echo \"Error: no test specified.\""
   },
   "devDependencies": {
