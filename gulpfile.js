@@ -10,4 +10,4 @@ require('require-dir')('./tasks', { recurse: true });
 /**
  * Default task
  */
-gulp.task('default', [ 'jekyll', 'serve']);
+gulp.task('default', [ 'build:simple', 'serve']);
