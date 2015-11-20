@@ -1,8 +1,0 @@
-{
-    "browser": true,
-    "devel": true,
-    "eqeqeq": false,
-    "smarttabs": true,
-    "undef": true,
-    "unused": false
-}

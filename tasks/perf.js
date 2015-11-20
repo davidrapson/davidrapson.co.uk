@@ -1,8 +1,11 @@
-var gulp = require('gulp');
-var pagespeed = require('psi');
+'use strict';
+
+import gulp from 'gulp';
+import psi from 'psi';
+import pkg from '../package.json';
+
+const urls = pkg.config.urls;
 
 gulp.task('pagespeed', function () {
-    pagespeed.output('http://davidrapson.co.uk/', {
-        strategy: 'mobile'
-    });
+    psi.output(urls.prod, {strategy: 'mobile'});
 });

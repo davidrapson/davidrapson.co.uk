@@ -1,44 +1,39 @@
-/*jshint node:true*/
 'use strict';
 
-var through = require('through2');
-var path = require('path');
-var extend = require('extend');
-var gutil = require('gulp-util');
-var PluginError = gutil.PluginError;
-var AWS = require('aws-sdk');
-var mime = require('mime');
-mime.default_type = 'text/plain';
+import path from 'path';
+import mime from 'mime';
+import extend from 'extend';
+import through from 'through2';
+import gutil from 'gulp-util';
+import AWS from 'aws-sdk';
 
-module.exports = function(options, params) {
+mime.default_type = 'text/plain'; // eslint-disable-line camelcase
 
-    var pluginName = 's3Publish';
+module.exports = function (options, params) {
+    const pluginName = 's3Publish';
 
-    return through.obj(function(file, enc, callback) {
-
-        var defaults, uploadPath;
-        var regexGzip = /\.([a-z]{2,})\.gz$/i;
-        var regexGeneral = /\.([a-z]{2,})$/i;
+    return through.obj(function (file, enc, callback) {
+        const regexGzip = /\.([a-z]{2,})\.gz$/i;
+        const regexGeneral = /\.([a-z]{2,})$/i;
 
         if (file.isNull()) {
             return callback(null, file);
         }
 
         if (file.isStream()) {
-            return callback(new PluginError(pluginName, 'Streaming not supported'));
+            return callback(new gutil.PluginError(pluginName, 'Streaming not supported'));
         }
 
         if (file.isBuffer()) {
-
             AWS.config.update({region: options.region});
 
-            uploadPath = file.path.replace(file.base, options.pathPrefix || '');
+            let uploadPath = file.path.replace(file.base, options.pathPrefix || '');
             uploadPath = uploadPath.replace(new RegExp('\\\\', 'g'), '/');
 
             /**
              * Default params
              */
-            defaults = {
+            let defaults = {
                 Body: file.contents,
                 Bucket: options.bucket,
                 ACL: 'public-read',
@@ -64,17 +59,15 @@ module.exports = function(options, params) {
             /**
              * Upload file
              */
-            (new AWS.S3()).upload(extend(defaults, params), function(err, data) {
-                var src = path.basename(file.path);
-                if (err) {
-                    gutil.log(gutil.colors.red('[Publish failed]', src + " -> " + uploadPath));
-                } else {
-                    gutil.log(gutil.colors.green('[Published]', src + " -> " + uploadPath));
-                }
+            const s3 = new AWS.S3();
+            s3.upload(extend(defaults, params), err => {
+                let {red, green} = gutil.colors;
+                let src = path.basename(file.path);
+                let syncMsg = `${src} -> ${uploadPath}`;
+                gutil.log(((err) ? red('[Publish failed]', syncMsg) : green('[Published]', syncMsg)));
                 this.push(file);
                 callback();
-            }.bind(this));
-
+            });
         }
     });
 };
