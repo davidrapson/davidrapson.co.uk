@@ -1,11 +1,12 @@
 {
   "name": "davidrapson.co.uk",
-  "version": "4.3.0",
+  "version": "4.4.0-pre",
   "description": "Personal website",
   "main": "gulpfile.js",
   "repository": "https://github.com/davidrapson/davidrapson.co.uk.git",
   "author": "David Rapson",
-  "license": "ISC",
+  "license": "UNLICENSED",
+  "private": true,
   "config": {
     "urls": {
       "dev": "http://davidrapson.site/",
