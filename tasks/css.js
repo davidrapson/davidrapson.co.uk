@@ -1,18 +1,19 @@
-var gulp = require('gulp');
-var plugins = require('gulp-load-plugins')();
-var paths = require('./_config.json').paths;
-var pkg = require('../package.json');
-var path = require('path');
+'use strict';
 
-gulp.task('css', function (done) {
+import gulp from 'gulp';
+import gulpPlugins from 'gulp-load-plugins';
+import path from 'path';
+import pkg from '../package.json';
 
-    function isHead(file) {
-        return (path.basename(file.path) === 'head.css');
-    }
+const plugins = gulpPlugins();
+const paths = pkg.config.buildPaths;
 
+const isHeadCss = file => (path.basename(file.path) === 'head.css');
+
+gulp.task('css', function () {
     return gulp.src([
-        paths.styleSrc + '/head.scss',
-        paths.styleSrc + '/style.scss'
+        `${paths.styleSrc}/head.scss`,
+        `${paths.styleSrc}/style.scss`
     ])
         .pipe(plugins.plumber())
         // Build CSS (Sass, Source maps, AutoPrefixer)
@@ -20,13 +21,13 @@ gulp.task('css', function (done) {
         .pipe(plugins.sass())
         .pipe(plugins.autoprefixer('last 2 version', 'ie 8', 'ie 9'))
         .pipe(plugins.csso())
-        .pipe(gulp.dest( paths.styleDest ))
+        .pipe(gulp.dest(paths.styleDest))
         // Pipe head.min.css to _includes for inlining
-        .pipe(plugins.if(isHead, gulp.dest( paths.sourceDir + '/_includes' )))
+        .pipe(plugins.if(isHeadCss, gulp.dest(`${paths.sourceDir}/_includes`)))
         // Hash-rev
         .pipe(plugins.rev())
         .pipe(plugins.sourcemaps.write('.'))
-        .pipe(gulp.dest( paths.buildDistCss ))
+        .pipe(gulp.dest(paths.buildDistCss))
         .pipe(plugins.rev.manifest('stylesheets.json'))
-        .pipe(gulp.dest( paths.sourceDirData ));
+        .pipe(gulp.dest(paths.sourceDirData));
 });

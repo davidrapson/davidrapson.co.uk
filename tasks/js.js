@@ -1,31 +1,31 @@
-var gulp = require('gulp');
-var plugins = require('gulp-load-plugins')();
-var paths = require('./_config.json').paths;
-var pkg = require('../package.json');
+'use strict';
 
-gulp.task('js', ['jshint'], function () {
+import gulp from 'gulp';
+import gulpPlugins from 'gulp-load-plugins';
+import pkg from '../package.json';
+
+const plugins = gulpPlugins();
+const paths = pkg.config.buildPaths;
+
+gulp.task('js', ['lint'], function () {
     return gulp.src([
-        paths.jsSrc + '/bower_components/picturefill/dist/picturefill.min.js'
+        `${paths.jsSrc}/bower_components/picturefill/dist/picturefill.min.js`
     ])
         .pipe(plugins.plumber())
         .pipe(plugins.sourcemaps.init())
-        // Contatenate & Minify
         .pipe(plugins.concat('combined.js'))
         .pipe(plugins.uglify())
-        .pipe(gulp.dest( paths.jsDest ))
-        // Hash-rev
+        .pipe(gulp.dest(paths.jsDest))
         .pipe(plugins.rev())
         .pipe(plugins.sourcemaps.write('.'))
-        .pipe(gulp.dest( paths.buildDistJs ))
+        .pipe(gulp.dest(paths.buildDistJs))
         .pipe(plugins.rev.manifest('javascripts.json'))
-        .pipe(gulp.dest( paths.sourceDirData ));
+        .pipe(gulp.dest(paths.sourceDirData));
 });
 
-gulp.task('jshint', function() {
+gulp.task('lint', function () {
     return gulp.src([
-        'tasks/**/*.js',
-        './gulpfile.js'
-    ])
-        .pipe(plugins.jshint({ node: true }))
-        .pipe(plugins.jshint.reporter('jshint-stylish'));
+        'gulpfile.babel.js',
+        'tasks/**/*.js'
+    ]).pipe(plugins.xo({quiet: true}));
 });
