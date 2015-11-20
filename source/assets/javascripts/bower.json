@@ -1,7 +1,0 @@
-{
-  "name": "davidrapson.co.uk javascripts",
-  "private": true,
-  "dependencies": {
-    "picturefill": "3.0.0-beta1"
-  }
-}

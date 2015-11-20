@@ -1,7 +1,0 @@
-{
-  "name": "davidrapson.co.uk stylesheets",
-  "private": true,
-  "dependencies": {
-    "sass-mq": "~3.2"
-  }
-}
