@@ -4,7 +4,7 @@
 </script>
 {% if site.env == 'production' %}
     {% capture head_versioned_stylesheet  %}{{ site.data.stylesheets["style.css"] }}{% endcapture %}
-    {% capture head_stylesheet_url  %}//{{ site.cdn_url }}/assets/stylesheets/{{ head_versioned_stylesheet }}{% endcapture %}
+    {% capture head_stylesheet_url  %}/public/dist/stylesheets/{{ head_versioned_stylesheet }}{% endcapture %}
     <script>
     (function(global) {
         var cssURL = '{{ head_stylesheet_url }}';
