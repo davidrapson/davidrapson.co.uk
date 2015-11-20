@@ -80,4 +80,9 @@
     </script>
 {% endif %}
 <script type="text/javascript" src="//use.typekit.net/bem2aeh.js" onload="try{Typekit.load();}catch(e){}" async></script>
+<script id="script-sw">
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js');
+    }
+</script>
 <script>window.markUserTime('aft.Head')</script>
