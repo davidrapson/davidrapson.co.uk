@@ -34,7 +34,9 @@
     }
   },
   "scripts": {
-    "test": "echo \"Error: no test specified.\""
+    "build": "gulp build",
+    "deploy": "gulp deploy",
+    "test": "npm run build"
   },
   "devDependencies": {
     "aws-sdk": "^2.1.40",

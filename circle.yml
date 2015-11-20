@@ -5,14 +5,10 @@ machine:
     version: 4.1.0
 dependencies:
   override:
-    - npm install -g gulp
     - npm install
     - bundle install
-test:
-  override:
-    - gulp build
 deployment:
   production:
     branch: master
     commands:
-    - gulp deploy
+    - npm run deploy
