@@ -2,11 +2,11 @@
 ---
 'use strict';
 
-var version = 'v1::';
+var version = 'v2::';
 var cacheName = 'davidrapson';
 
 var offlineFundamentals = [
-    '',
+    '/',
     'public/dist/stylesheets/{{ site.data.stylesheets["head.css"] }}',
     'public/dist/stylesheets/{{ site.data.stylesheets["style.css"] }}',
     'public/dist/javascripts/{{ site.data.javascripts["combined.js"] }}',
