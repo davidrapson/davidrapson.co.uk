@@ -26,7 +26,7 @@ module Jekyll
       settings = site.config['picture']
       markup = /^(?:(?<preset>[^\s.:\/]+)\s+)?(?<image_src>[^\s]+\.[a-zA-Z0-9]{3,4})\s*(?<source_src>(?:(source_[^\s.:\/]+:\s+[^\s]+\.[a-zA-Z0-9]{3,4})\s*)+)?(?<html_attr>[\s\S]+)?$/.match(render_markup)
       preset = settings['presets'][ markup[:preset] ] || settings['presets']['default']
-      url_base = site.config['env'] == 'production' ? "//#{site.config['cdn_url']}" : ''
+      url_base = ''
 
       raise %{
         Picture Tag can't read this tag.
