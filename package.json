@@ -9,8 +9,8 @@
   "private": true,
   "config": {
     "urls": {
-      "dev": "http://davidrapson.site/",
-      "prod": "http://davidrapson.co.uk/"
+      "dev": "https://davidrapson.site/",
+      "prod": "https://davidrapson.co.uk/"
     },
     "aws": {
       "region": "eu-west-1",
