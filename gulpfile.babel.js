@@ -3,11 +3,6 @@
 import gulp from 'gulp';
 import requireDir from 'require-dir';
 
-requireDir('./tasks', {
-    recurse: true
-});
+requireDir('./tasks');
 
-gulp.task('default', [
-    'build:simple',
-    'serve'
-]);
+gulp.task('default', ['build:simple', 'serve']);

@@ -9,14 +9,11 @@ import del from 'del';
 import runSequence from 'run-sequence';
 import pkg from '../package.json';
 
-const paths = pkg.config.buildPaths;
+const {sourceDir, publicSource} = pkg.config.buildPaths;
 
 gulp.task('clean', done => {
-    del.sync([`${paths.publicSource}/**`]);
-    del.sync([
-        `${paths.sourceDir}/_data/javascripts.json`,
-        `${paths.sourceDir}/_data/stylesheets.json`
-    ]);
+    del.sync([`${publicSource}/**`]);
+    del.sync(['javascripts.json', 'stylesheets.json'].map(x => `${sourceDir}/_data/${x}`));
     done();
 });
 

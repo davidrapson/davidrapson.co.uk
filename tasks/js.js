@@ -19,8 +19,6 @@ gulp.task('js', ['lint'], function () {
 });
 
 gulp.task('lint', function () {
-    return gulp.src([
-        'gulpfile.babel.js',
-        'tasks/**/*.js'
-    ]).pipe(plugins.xo({quiet: true}));
+    return gulp.src(['gulpfile.babel.js', 'tasks/**/*.js'])
+        .pipe(plugins.xo({quiet: true}));
 });
