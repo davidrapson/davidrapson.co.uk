@@ -32,7 +32,7 @@ module.exports = function (options) {
             return callback(new gutil.PluginError(pluginName, 'Streaming not supported'));
         }
 
-        if (file.isBuffer() && shouldLogAssets) {
+        if (file.isBuffer()) {
             let metricName = path.basename(file.path);
             let size = toKB(file.contents.length);
             let params = {
