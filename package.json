@@ -71,7 +71,7 @@
     "psi": "^2.0.0",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.2",
-    "sass-mq": "3.2.4",
+    "sass-mq": "3.2.5",
     "through2": "^2.0.0"
   },
   "dependencies": {
