@@ -12,7 +12,7 @@ import pkg from '../package.json';
 const paths = pkg.config.buildPaths;
 
 gulp.task('deploy', function (done) {
-    runSequence('build', 'publishAssets', 'rsync', done);
+    runSequence('build', 'assets', 'rsync', done);
 });
 
 gulp.task('rsync', function (done) {

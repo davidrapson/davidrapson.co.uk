@@ -7,15 +7,14 @@ import pkg from '../package.json';
 
 const paths = pkg.config.buildPaths;
 const urls = pkg.config.urls;
-const baseDir = paths.buildDir;
 
 gulp.task('serve', function () {
-    opn(urls.dev);
-
     browserSync({
         open: false,
-        server: {baseDir}
+        server: {baseDir: paths.buildDir}
     });
+
+    opn(urls.dev);
 
     gulp.watch([
         `${paths.styleDest}/*.css`,

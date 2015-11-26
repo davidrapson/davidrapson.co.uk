@@ -2,12 +2,8 @@
 
 import path from 'path';
 import through from 'through2';
-import minimist from 'minimist';
 import gutil from 'gulp-util';
 import AWS from 'aws-sdk';
-
-const argv = minimist(process.argv.slice(2));
-const shouldLogAssets = (typeof argv.metrics === 'undefined') ? true : argv.metrics;
 
 const toKB = size => parseFloat((size / 1024).toFixed(2));
 
@@ -24,6 +20,9 @@ const getNamespace = fpath => {
 module.exports = function (options) {
     const pluginName = 'logAssetSize';
 
+    AWS.config.update({region: options.region});
+    const cloudwatch = new AWS.CloudWatch();
+
     return through.obj(function (file, enc, callback) {
         if (file.isNull()) {
             return callback(null, file);
@@ -33,9 +32,7 @@ module.exports = function (options) {
             return callback(new gutil.PluginError(pluginName, 'Streaming not supported'));
         }
 
-        if (file.isBuffer() && shouldLogAssets) {
-            AWS.config.update({region: options.region});
-            let cloudwatch = new AWS.CloudWatch();
+        if (file.isBuffer()) {
             let metricName = path.basename(file.path);
             let size = toKB(file.contents.length);
             let params = {
