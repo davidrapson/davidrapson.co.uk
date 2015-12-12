@@ -1,21 +1,82 @@
-<script>
-    document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+<script id="script-config">
+    window.Config = {
+        isModern: (
+            'querySelector' in document &&
+            'localStorage' in window &&
+            'addEventListener' in window &&
+            'withCredentials' in new XMLHttpRequest()
+        )
+    };
+</script>
+<script id="script-usertime">
     {% include markUserTime.js %}
 </script>
+<script src="https://use.typekit.net/bem2aeh.js"></script>
+<script id="script-setup">
+    {% include fontFaceObserver.js %}
+
+    (function(isModern) {
+        var docEl = document.documentElement;
+        var classes = ['js'];
+
+        /**
+         * Loads web-fonts using FontFaceObserver
+         *
+         * Minimises Flash of Faux Text (FOFT) by storing
+         * loaded preference in localStorage and adding
+         * a fonts-loaded class earlier if we think the
+         * fonts are already cached.
+         */
+        function loadFonts() {
+            var fontsLoaded = false;
+            var fontClass = 'fonts-loaded';
+
+            var observerBody = new FontFaceObserver('ff-meta-web-pro');
+            var observerDisplay = new FontFaceObserver('ff-meta-web-pro-condensed');
+
+            try {
+                fontsLoaded = !!sessionStorage.getItem('fontsLoaded')
+            } catch(e) {}
+
+            if (fontsLoaded) {
+                // Sync so push the class in to the array.
+                // Avoids setting docEl.className more than we need to.
+                classes.push(fontClass);
+            }
+
+            try {
+                Typekit.load({
+                    async: !fontsLoaded,
+                    classes: false
+                });
+            } catch(e) {}
+
+            Promise.all([
+                observerBody.check(),
+                observerDisplay.check()
+            ]).then(function() {
+                if (!fontsLoaded) {
+                    // Async, so we need to add the class manually.
+                    docEl.className = docEl.className + ' ' + fontClass;
+                    try {
+                        sessionStorage.setItem('fontsLoaded', true);
+                    } catch(e) {}
+                }
+            });
+        }
+
+        loadFonts();
+
+        docEl.className = docEl.className.replace('no-js', '') + classes.join(' ');
+    }(Config.isModern));
+</script>
+
 {% if site.env == 'production' %}
     {% capture head_versioned_stylesheet  %}{{ site.data.stylesheets["style.css"] }}{% endcapture %}
     {% capture head_stylesheet_url  %}/public/dist/stylesheets/{{ head_versioned_stylesheet }}{% endcapture %}
-    <script>
-    (function(global) {
+    <script id="script-inline-assets">
+    (function(global, isModern) {
         var cssURL = '{{ head_stylesheet_url }}';
-        function cutsMustard() {
-            return (
-                'querySelector' in document &&
-                'localStorage' in window &&
-                'addEventListener' in window &&
-                'withCredentials' in new XMLHttpRequest()
-            );
-        }
         function loadCssFromStorage() {
             var c = localStorage.getItem('css.{{ head_versioned_stylesheet }}'), s, head;
             if ( c ) {
@@ -71,15 +132,15 @@
             xhr.timeout = 5000;
             xhr.send();
         }
-        if( cutsMustard() ) {
-            loadCssWithAjax( cssURL );
+        if (isModern) {
+            loadCssWithAjax(cssURL);
         } else {
-            loadCssWithLink( cssURL );
+            loadCssWithLink(cssURL);
         }
-    }(this));
+    }(this, Config.isModern));
     </script>
 {% endif %}
-<script type="text/javascript" src="//use.typekit.net/bem2aeh.js" onload="try{Typekit.load();}catch(e){}" async></script>
+
 <script id="script-sw">
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/service-worker.js');
