@@ -73,7 +73,7 @@
     "through2": "^2.0.0"
   },
   "dependencies": {
-    "picturefill": "3.0.1"
+    "picturefill": "3.0.2"
   },
   "xo": {
     "space": 4
