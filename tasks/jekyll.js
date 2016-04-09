@@ -1,7 +1,7 @@
 'use strict';
 
-import gulp from 'gulp';
 import childProcess from 'child_process';
+import gulp from 'gulp';
 
 const exec = childProcess.exec;
 
