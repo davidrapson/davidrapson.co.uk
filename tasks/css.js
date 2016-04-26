@@ -1,8 +1,8 @@
 'use strict';
 
+import path from 'path';
 import gulp from 'gulp';
 import gulpPlugins from 'gulp-load-plugins';
-import path from 'path';
 import pkg from '../package.json';
 
 const plugins = gulpPlugins();

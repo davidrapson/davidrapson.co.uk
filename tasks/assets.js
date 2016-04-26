@@ -2,8 +2,8 @@
 
 import gulp from 'gulp';
 import gulpPlugins from 'gulp-load-plugins';
-import logAssetSize from './lib/logAssetSize';
 import pkg from '../package.json';
+import logAssetSize from './lib/logAssetSize';
 
 const plugins = gulpPlugins();
 const paths = pkg.config.buildPaths;

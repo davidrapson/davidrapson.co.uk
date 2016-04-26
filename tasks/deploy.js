@@ -1,12 +1,12 @@
 'use strict';
 
+import childProcess from 'child_process';
 import gulp from 'gulp';
 /**
  * Temporary solution until gulp 4
  * https://github.com/gulpjs/gulp/issues/355
  */
 import runSequence from 'run-sequence';
-import childProcess from 'child_process';
 import pkg from '../package.json';
 
 const paths = pkg.config.buildPaths;
