@@ -71,75 +71,21 @@
     }(Config.isModern));
 </script>
 
-{% if site.env == 'production' %}
-    {% capture head_versioned_stylesheet  %}{{ site.data.stylesheets["style.css"] }}{% endcapture %}
-    {% capture head_stylesheet_url  %}/public/dist/stylesheets/{{ head_versioned_stylesheet }}{% endcapture %}
-    <script id="script-inline-assets">
-    (function(global, isModern) {
-        var cssURL = '{{ head_stylesheet_url }}';
-        function loadCssFromStorage() {
-            var c = localStorage.getItem('css.{{ head_versioned_stylesheet }}'), s, head;
-            if ( c ) {
-                s = document.createElement('style');
-                head = document.getElementsByTagName('head')[0];
-                s.innerHTML = c;
-                s.setAttribute('data-loaded-from', 'local');
-                head.appendChild(s);
-                global.cssLoaded = true;
-            }
-        }
-        loadCssFromStorage();
+{% capture head_versioned_stylesheet  %}{{ site.data.stylesheets["style.css"] }}{% endcapture %}
+{% capture head_stylesheet_url  %}/public/dist/stylesheets/{{ head_versioned_stylesheet }}{% endcapture %}
+<script id="script-inline-assets">
+    /*! loadCSS: load a CSS file asynchronously. [c]2016 @scottjehl, Filament Group, Inc. Licensed MIT */
+    (function(w){"use strict";var loadCSS=function(href,before,media){var doc=w.document;var ss=doc.createElement("link");var ref;if(before){ref=before}else{var refs=(doc.body||doc.getElementsByTagName("head")[0]).childNodes;ref=refs[refs.length-1]}var sheets=doc.styleSheets;ss.rel="stylesheet";ss.href=href;ss.media="only x";function ready(cb){if(doc.body){return cb()}setTimeout(function(){ready(cb)})}ready(function(){ref.parentNode.insertBefore(ss,before?ref:ref.nextSibling)});var onloadcssdefined=function(cb){var resolvedHref=ss.href;var i=sheets.length;while(i--){if(sheets[i].href===resolvedHref){return cb()}}setTimeout(function(){onloadcssdefined(cb)})};function loadCB(){if(ss.addEventListener){ss.removeEventListener("load",loadCB)}ss.media=media||"all"}if(ss.addEventListener){ss.addEventListener("load",loadCB)}ss.onloadcssdefined=onloadcssdefined;onloadcssdefined(loadCB);return ss};if(typeof exports!=="undefined"){exports.loadCSS=loadCSS}else{w.loadCSS=loadCSS}})(typeof global!=="undefined"?global:this);
 
-        if ( global.cssLoaded ) { return false; }
+    Object.keys(localStorage).forEach(function(key) {
+        if (key.match(/^css./g)) {
+            console.log(key);
+            localStorage.removeItem(key);
+        }
+    });
 
-        function injectElement(e) {
-            var head = document.getElementsByTagName('head')[0];
-            head.appendChild(e);
-        }
-        function inlineCss(c) {
-            var s = document.createElement('style');
-            s.innerHTML = c;
-            s.setAttribute('data-loaded-from', 'ajax');
-            injectElement(s);
-        }
-        function storeCss(c) {
-            Object.keys(localStorage).forEach(function(key) {
-                if (key.match(/^css./g)) { localStorage.removeItem(key); }
-            });
-            try {
-                localStorage.setItem('css.{{ head_versioned_stylesheet }}', c);
-            } catch(e) {}
-        }
-        function loadCssWithLink( url ) {
-            var l = document.createElement('link');
-            l.rel = "stylesheet"; l.type = 'text/css';
-            l.href = url;
-            injectElement(l);
-        }
-        function loadCssWithAjax( url ) {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', url, true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4) {
-                    if(xhr.status === 200) {
-                        inlineCss(xhr.responseText);
-                        storeCss(xhr.responseText);
-                    } else {
-                        loadCssWithLink( cssURL );
-                    };
-                }
-            }
-            xhr.timeout = 5000;
-            xhr.send();
-        }
-        if (isModern) {
-            loadCssWithAjax(cssURL);
-        } else {
-            loadCssWithLink(cssURL);
-        }
-    }(this, Config.isModern));
-    </script>
-{% endif %}
+    loadCSS('{{ head_stylesheet_url }}');
+</script>
 
 <script id="script-sw">
     if ('serviceWorker' in navigator) {
