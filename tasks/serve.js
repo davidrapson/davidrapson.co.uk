@@ -1,9 +1,9 @@
 'use strict';
 
-import gulp from 'gulp';
-import opn from 'opn';
-import browserSync from 'browser-sync';
-import pkg from '../package.json';
+var gulp = require('gulp');
+var opn = require('opn');
+var browserSync = require('browser-sync');
+var pkg = require('../package.json');
 
 const paths = pkg.config.buildPaths;
 const urls = pkg.config.urls;

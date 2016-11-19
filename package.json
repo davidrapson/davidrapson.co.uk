@@ -1,6 +1,6 @@
 {
   "name": "davidrapson.co.uk",
-  "version": "4.4.0",
+  "version": "4.5.0",
   "description": "Personal website",
   "main": "gulpfile.js",
   "repository": "https://github.com/davidrapson/davidrapson.co.uk.git",
@@ -11,9 +11,6 @@
     "urls": {
       "dev": "https://davidrapson.site/",
       "prod": "https://davidrapson.co.uk/"
-    },
-    "aws": {
-      "region": "eu-west-1"
     },
     "buildPaths": {
       "sourceDir": "source",
@@ -35,14 +32,10 @@
   },
   "scripts": {
     "build": "gulp build",
-    "deploy": "gulp deploy",
     "test": "npm run build"
   },
   "devDependencies": {
-    "aws-sdk": "^2.1.40",
-    "babel-core": "^6.2.1",
-    "babel-preset-es2015": "^6.13.2",
-    "browser-sync": "^2.8.0",
+    "browser-sync": "^2.18.1",
     "del": "^2.0.2",
     "extend": "^3.0.0",
     "gulp": "^3.9.0",
