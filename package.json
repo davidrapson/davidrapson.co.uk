@@ -8,10 +8,6 @@
   "license": "UNLICENSED",
   "private": true,
   "config": {
-    "urls": {
-      "dev": "https://davidrapson.site/",
-      "prod": "https://davidrapson.co.uk/"
-    },
     "buildPaths": {
       "sourceDir": "source",
       "sourceDirData": "source/_data",
@@ -59,8 +55,6 @@
     "jshint-stylish": "^2.0.1",
     "mime": "^1.3.4",
     "opn": "^4.0.0",
-    "psi": "^2.0.0",
-    "require-dir": "^0.3.0",
     "run-sequence": "^1.1.2",
     "sass-mq": "3.2.9",
     "through2": "^2.0.0"

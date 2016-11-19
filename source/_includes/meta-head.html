@@ -21,14 +21,10 @@
     <meta name="theme-color" content="#b60000">
 
     {% capture versioned_stylesheet  %}/public/dist/stylesheets/{{ site.data.stylesheets["style.css"] }}{% endcapture %}
-    {% if site.env == 'production' %}
-        <style>{% include head.css %}</style>
-        <noscript>
-            <link rel="stylesheet" href="{{ versioned_stylesheet }}">
-        </noscript>
-    {% else %}
+    <style>{% include head.css %}</style>
+    <noscript>
         <link rel="stylesheet" href="{{ versioned_stylesheet }}">
-    {% endif %}
+    </noscript>
 
     {% include meta-headJs.html %}
 </head>
