@@ -1,8 +1,8 @@
 'use strict';
 
-import gulp from 'gulp';
-import psi from 'psi';
-import pkg from '../package.json';
+var gulp = require('gulp');
+var psi = require('psi');
+var pkg = require('../package.json');
 
 const urls = pkg.config.urls;
 

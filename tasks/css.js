@@ -1,9 +1,9 @@
 'use strict';
 
-import path from 'path';
-import gulp from 'gulp';
-import gulpPlugins from 'gulp-load-plugins';
-import pkg from '../package.json';
+var path = require('path');
+var gulp = require('gulp');
+var gulpPlugins = require('gulp-load-plugins');
+var pkg = require('../package.json');
 
 const plugins = gulpPlugins();
 const paths = pkg.config.buildPaths;
