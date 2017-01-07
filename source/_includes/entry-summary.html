@@ -1,17 +1,17 @@
-<div class="entry entry--summary" itemscope itemtype="http://schema.org/Article">
-    <span class="entry__meta">
-        <time datetime="{{ post.date | date: "%F %R%z" }}" itemprop="dateCreated">
-            {{ post.date | date: "%b %-d, %Y" }}
-        </time>
-    </span>
-    <h2 class="entry__title u-text-title">
-        <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url headline">
-            {{ post.title }}
-        </a>
-    </h2>
-    {% if post.description %}
-        <p class="entry__description">
-            {{ post.description }}
-        </p>
-    {% endif %}
-</div>
+<article class="entry entry--summary">
+    <header class="entry__header">
+        <span class="entry__meta">
+            <time datetime="{{ post.date | date: "%F %R%z" }}" itemprop="dateCreated">
+                {{ post.date | date: "%b %-d, %Y" }}
+            </time>
+        </span>
+        <h2 class="entry__title u-text-title">
+            <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url headline">
+                {{ post.title }}
+            </a>
+        </h2>
+    </header>
+    <footer class="entry__content" itemprop="description">
+        {{ post.description }}
+    </footer>
+</article>

@@ -1,15 +1,17 @@
-<div class="entry entry--micro" itemscope itemtype="http://schema.org/Article">
-    <span class="entry__meta">
-        <time datetime="{{ post.date | date: "%F %R%z" }}" itemprop="dateCreated">
-            {{ post.date | date: "%b %-d, %Y" }}
-        </time>
-    </span>
-    <h2 class="entry__title entry__title--external u-text-title" itemprop="headline">
-        <a href="{{ post.link }}">
-            {{ post.title }}
-        </a>
-    </h2>
-    <div class="entry__content" itemprop="description">
+<article class="entry entry--micro">
+    <header class="entry__header">
+        <span class="entry__meta">
+            <time datetime="{{ post.date | date: "%F %R%z" }}" itemprop="dateCreated">
+                {{ post.date | date: "%b %-d, %Y" }}
+            </time>
+        </span>
+        <h2 class="entry__title entry__title--external u-text-title" itemprop="headline">
+            <a href="{{ post.link }}">
+                {{ post.title }}
+            </a>
+        </h2>
+    </header>
+    <footer class="entry__content" itemprop="description">
         {{ post.content }}
-    </div>
-</div>
+    </footer>
+</article>
