@@ -2,7 +2,7 @@
 ---
 'use strict';
 
-var version = 'v7::';
+var version = 'v8::';
 var cacheName = 'davidrapson';
 
 var offlineFundamentals = [

@@ -24,7 +24,7 @@ github_username:  davidrapson
 permalink: /:year/:title/
 
 # Pagination
-paginate: 6
+paginate: 12
 paginate_path: "page-:num/"
 
 # Writing

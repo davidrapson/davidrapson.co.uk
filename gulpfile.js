@@ -6,7 +6,6 @@ var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
 var del = require('del');
-var opn = require('opn');
 var browserSync = require('browser-sync');
 var pkg = require('./package.json');
 
@@ -24,7 +23,11 @@ gulp.task('lint', function () {
 
 gulp.task('js', ['lint'], function () {
     var paths = pkg.config.buildPaths;
-    return gulp.src(['./node_modules/picturefill/dist/picturefill.min.js'])
+    return gulp.src([
+        './node_modules/picturefill/dist/picturefill.min.js',
+        './node_modules/fitvids/dist/fitvids.min.js',
+        paths.jsSrc + '/app.js'
+    ])
         .pipe(plugins.plumber())
         .pipe(plugins.concat('combined.js'))
         .pipe(gulp.dest(paths.jsDest))
@@ -80,8 +83,6 @@ gulp.task('serve', function () {
         server: {baseDir: paths.buildDir}
     });
 
-    opn('https://davidrapson.site/');
-
     gulp.watch([
         `${paths.styleDest}/*.css`,
         `${paths.sourceDir}/*.{html,md}`,
@@ -109,8 +110,6 @@ gulp.task('build', function (done) {
 gulp.task('build:simple', function (done) {
     runSequence('css', 'js', 'jekyll', 'images', done);
 });
-
-// requireDir('./tasks');
 
 /**
  * Default task
