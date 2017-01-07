@@ -52,8 +52,8 @@
             } catch(e) {}
 
             Promise.all([
-                observerBody.check(),
-                observerDisplay.check()
+                observerBody.load(),
+                observerDisplay.load()
             ]).then(function() {
                 if (!fontsLoaded) {
                     // Async, so we need to add the class manually.
