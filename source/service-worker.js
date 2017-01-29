@@ -2,7 +2,7 @@
 ---
 'use strict';
 
-var version = 'davidrapson.10::';
+var version = 'davidrapson.11::';
 
 var staticCacheName = version + 'static';
 var pagesCacheName = version + 'pages';
@@ -14,8 +14,6 @@ var offlinePages = [
 ];
 
 var staticAssets = [
-    '/public/dist/stylesheets/{{ site.data.stylesheets["head.css"] }}',
-    '/public/dist/stylesheets/{{ site.data.stylesheets["style.css"] }}',
     '/public/dist/javascripts/{{ site.data.javascripts["combined.js"] }}',
     '{{ site.profile_image }}'
 ];
