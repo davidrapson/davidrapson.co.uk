@@ -1,6 +1,5 @@
 'use strict';
 
-var path = require('path');
 var exec = require('child_process').exec;
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
@@ -39,23 +38,12 @@ gulp.task('js', ['lint'], function () {
 
 gulp.task('css', function () {
     const paths = pkg.config.buildPaths;
-    return gulp.src([`${paths.styleSrc}/{head,style}.scss`])
+    return gulp.src([`${paths.styleSrc}/style.scss`])
         .pipe(plugins.plumber())
-        .pipe(plugins.sourcemaps.init())
         .pipe(plugins.sass())
-        .pipe(plugins.autoprefixer('last 2 version', 'ie 8', 'ie 9'))
+        .pipe(plugins.autoprefixer('last 2 versions'))
         .pipe(plugins.csso())
-        .pipe(gulp.dest(paths.styleDest))
-        .pipe(plugins.if(
-            // Pipe head.min.css to _includes for inlining
-            file => path.basename(file.path) === 'head.css',
-            gulp.dest(`${paths.sourceDir}/_includes`)
-        ))
-        .pipe(plugins.rev())
-        .pipe(plugins.sourcemaps.write('.'))
-        .pipe(gulp.dest(paths.buildDistCss))
-        .pipe(plugins.rev.manifest('stylesheets.json'))
-        .pipe(gulp.dest(paths.sourceDirData));
+        .pipe(gulp.dest(`${paths.sourceDir}/_includes`));
 });
 
 gulp.task('images', function () {

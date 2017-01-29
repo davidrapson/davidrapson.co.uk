@@ -20,11 +20,86 @@
 
     <meta name="theme-color" content="#b60000">
 
-    {% capture versioned_stylesheet  %}/public/dist/stylesheets/{{ site.data.stylesheets["style.css"] }}{% endcapture %}
-    <style>{% include head.css %}</style>
-    <noscript>
-        <link rel="stylesheet" href="{{ versioned_stylesheet }}">
-    </noscript>
+    <style>{% include style.css %}</style>
 
-    {% include meta-headJs.html %}
+    <script id="script-config">
+        window.Config = {
+            isModern: (
+                'querySelector' in document &&
+                'localStorage' in window &&
+                'addEventListener' in window &&
+                'withCredentials' in new XMLHttpRequest()
+            )
+        };
+    </script>
+    <script id="script-usertime">
+        {% include markUserTime.js %}
+    </script>
+    <script src="https://use.typekit.net/bem2aeh.js"></script>
+    <script id="script-setup">
+        {% include fontFaceObserver.js %}
+
+        (function(isModern) {
+            var docEl = document.documentElement;
+            var classes = ['js'];
+
+            /**
+             * Loads web-fonts using FontFaceObserver
+             *
+             * Minimises Flash of Faux Text (FOFT) by storing
+             * loaded preference in localStorage and adding
+             * a fonts-loaded class earlier if we think the
+             * fonts are already cached.
+             */
+            function loadFonts() {
+                var fontsLoaded = false;
+                var fontClass = 'fonts-loaded';
+
+                var observerBody = new FontFaceObserver('ff-meta-web-pro');
+                var observerDisplay = new FontFaceObserver('ff-meta-web-pro-condensed');
+
+                try {
+                    fontsLoaded = !!sessionStorage.getItem('fontsLoaded')
+                } catch(e) {}
+
+                if (fontsLoaded) {
+                    // Sync so push the class in to the array.
+                    // Avoids setting docEl.className more than we need to.
+                    classes.push(fontClass);
+                }
+
+                try {
+                    Typekit.load({
+                        async: !fontsLoaded,
+                        classes: false
+                    });
+                } catch(e) {}
+
+                Promise.all([
+                    observerBody.load(),
+                    observerDisplay.load()
+                ]).then(function() {
+                    if (!fontsLoaded) {
+                        // Async, so we need to add the class manually.
+                        docEl.className = docEl.className + ' ' + fontClass;
+                        try {
+                            sessionStorage.setItem('fontsLoaded', true);
+                        } catch(e) {}
+                    }
+                });
+            }
+
+            loadFonts();
+
+            docEl.className = docEl.className.replace('no-js', '') + classes.join(' ');
+        }(Config.isModern));
+    </script>
+
+    <script id="script-sw">
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js');
+        }
+    </script>
+    <script>window.markUserTime('aft.Head')</script>
+
 </head>
