@@ -2,7 +2,7 @@
 ---
 'use strict';
 
-var version = 'davidrapson.11::';
+var version = 'davidrapson.12::';
 
 var staticCacheName = version + 'static';
 var pagesCacheName = version + 'pages';
@@ -61,6 +61,10 @@ self.addEventListener('activate', function (event) {
 self.addEventListener('fetch', function (event) {
     let request = event.request;
     let url = new URL(request.url);
+
+    if (request.url.indexOf('google-analytics') !== -1) {
+        return;
+    }
 
     // Ignore non-GET requests
     if (request.method !== 'GET') {
