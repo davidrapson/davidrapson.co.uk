@@ -51,6 +51,11 @@ picture:
       source_default:
         width: "320"
 
+# Build includes
+include: [
+  "_headers"
+]
+
 # Build Excludes
 exclude: [
   "assets"
