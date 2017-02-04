@@ -37,7 +37,11 @@ body {
    ========================================================================== */
 
 html, body, button, input, select, textarea, .ff-body {
-    font-family: font-stack(body);
+    font-family: sans-serif;
+
+    .wf-active & {
+        font-family: font-stack(body);
+    }
 }
 
 h1, h2, h3, h4, h5, h6, .ff-display {
