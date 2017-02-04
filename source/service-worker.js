@@ -2,7 +2,7 @@
 ---
 'use strict';
 
-var version = 'davidrapson.12::';
+var version = 'davidrapson.13::';
 
 var staticCacheName = version + 'static';
 var pagesCacheName = version + 'pages';
