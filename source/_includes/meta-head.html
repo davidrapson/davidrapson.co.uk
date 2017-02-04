@@ -1,9 +1,13 @@
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
     <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#b60000">
+
+    <style>{% include style.css %}</style>
 
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
     <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
@@ -18,36 +22,17 @@
     <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png">
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
-    <meta name="theme-color" content="#b60000">
-
-    <style>{% include style.css %}</style>
-
-    <script id="script-config">
-        window.Config = {
-            isModern: (
-                'querySelector' in document &&
-                'localStorage' in window &&
-                'addEventListener' in window &&
-                'withCredentials' in new XMLHttpRequest()
-            )
-        };
-    </script>
     <script id="script-usertime">
         {% include markUserTime.js %}
     </script>
     <script id="script-typekit-cache">
         (function() {
             var tkCache = false;
-            try {
-                tkCache = window.sessionStorage.getItem('_tk_cache');
-            } catch (e) {}
-
+            try { tkCache = window.sessionStorage.getItem('_tk_cache'); } catch (e) {}
             if (tkCache) {
                 document.documentElement.classList.add('wf-active');
-
                 var script = document.createElement('script');
                 script.innerHTML = tkCache + ";(function () {var timeout = setTimeout(function () {document.documentElement.classList.remove('wf-active');}, 300); Typekit.load({ async: false, active: function () { clearTimeout(timeout); }});})();";
-
                 document.head.appendChild(script);
             }
         }());
@@ -55,9 +40,7 @@
         window._tk_onload = function () {
             var req = new XMLHttpRequest()
             req.addEventListener("load", function () {
-                try {
-                    window.sessionStorage.setItem('_tk_cache', this.responseText);
-                } catch (e) {}
+                try { window.sessionStorage.setItem('_tk_cache', this.responseText); } catch (e) {}
             });
             req.open("GET", "https://use.typekit.net/bem2aeh.js");
             req.send();
