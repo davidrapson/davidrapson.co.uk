@@ -23,9 +23,13 @@ github_username:  davidrapson
 # Permalinks
 permalink: /:year/:title/
 
-# Pagination
-paginate: 12
-paginate_path: "page-:num/"
+pagination:
+  enabled: true
+  per_page: 6
+  permalink: "page-:num/"
+  trail:
+      before: 2
+      after: 2
 
 # Writing
 # See: https://github.com/jekyll/jekyll/issues/3371
@@ -61,6 +65,8 @@ exclude: [
   "assets"
 ]
 
-# PLugins
-gems:
-  - jekyll-sitemap
+# Plugins
+gems: [
+  jekyll-sitemap,
+  jekyll-paginate-v2
+]

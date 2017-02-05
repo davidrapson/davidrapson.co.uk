@@ -27,6 +27,7 @@
     }
   },
   "scripts": {
+    "start": "gulp",
     "build": "gulp build",
     "test": "npm run build"
   },
