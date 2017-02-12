@@ -72,11 +72,14 @@ gulp.task('serve', function () {
     });
 
     gulp.watch([
+        `*.yml`,
         `${paths.styleDest}/*.css`,
         `${paths.sourceDir}/*.{html,md}`,
         `${paths.sourceDir}/{_layouts,_includes,_drafts,_posts}/**`
     ], ['build:simple']);
+
     gulp.watch(`${paths.styleSrc}/**/*.scss`, ['css']);
+
     gulp.watch(`${paths.jsSrc}/**/*.js`, ['js']);
 
     gulp.watch([
