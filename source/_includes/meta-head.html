@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#b60000">
 
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Source+Sans+Pro" rel="stylesheet">
+
     <style>{% include style.css %}</style>
 
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
@@ -25,30 +27,6 @@
     <script id="script-usertime">
         {% include markUserTime.js %}
     </script>
-    <script id="script-typekit-cache">
-        (function() {
-            var tkCache = false;
-            try { tkCache = window.sessionStorage.getItem('_tk_cache'); } catch (e) {}
-            if (tkCache) {
-                document.documentElement.classList.add('wf-active');
-                var script = document.createElement('script');
-                script.innerHTML = tkCache + ";(function () {var timeout = setTimeout(function () {document.documentElement.classList.remove('wf-active');}, 300); Typekit.load({ async: false, active: function () { clearTimeout(timeout); }});})();";
-                document.head.appendChild(script);
-            }
-        }());
-
-        window._tk_onload = function () {
-            var req = new XMLHttpRequest()
-            req.addEventListener("load", function () {
-                try { window.sessionStorage.setItem('_tk_cache', this.responseText); } catch (e) {}
-            });
-            req.open("GET", "https://use.typekit.net/bem2aeh.js");
-            req.send();
-        };
-    </script>
-    <script async src="https://use.typekit.net/bem2aeh.js"
-        onload="Typekit.load({ async: true, loading: window._tk_onload })"></script>
-
     <script id="script-sw">
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/service-worker.js');

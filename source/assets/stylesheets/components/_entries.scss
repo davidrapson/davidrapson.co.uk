@@ -22,10 +22,12 @@
 .entry {
     margin-bottom: 0;
 }
+.entry__meta {
+    font-weight: bold;
+}
 .entry__title {
     font-size: rem(24);
-    font-family: font-stack(body);
-    margin: 0 0 .2em 0;
+    margin: 0 0 .5em 0;
 }
 .entry__description {
     color: palette(text, light);
