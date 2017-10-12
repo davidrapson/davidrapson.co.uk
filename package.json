@@ -29,6 +29,7 @@
   "scripts": {
     "start": "gulp",
     "build": "gulp build",
+    "pretest": "xo gulpfile.js tasks/**/*.js",
     "test": "npm run build"
   },
   "devDependencies": {
@@ -51,13 +52,13 @@
     "gulp-sass": "^3.0.0",
     "gulp-sourcemaps": "^2.0.0",
     "gulp-util": "^3.0.6",
-    "gulp-xo": "^0.16.0",
     "hash-files": "^1.0.0",
     "jshint-stylish": "^2.0.1",
     "mime": "^2.0.3",
     "run-sequence": "^2.0.0",
     "sass-mq": "3.3.2",
-    "through2": "^2.0.0"
+    "through2": "^2.0.0",
+    "xo": "^0.18.2"
   },
   "dependencies": {
     "fitvids": "^2.0.0",

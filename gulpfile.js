@@ -15,12 +15,7 @@ gulp.task('clean', function (done) {
     done();
 });
 
-gulp.task('lint', function () {
-    return gulp.src(['gulpfile.js', 'tasks/**/*.js'])
-        .pipe(plugins.xo({quiet: true}));
-});
-
-gulp.task('js', ['lint'], function () {
+gulp.task('js', function () {
     var paths = pkg.config.buildPaths;
     return gulp.src([
         './node_modules/picturefill/dist/picturefill.min.js',
