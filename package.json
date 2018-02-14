@@ -58,7 +58,7 @@
     "run-sequence": "^2.0.0",
     "sass-mq": "4.0.0",
     "through2": "^2.0.0",
-    "xo": "^0.18.2"
+    "xo": "^0.20.0"
   },
   "dependencies": {
     "fitvids": "^2.0.0",
