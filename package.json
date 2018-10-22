@@ -62,7 +62,7 @@
   },
   "dependencies": {
     "fitvids": "^2.0.0",
-    "picturefill": "3.0.2"
+    "picturefill": "3.0.3"
   },
   "xo": {
     "esnext": false,
