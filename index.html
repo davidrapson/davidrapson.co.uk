@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link
+            rel="apple-touch-icon-precomposed"
+            sizes="114x114"
+            href="/apple-touch-icon-114x114.png"
+        />
+        <link
+            rel="apple-touch-icon-precomposed"
+            sizes="72x72"
+            href="/apple-touch-icon-72x72.png"
+        />
+        <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Playfair+Display|Source+Sans+Pro"
+            rel="stylesheet"
+        />
+
+        <title>David Rapson</title>
+
+        <style>
+            html {
+                box-sizing: border-box;
+            }
+            *,
+            *:before,
+            *:after {
+                box-sizing: inherit;
+            }
+
+            html {
+                height: 100%;
+                font-size: 18px;
+                line-height: 1.6;
+                border-top: 10px solid #b60000;
+            }
+
+            body {
+                color: #333344;
+                background-color: #fafafa;
+                max-width: 720px;
+                width: 90%;
+                margin: 40px auto;
+            }
+
+            html,
+            body,
+            button,
+            input,
+            select,
+            textarea {
+                font-family: "Source Sans Pro", serif;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-family: "Playfair Display", sans-serif;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+            h2 {
+                font-size: 22px;
+            }
+            h3 {
+                font-size: 20px;
+            }
+            h4 {
+                font-size: 18px;
+            }
+            h5 {
+                font-size: 16px;
+            }
+            h6 {
+                font-size: 14px;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                color: #444455;
+                font-weight: 700;
+                line-height: 1.3;
+                margin: 0;
+            }
+
+            h6 {
+                text-transform: uppercase;
+            }
+
+            h1 {
+                margin-bottom: 0.75em;
+            }
+
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                margin-bottom: 0.3em;
+            }
+
+            p + h1,
+            p + h2,
+            p + h3,
+            p + h4,
+            p + h5,
+            p + h6 {
+                margin-top: 1.5em;
+            }
+
+            p:empty {
+                display: none;
+            }
+
+            /*  =========================================================================
+            Links
+            http://developers.whatwg.org/links.html
+            ========================================================================= */
+
+            a {
+                color: #b60000;
+                font-weight: bold;
+                text-decoration: none;
+                word-wrap: break-word;
+                line-height: inherit;
+            }
+            a:hover {
+                color: #700000;
+                cursor: pointer;
+            }
+            a:hover,
+            a:active {
+                outline: 0;
+            }
+            a:focus {
+                outline: thin dotted;
+            }
+
+            a,
+            a:visited,
+            a:hover {
+                text-decoration: none;
+                border-bottom: 1px solid #bababa;
+            }
+
+            /*  =========================================================================
+                Text-level semantics
+                http://developers.whatwg.org/text-level-semantics.html
+                ========================================================================= */
+
+            p,
+            ul,
+            ol,
+            dl {
+                margin-top: 0;
+                margin-bottom: 0.75em;
+            }
+
+            ul {
+                list-style: disc outside;
+            }
+            ol {
+                list-style: decimal outside;
+            }
+            dl dt {
+                font-weight: bold;
+            }
+            dl dd {
+                margin: 0 0 1.5em 0;
+            }
+
+            blockquote {
+                margin: 0;
+            }
+
+            img {
+                border: 1px solid white;
+                outline: 5px solid #eaeaea;
+                margin-bottom: 1em;
+            }
+
+            @media screen and (min-width: 900px) {
+                .content {
+                    display: flex;
+                    align-items: flex-start;
+                }
+                .content__bio {
+                    flex: 1;
+                }
+                .content__profile {
+                    margin: 5px 15px 0 0;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Hey, I'm David Rapson</h1>
+
+        <div class="content">
+            <div class="content__profile">
+                <img
+                    src="./profile.jpg"
+                    width="140"
+                    height="140"
+                    class="content__profile"
+                />
+            </div>
+
+            <div class="content__bio">
+                <p>
+                    I'm a software developer currently working at
+                    <a href="http://github.com/biglotteryfund/"
+                        >The National Lottery Community Fund</a
+                    >.
+                </p>
+
+                <p>
+                    I previously worked with
+                    <a href="https://made.meda/">Made Media</a> where I made
+                    websites for a number of high-profile cultural institutions.
+                    One of those projects was featured on the
+                    <a
+                        href="https://responsivewebdesign.com/podcast/royal-albert-hall/"
+                        >Responsive Web Design</a
+                    >
+                    podcast.
+                </p>
+                <p>
+                    Before that I was at
+                    <a href="https://developers.theguardian.com/"
+                        >The Guardian</a
+                    >
+                    where I worked on their membership product.
+                </p>
+
+                <p>
+                    You can—infrequently—find me on
+                    <a href="https://twitter.com/davidrapson">Twitter</a>
+                    or over on
+                    <a href="https://github.com/davidrapson">GitHub</a>.
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
