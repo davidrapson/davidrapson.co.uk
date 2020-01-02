@@ -36,8 +36,9 @@
             html {
                 height: 100%;
                 font-size: 18px;
-                line-height: 1.6;
+                line-height: 1.5;
                 border-top: 10px solid #b60000;
+                font-family: "Source Sans Pro", serif;
             }
 
             body {
@@ -48,15 +49,6 @@
                 margin: 40px auto;
             }
 
-            html,
-            body,
-            button,
-            input,
-            select,
-            textarea {
-                font-family: "Source Sans Pro", serif;
-            }
-
             h1,
             h2,
             h3,
@@ -64,10 +56,15 @@
             h5,
             h6 {
                 font-family: "Playfair Display", sans-serif;
+                color: #444455;
+                font-weight: 700;
+                line-height: 1.3;
+                margin: 0 0 0.3em 0;
             }
 
             h1 {
                 font-size: 32px;
+                margin-bottom: 0.75em;
             }
             h2 {
                 font-size: 22px;
@@ -83,79 +80,8 @@
             }
             h6 {
                 font-size: 14px;
-            }
-
-            h1,
-            h2,
-            h3,
-            h4,
-            h5,
-            h6 {
-                color: #444455;
-                font-weight: 700;
-                line-height: 1.3;
-                margin: 0;
-            }
-
-            h6 {
                 text-transform: uppercase;
             }
-
-            h1 {
-                margin-bottom: 0.75em;
-            }
-
-            h2,
-            h3,
-            h4,
-            h5,
-            h6 {
-                margin-bottom: 0.3em;
-            }
-
-            p + h1,
-            p + h2,
-            p + h3,
-            p + h4,
-            p + h5,
-            p + h6 {
-                margin-top: 1.5em;
-            }
-
-            p:empty {
-                display: none;
-            }
-
-            /*  =========================================================================
-            Links
-            http://developers.whatwg.org/links.html
-            ========================================================================= */
-
-            a {
-                color: #b60000;
-                font-weight: bold;
-                text-decoration: none;
-                word-wrap: break-word;
-                line-height: inherit;
-            }
-
-            a,
-            a:visited,
-            a:hover {
-                text-decoration: none;
-                border-bottom: 1px solid #bababa;
-            }
-
-            a:hover,
-            a:visited {
-                color: #500000;
-                cursor: pointer;
-            }
-
-            /*  =========================================================================
-                Text-level semantics
-                http://developers.whatwg.org/text-level-semantics.html
-                ========================================================================= */
 
             p,
             ul,
@@ -165,26 +91,30 @@
                 margin-bottom: 0.75em;
             }
 
-            ul {
-                list-style: disc outside;
-            }
-            ol {
-                list-style: decimal outside;
-            }
-            dl dt {
+            a {
+                color: #b60000;
                 font-weight: bold;
-            }
-            dl dd {
-                margin: 0 0 1.5em 0;
-            }
-
-            blockquote {
-                margin: 0;
+                text-decoration: none;
+                word-wrap: break-word;
+                line-height: inherit;
+                text-decoration: none;
+                border-bottom: 2px solid #fcc;
             }
 
-            img {
+            a:hover,
+            a:active {
+                color: #500000;
+                cursor: pointer;
+                border-color: #500000;
+            }
+
+            /*  =========================================================================
+                Layout
+                ========================================================================= */
+
+            .profile-img {
                 border: 1px solid white;
-                outline: 5px solid #eaeaea;
+                outline: 5px solid #fcc;
                 margin-bottom: 1em;
             }
 
@@ -197,7 +127,7 @@
                     flex: 1;
                 }
                 .content__profile {
-                    margin: 5px 15px 0 0;
+                    margin: 5px 25px 0 0;
                 }
             }
         </style>
@@ -209,15 +139,16 @@
             <div class="content__profile">
                 <img
                     src="./profile.jpg"
+                    alt="A photo of me in front of a print by Frank Chimero reading 'the infinite potential of every little bit'"
                     width="140"
                     height="140"
-                    class="content__profile"
+                    class="profile-img"
                 />
             </div>
 
             <div class="content__bio">
                 <p>
-                    I'm a software developer currently working at
+                    I'm a software developer currently working with
                     <a href="http://github.com/biglotteryfund/"
                         >The National Lottery Community Fund</a
                     >.
