@@ -1,9 +1,0 @@
-machine:
-  ruby:
-    version: 2.2.2
-  node:
-    version: 6.9.1
-dependencies:
-  override:
-    - npm install
-    - bundle install
