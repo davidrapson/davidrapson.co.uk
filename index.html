@@ -46,7 +46,7 @@
                 background-color: #fafafa;
                 max-width: 720px;
                 width: 90%;
-                margin: 40px auto;
+                margin: 0 auto;
             }
 
             h1,
@@ -112,6 +112,10 @@
                 Layout
                 ========================================================================= */
 
+            main {
+                padding: 40px 0;
+            }
+
             .profile-img {
                 border: 1px solid white;
                 outline: 5px solid #fcc;
@@ -133,53 +137,54 @@
         </style>
     </head>
     <body>
-        <h1>Hey, I'm David Rapson</h1>
+        <main>
+            <h1>Hey, I'm David Rapson</h1>
+            <div class="content">
+                <div class="content__profile">
+                    <img
+                        src="./profile.jpg"
+                        alt="A photo of me in front of a print by Frank Chimero reading 'the infinite potential of every little bit'"
+                        width="140"
+                        height="140"
+                        class="profile-img"
+                    />
+                </div>
 
-        <div class="content">
-            <div class="content__profile">
-                <img
-                    src="./profile.jpg"
-                    alt="A photo of me in front of a print by Frank Chimero reading 'the infinite potential of every little bit'"
-                    width="140"
-                    height="140"
-                    class="profile-img"
-                />
+                <div class="content__bio">
+                    <p>
+                        I'm a software developer currently working with
+                        <a href="http://github.com/biglotteryfund/"
+                            >The National Lottery Community Fund</a
+                        >.
+                    </p>
+
+                    <p>
+                        I previously worked with
+                        <a href="https://made.media/">Made Media</a> where I made
+                        websites for a number of high-profile cultural institutions.
+                        One of those projects was featured on the
+                        <a
+                            href="https://responsivewebdesign.com/podcast/royal-albert-hall/"
+                            >Responsive Web Design</a
+                        >
+                        podcast.
+                    </p>
+                    <p>
+                        Before that I was at
+                        <a href="https://developers.theguardian.com/"
+                            >The Guardian</a
+                        >
+                        where I worked on their membership product.
+                    </p>
+
+                    <p>
+                        You can—infrequently—find me on
+                        <a href="https://twitter.com/davidrapson">Twitter</a>
+                        or over on
+                        <a href="https://github.com/davidrapson">GitHub</a>.
+                    </p>
+                </div>
             </div>
-
-            <div class="content__bio">
-                <p>
-                    I'm a software developer currently working with
-                    <a href="http://github.com/biglotteryfund/"
-                        >The National Lottery Community Fund</a
-                    >.
-                </p>
-
-                <p>
-                    I previously worked with
-                    <a href="https://made.media/">Made Media</a> where I made
-                    websites for a number of high-profile cultural institutions.
-                    One of those projects was featured on the
-                    <a
-                        href="https://responsivewebdesign.com/podcast/royal-albert-hall/"
-                        >Responsive Web Design</a
-                    >
-                    podcast.
-                </p>
-                <p>
-                    Before that I was at
-                    <a href="https://developers.theguardian.com/"
-                        >The Guardian</a
-                    >
-                    where I worked on their membership product.
-                </p>
-
-                <p>
-                    You can—infrequently—find me on
-                    <a href="https://twitter.com/davidrapson">Twitter</a>
-                    or over on
-                    <a href="https://github.com/davidrapson">GitHub</a>.
-                </p>
-            </div>
-        </div>
+        </main>
     </body>
 </html>
