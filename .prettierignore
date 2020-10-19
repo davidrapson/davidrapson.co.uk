@@ -1,0 +1,3 @@
+_site/
+.netlify/
+package-lock.json
