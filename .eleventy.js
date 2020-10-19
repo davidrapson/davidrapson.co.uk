@@ -1,18 +1,24 @@
+const del = require("del");
 const CleanCSS = require("clean-css");
 
 module.exports = function (eleventyConfig) {
-    // Find and copy any image files to _site
-    // Does not maintain directory structure.
-    eleventyConfig.addPassthroughCopy({ "src/*.{png,ico,jpg}": "." });
+    const dir = {
+        input: "src",
+        output: "_site",
+    };
 
+    // Clean output directory on build
+    del(`${dir.output}/*`);
+
+    // Passthrough copy all images
+    eleventyConfig.addPassthroughCopy({
+        [`${dir.input}/*.{png,ico,jpg}`]: ".",
+    });
+
+    // Minify CSS filter, used to inline all styles
     eleventyConfig.addFilter("cssmin", function (code) {
         return new CleanCSS({}).minify(code).styles;
     });
 
-    return {
-        dir: {
-            input: "src",
-            output: "_site",
-        },
-    };
+    return { dir };
 };
