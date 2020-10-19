@@ -1,0 +1,110 @@
+html {
+    box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html {
+    height: 100%;
+    font-size: 18px;
+    line-height: 1.5;
+    border-top: 10px solid #b60000;
+    font-family: "Source Sans Pro", serif;
+}
+
+body {
+    color: #333344;
+    background-color: #fafafa;
+    max-width: 720px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Playfair Display", sans-serif;
+    color: #444455;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0 0 0.3em 0;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 0.75em;
+}
+h2 {
+    font-size: 22px;
+}
+h3 {
+    font-size: 20px;
+}
+h4 {
+    font-size: 18px;
+}
+h5 {
+    font-size: 16px;
+}
+h6 {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+p,
+ul,
+ol,
+dl {
+    margin-top: 0;
+    margin-bottom: 0.75em;
+}
+
+a {
+    color: #b60000;
+    font-weight: bold;
+    text-decoration: none;
+    word-wrap: break-word;
+    line-height: inherit;
+    text-decoration: none;
+    border-bottom: 2px solid #fcc;
+}
+
+a:hover,
+a:active {
+    color: #500000;
+    cursor: pointer;
+    border-color: #500000;
+}
+
+/*  =========================================================================
+    Layout
+    ========================================================================= */
+
+main {
+    padding: 40px 0;
+}
+
+.profile-img {
+    border: 1px solid white;
+    outline: 5px solid #fcc;
+    margin-bottom: 1em;
+}
+
+@media screen and (min-width: 900px) {
+    .content {
+        display: flex;
+        align-items: flex-start;
+    }
+    .content__bio {
+        flex: 1;
+    }
+    .content__profile {
+        margin: 5px 25px 0 0;
+    }
+}
