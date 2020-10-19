@@ -1,0 +1,22 @@
+{
+  "name": "davidrapson.co.uk",
+  "author": "David Rapson",
+  "version": "1.0.0",
+  "license": "ISC",
+  "private": true,
+  "repository": "github:davidrapson/davidrapson.co.uk",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "scripts": {
+    "format": "prettier --write .",
+    "test": "prettier --check .",
+    "build": "eleventy"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.0",
+    "clean-css": "^4.2.3",
+    "prettier": "^2.1.2"
+  }
+}
