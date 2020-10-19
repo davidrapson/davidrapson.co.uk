@@ -20,6 +20,9 @@ package = "netlify-plugin-minify-html"
       'deploy-preview'
     ]
 
+  [plugins.inputs.minifierOptions]
+    collapseInlineTagWhitespace = false
+
 [[plugins]]
 package = "netlify-plugin-a11y"
   [plugins.inputs]
