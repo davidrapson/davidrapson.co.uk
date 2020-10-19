@@ -1,0 +1,18 @@
+{
+  "name": "davidrapson.co.uk",
+  "author": "David Rapson",
+  "version": "1.0.0",
+  "license": "ISC",
+  "private": true,
+  "repository": "github:davidrapson/davidrapson.co.uk",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "scripts": {
+    "build": "eleventy"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.0"
+  }
+}
