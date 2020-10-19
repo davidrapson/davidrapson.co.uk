@@ -12,6 +12,15 @@
     X-XSS-Protection = "1; mode=block"
 
 [[plugins]]
+package = "netlify-plugin-minify-html"
+  [plugins.inputs]
+    contexts = [
+      'production',
+      'branch-deploy',
+      'deploy-preview'
+    ]
+
+[[plugins]]
 package = "netlify-plugin-a11y"
   [plugins.inputs]
   checkPaths = ['/']
