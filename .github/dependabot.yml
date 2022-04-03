@@ -6,4 +6,3 @@ updates:
       interval: weekly
       timezone: Europe/London
     open-pull-requests-limit: 10
-    target-branch: "master"
