@@ -16,10 +16,9 @@
   },
   "dependencies": {
     "@11ty/eleventy": "^1.0.0",
+    "@netlify/plugin-a11y": "^1.0.0-alpha.6",
     "clean-css": "^5.3.0",
     "del": "^6.0.0",
-    "netlify-plugin-a11y": "0.0.12",
-    "netlify-plugin-minify-html": "^0.3.1",
     "prettier": "^2.6.1"
   }
 }
