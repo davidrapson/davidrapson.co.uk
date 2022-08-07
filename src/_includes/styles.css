@@ -31,7 +31,7 @@ h5,
 h6 {
   font-family: "Playfair Display", serif;
   color: #444455;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.5;
   margin: 0 0 0.3em 0;
 }
@@ -67,7 +67,7 @@ dl {
 
 a {
   color: #b60000;
-  font-weight: 700;
+  font-weight: bold;
   font-style: italic;
   text-decoration: none;
   word-wrap: break-word;
