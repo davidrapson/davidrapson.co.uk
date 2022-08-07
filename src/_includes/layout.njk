@@ -9,8 +9,32 @@
     <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
+    {% set google_fonts_url = "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&family=Source+Sans+Pro:ital,wght@0,400;1,700&display=swap" %}
+
+    <!--
+      - 1. Preemptively warm up the fonts’ origin.
+      -
+      - 2. Initiate a high-priority, asynchronous fetch for the CSS file. Works in
+      -    most modern browsers.
+      -
+      - 3. Initiate a low-priority, asynchronous fetch that gets applied to the page
+      -    only after it’s arrived. Works in all browsers with JavaScript enabled.
+      -
+      - 4. In the unlikely event that a visitor has intentionally disabled
+      -    JavaScript, fall back to the original method. The good news is that,
+      -    although this is a render-blocking request, it can still make use of the
+      -    preconnect which makes it marginally faster than the default.
+    -->
+    <!-- [1] -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <!-- [2] -->
+    <link rel="preload" as="style" href="{{ google_fonts_url }}" />
+    <!-- [3] -->
+    <link rel="stylesheet" href="{{ google_fonts_url }}" media="print" onload="this.media='all'" />
+    <!-- [4] -->
+    <noscript>
+      <link rel="stylesheet" href="{{ google_fonts_url }}" />
+    </noscript>
 
     <title>David Rapson</title>
     {% set css %}{% include "styles.css" %}{% endset %}
