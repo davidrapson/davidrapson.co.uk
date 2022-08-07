@@ -20,5 +20,9 @@ module.exports = function (eleventyConfig) {
     return new CleanCSS({}).minify(code).styles;
   });
 
+  eleventyConfig.setBrowserSyncConfig({
+    snippet: false,
+  });
+
   return { dir };
 };
