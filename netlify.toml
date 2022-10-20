@@ -12,6 +12,4 @@
     X-XSS-Protection = "1; mode=block"
 
 [[plugins]]
-  package = "@netlify/plugin-a11y"
-  [plugins.inputs]
-    checkPaths = ['/']
+  package = "@netlify/plugin-lighthouse"
