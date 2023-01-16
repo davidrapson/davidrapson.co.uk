@@ -21,6 +21,6 @@
     "prettier": "^2.7.1"
   },
   "devDependencies": {
-    "@netlify/plugin-lighthouse": "^4.0.2"
+    "@netlify/plugin-lighthouse": "^4.0.4"
   }
 }
