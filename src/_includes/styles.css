@@ -3,7 +3,8 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local(""),
+  src:
+    local(""),
     url("./fonts/playfair-display-v30-latin-700.woff2") format("woff2"),
     url("./fonts/playfair-display-v30-latin-700.woff") format("woff");
 }
@@ -13,7 +14,8 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local(""),
+  src:
+    local(""),
     url("./fonts/source-sans-pro-v21-latin-regular.woff2") format("woff2"),
     url("./fonts/source-sans-pro-v21-latin-regular.woff") format("woff");
 }
@@ -23,7 +25,8 @@
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: local(""),
+  src:
+    local(""),
     url("./fonts/source-sans-pro-v21-latin-italic.woff2") format("woff2"),
     url("./fonts/source-sans-pro-v21-latin-italic.woff") format("woff");
 }
@@ -33,7 +36,8 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: local(""),
+  src:
+    local(""),
     url("./fonts/source-sans-pro-v21-latin-700.woff2") format("woff2"),
     url("./fonts/source-sans-pro-v21-latin-700.woff") format("woff");
 }
@@ -43,7 +47,8 @@
   font-style: italic;
   font-weight: 700;
   font-display: swap;
-  src: local(""),
+  src:
+    local(""),
     url("./fonts/source-sans-pro-v21-latin-700italic.woff2") format("woff2"),
     url("./fonts/source-sans-pro-v21-latin-700italic.woff") format("woff");
 }
