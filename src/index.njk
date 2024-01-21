@@ -3,46 +3,56 @@ layout: layout.njk
 ---
 
 <main>
-    <h1>Hey, I'm David Rapson</h1>
-    <div class="content">
-        <div class="content__profile">
-            <img
-                srcset="profile.jpg 1x, profile-2x.jpg 2x"
-                src="profile.jpg"
-                alt="A photo of me smilling wearing a striped top and clear framed glasses"
-                width="140"
-                height="140"
-                class="profile-img"
-            />
-        </div>
-
-        <div class="content__bio">
-            <p>
-                I'm a software developer, currently working with
-                <a href="https://www.citizensadvice.org.uk">Citizens Advice</a>.
-                I've previously worked with
-                <a href="http://github.com/biglotteryfund/"
-                    >The National Lottery Community Fund</a
-                >
-                where I was a Senior Developer;
-                <a href="https://made.media/">Made Media</a> where I made
-                websites for a number of high-profile cultural institutions, one
-                of which was featured on the
-                <a
-                    href="https://responsivewebdesign.com/podcast/royal-albert-hall/"
-                    >Responsive Web Design</a
-                >
-                podcast; and
-                <a href="https://developers.theguardian.com/">The Guardian</a>
-                where I worked on their membership product.
-            </p>
-
-            <p>
-                You can—infrequently—find me on
-                <a href="https://twitter.com/davidrapson">Twitter</a>
-                or over on
-                <a href="https://github.com/davidrapson">GitHub</a>.
-            </p>
-        </div>
+  <h1>Hey, I'm David Rapson</h1>
+  <div class="content">
+    <div class="content__profile">
+      <picture>
+        <source
+          type="image/avif"
+          srcset="profile-2x.avif"
+        >
+        <source
+          type="image/webp"
+          srcset="profile-2x.webp"
+        >
+        <img
+          srcset="profile.jpg 1x, profile-2x.jpg 2x"
+          src="profile.jpg"
+          alt="A photo of me smilling wearing a striped top and clear framed glasses"
+          width="140"
+          height="140"
+          class="profile-img"
+        />
+      </picture>
     </div>
+
+    <div class="content__bio">
+      <p>
+        I'm a software developer, currently working with
+        <a href="https://www.citizensadvice.org.uk">Citizens Advice</a>.
+        I've previously worked with
+        <a href="http://github.com/biglotteryfund/"
+          >The National Lottery Community Fund</a
+        >
+        where I was a Senior Developer;
+        <a href="https://made.media/">Made Media</a> where I made
+        websites for a number of high-profile cultural institutions, one
+        of which was featured on the
+        <a
+          href="https://responsivewebdesign.com/podcast/royal-albert-hall/"
+          >Responsive Web Design</a
+        >
+        podcast; and
+        <a href="https://developers.theguardian.com/">The Guardian</a>
+        where I worked on their membership product.
+      </p>
+
+      <p>
+        You can—infrequently—find me on
+        <a href="https://twitter.com/davidrapson">Twitter</a>
+        or over on
+        <a href="https://github.com/davidrapson">GitHub</a>.
+      </p>
+    </div>
+  </div>
 </main>
