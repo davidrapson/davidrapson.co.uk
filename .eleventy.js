@@ -11,7 +11,9 @@ module.exports = function (eleventyConfig) {
   del(`${dir.output}/*`);
 
   // Passthrough copy all images
-  eleventyConfig.addPassthroughCopy(`${dir.input}/**/*.{png,ico,jpg,avif,webp}`);
+  eleventyConfig.addPassthroughCopy(
+    `${dir.input}/**/*.{png,ico,jpg,avif,webp}`,
+  );
   eleventyConfig.addPassthroughCopy(`${dir.input}/fonts`);
 
   // Minify CSS filter, used to inline all styles
