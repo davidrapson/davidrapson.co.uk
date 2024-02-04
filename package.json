@@ -6,7 +6,7 @@
   "private": true,
   "repository": "github:davidrapson/davidrapson.co.uk",
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   },
   "scripts": {
     "start": "eleventy --serve",
@@ -21,6 +21,6 @@
     "prettier": "^3.2.4"
   },
   "devDependencies": {
-    "@netlify/plugin-lighthouse": "^5.0.0"
+    "@netlify/plugin-lighthouse": "^6.0.0"
   }
 }
