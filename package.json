@@ -5,6 +5,7 @@
   "license": "ISC",
   "private": true,
   "repository": "github:davidrapson/davidrapson.co.uk",
+  "type": "module",
   "engines": {
     "node": ">=22.0.0"
   },
@@ -15,12 +16,9 @@
     "build": "eleventy"
   },
   "dependencies": {
-    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy": "^3.0.0",
     "clean-css": "^5.3.3",
-    "del": "^6.0.0",
+    "del": "^8.0.0",
     "prettier": "^3.3.2"
-  },
-  "devDependencies": {
-    "@netlify/plugin-lighthouse": "^6.0.0"
   }
 }

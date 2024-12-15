@@ -1,15 +1,12 @@
 [build]
-  command = "npm run build"
-  publish = "_site"
+command = "npm run build"
+publish = "_site"
 
 [[headers]]
-  for = "/*"
-  [headers.values]
-    Content-Security-Policy = "default-src 'self'; font-src 'self'; style-src 'self' 'unsafe-inline'"
-    Referrer-Policy = "no-referrer, strict-origin-when-cross-origin"
-    X-Content-Type-Options = "nosniff"
-    X-Frame-Options = "SAMEORIGIN"
-    X-XSS-Protection = "1; mode=block"
-
-[[plugins]]
-  package = "@netlify/plugin-lighthouse"
+for = "/*"
+[headers.values]
+Content-Security-Policy = "default-src 'self'; font-src 'self'; style-src 'self' 'unsafe-inline'"
+Referrer-Policy = "no-referrer, strict-origin-when-cross-origin"
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "SAMEORIGIN"
+X-XSS-Protection = "1; mode=block"

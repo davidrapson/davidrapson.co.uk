@@ -1,14 +1,14 @@
-const del = require("del");
-const CleanCSS = require("clean-css");
+import { deleteSync } from "del";
+import CleanCSS from "clean-css";
 
-module.exports = function (eleventyConfig) {
+export default function (eleventyConfig) {
   const dir = {
     input: "src",
     output: "_site",
   };
 
   // Clean output directory on build
-  del(`${dir.output}/*`);
+  deleteSync(`${dir.output}/*`);
 
   // Passthrough copy all images
   eleventyConfig.addPassthroughCopy(
@@ -22,4 +22,4 @@ module.exports = function (eleventyConfig) {
   });
 
   return { dir };
-};
+}
