@@ -62,7 +62,6 @@
   --site-colour-profile-outline: #fcc;
 }
 
-
 @media screen and (prefers-color-scheme: dark) {
   :root {
     --site-color-text: #fafafa;
@@ -75,7 +74,7 @@
     --site-colour-link-hover-text: #fafafa;
     --site-colour-link-hover-border: #fafafa;
     --site-colour-profile-border: white;
-    --site-colour-profile-border:black;
+    --site-colour-profile-border: black;
     --site-colour-profile-outline: #fcc;
   }
 }
