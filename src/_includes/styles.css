@@ -45,7 +45,39 @@
   font-display: swap;
   src:
     local(""),
-    url("./fonts/SourceSans3-SemiboldIt.otf.woff2") format("woff2");
+    url("./fonts/source-sans-3-v15-latin-600italic.woff2") format("woff2");
+}
+
+:root {
+  --site-color-text: #333344;
+  --site-color-text-heading: #444455;
+  --site-color-background: #fafafa;
+  --site-color-tint: #b60000;
+  --site-colour-link-text: #b60000;
+  --site-colour-link-background: #fcc;
+  --site-colour-link-border: #fcc;
+  --site-colour-link-hover-text: #500000;
+  --site-colour-link-hover-border: #500000;
+  --site-colour-profile-border: white;
+  --site-colour-profile-outline: #fcc;
+}
+
+
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --site-color-text: #fafafa;
+    --site-color-text-heading: #fafafa;
+    --site-color-background: #444455;
+    --site-color-tint: #421919;
+    --site-colour-link-text: #fcc;
+    --site-colour-link-background: #421919;
+    --site-colour-link-border: #421919;
+    --site-colour-link-hover-text: #fafafa;
+    --site-colour-link-hover-border: #fafafa;
+    --site-colour-profile-border: white;
+    --site-colour-profile-border:black;
+    --site-colour-profile-outline: #fcc;
+  }
 }
 
 html {
@@ -61,13 +93,13 @@ html {
   height: 100%;
   font-size: 18px;
   line-height: 1.5;
-  border-top: 10px solid #b60000;
+  border-top: 10px solid var(--site-color-tint);
   font-family: "Source Sans 3", sans-serif;
 }
 
 body {
-  color: #333344;
-  background-color: #fafafa;
+  color: var(--site-color-text);
+  background-color: var(--site-color-background);
   max-width: 720px;
   width: 90%;
   margin: 0 auto;
@@ -80,28 +112,34 @@ h4,
 h5,
 h6 {
   font-family: "Playfair Display", serif;
-  color: #444455;
+  color: var(--site-color-text-heading);
   font-weight: 800;
   line-height: 1.5;
   margin: 0 0 0.3em 0;
+  text-wrap: pretty;
 }
 
 h1 {
   font-size: 32px;
   margin-bottom: 0.75em;
 }
+
 h2 {
   font-size: 22px;
 }
+
 h3 {
   font-size: 20px;
 }
+
 h4 {
   font-size: 18px;
 }
+
 h5 {
   font-size: 16px;
 }
+
 h6 {
   font-size: 14px;
   text-transform: uppercase;
@@ -120,23 +158,21 @@ strong {
 }
 
 a {
-  color: #b60000;
   font-weight: 600;
   text-decoration: none;
-  word-wrap: break-word;
   line-height: inherit;
   text-decoration: none;
-  border-bottom: 2px solid #fcc;
   padding: 0 3px;
-  background: #fcc;
+  color: var(--site-colour-link-text);
+  background: var(--site-colour-link-background);
+  border-bottom: 2px solid var(--site-colour-link-border);
 }
 
 a:hover,
 a:active {
-  color: #500000;
   cursor: pointer;
-
-  border-color: #500000;
+  color: var(--site-colour-link-hover-text);
+  border-color: var(--site-colour-link-hover-border);
 }
 
 /*  =========================================================================
@@ -148,8 +184,8 @@ main {
 }
 
 .profile-img {
-  border: 1px solid white;
-  outline: 5px solid #fcc;
+  border: 1px solid var(--site-colour-profile-border);
+  outline: 5px solid var(--site-colour-profile-outline);
   margin-bottom: 1em;
 }
 
