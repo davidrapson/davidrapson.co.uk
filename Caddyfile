@@ -1,0 +1,26 @@
+www.davidrapson.co.uk {
+	encode zstd gzip
+
+	root * /var/www/html/davidrapson.co.uk/
+	file_server
+
+	header {
+		Content-Security-Policy "default-src 'self'; font-src 'self'; style-src 'self' 'unsafe-inline'"
+		Referrer-Policy "no-referrer, strict-origin-when-cross-origin"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "SAMEORIGIN"
+		X-XSS-Protection "1; mode=block"
+	}
+
+	@spam {
+		path /.env /index.php /xmlrpc.php /wp-* /blog/wp-* /cms/wp-* /shop/wp-* /site/wp-* /test/wp-* /wordpress/wp-* /wp/wp-* /wp2/wp-* /zb_system/*
+	}
+
+	handle @spam {
+		respond "400 Bad Request" 400
+	}
+}
+
+davidrapson.co.uk {
+	redir https://davidrapson.co.uk{uri} permanent
+}
