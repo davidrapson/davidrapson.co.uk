@@ -12,6 +12,10 @@ www.davidrapson.co.uk {
 		X-XSS-Protection "1; mode=block"
 	}
 
+	handle_errors {
+		respond "{err.status_code} {err.status_text}"
+	}
+
 	@spam {
 		path /.env /index.php /xmlrpc.php /wp-* /blog/wp-* /cms/wp-* /shop/wp-* /site/wp-* /test/wp-* /wordpress/wp-* /wp/wp-* /wp2/wp-* /zb_system/*
 	}
