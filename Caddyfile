@@ -22,5 +22,5 @@ www.davidrapson.co.uk {
 }
 
 davidrapson.co.uk {
-	redir https://davidrapson.co.uk{uri} permanent
+	redir https://www.davidrapson.co.uk{uri} permanent
 }
